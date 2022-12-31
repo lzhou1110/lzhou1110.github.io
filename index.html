@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Liyi Zhou</title>
+    <meta name="description" content="Liyi Zhou's personal website."/>
+    <meta name="keywords" content="blockchain, security, machine learning"/>
+    <link rel="stylesheet" href="https://latex.now.sh/style.css">
+</head>
+
+<body>
+<h1>Decentralised (Mis)adventures</h1>
+<p class="author">Liyi Zhou<br>Email: liyi.zhou (at) imperial (dot) ac (dot) uk<br> Last Update: December 31, 2022</p>
+
+
+<div class="abstract">
+    <h2>Abstract</h2>
+    <p style="text-align:left;">
+        I
+        <label for="sn-1" class="sidenote-toggle sidenote-number"></label>
+        <input type="checkbox" id="sn-1" class="sidenote-toggle"/>
+        <span class="sidenote left">
+            A photo of myself
+            <img src=me.png loading="lazy" alt="Liyi Zhou's photo" width="400"/>
+        </span>
+        am currently a PhD student at Imperial College London
+        <label for="sn-2" class="sidenote-toggle sidenote-number"></label>
+        <input type="checkbox" id="sn-2" class="sidenote-toggle"/><span class="sidenote">
+        I am supervised by Professor Arthur Gervais, who is currently affiliated with University College London (UCL). I decided to pursue my PhD with Professor Gervais mainly because of his renowned work on
+        <a href="https://eprint.iacr.org/2016/555.pdf">the security and performance of proof of work blockchains</a> - (currently ranked 72 in <a href="https://www.mlsec.org/topnotch/sec_top100.html">the top 100 most influential security papers</a>). You can find more information about Professor Gervais and his work on his website at <a
+            href="https://arthurgervais.com">https://arthurgervais.com</a>.</span>
+        <label for="sn-4" class="sidenote-toggle sidenote-number"></label>
+        <input type="checkbox" id="sn-4" class="sidenote-toggle"/>
+        <span class="sidenote">I am also fortunate to have the opportunity to collaborate with Kaihua on a number of research papers. Kaihua is an expert in decentralised technology and has made significant contributions to the field. Working with Kaihua has been a great learning experience. You can find more information about Kaihua at <a href="https://kaihuaqin.com/">https://kaihuaqin.com</a>.
+        </span>.
+        My research focuses on
+        decentralised technology security, including Blockchain<label for="sn-3"
+                                                                      class="sidenote-toggle sidenote-number"></label><input
+            type="checkbox" id="sn-3" class="sidenote-toggle"/><span class="sidenote">Mainly EVM compatibale blockchains (e.g., Ethereum, Avalanche and Binance Smart Chain)</span>
+        and Decentralised Finance (DeFi). My goal is to increase our understanding of these areas and make meaningful
+        contributions to their development.</p>
+
+    <p style="text-align:left;">As I near the end of my PhD, I am actively seeking a tenure-track position opportunities
+        in academia. On this website, you can find more information about my education, skills, and experience. If you
+        are interested in collaborating on research or have any other inquiries, please don't hesitate to contact me.
+        Thank you for visiting!</p>
+</div>
+
+
+<nav role="navigation" class="toc">
+    <h2>Contents</h2>
+    <ol>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#experiences">Other Experiences</a></li>
+        <li><a href="#selectedtalks">Selected Talks</a></li>
+    </ol>
+</nav>
+
+<main>
+    <article>
+        <h2 id="publications">Publications</h2>
+        <h3>DeFi Security - Attacks
+            <label for="sn-4" class="sidenote-toggle sidenote-number"></label>
+            <input type="checkbox" id="sn-4" class="sidenote-toggle"/>
+            <span class="sidenote left">
+        According to our data, users, liquidity providers, speculators, and protocol operators suffered a total loss of at least 3.24 billion USD from Apr 30, 2018 to Apr 30, 2022.<br><br>
+        We study attacks on DeFi to understand the nature and impact of these incidents, and to learn how to strengthen the security of DeFi systems. By analyzing past attacks, we can identify patterns, predict future attacks, and prevent losses.
+
+        </span>
+        </h3>
+
+        <ul>
+            <li>
+                <a href="https://arxiv.org/abs/2208.13035">SoK: Decentralized Finance (DeFi) Attacks</a><br>
+                <small><i>To appear at IEEE Symposium on Security and Privacy (S&P'23)</i></small><br>
+                <small><b>Liyi Zhou</b>, Xihan Xiong, Jens Ernstberger, Stefanos Chaliasos, Zhipeng Wang, Ye Wang,
+                    Kaihua Qin, Roger Wattenhofer, Dawn Song, Arthur Gervais</small>
+            </li>
+            <li>
+                <a href="https://arxiv.org/abs/2003.03810">Attacking the DeFi ecosystem with flash loans for fun and
+                    profit</a><br>
+                <small><i>Financial Cryptography and Data Security: 25th International Conference (FC
+                    2021)</i></small><br>
+                <small>Kaihua Qin, <b>Liyi Zhou</b>, Benjamin Livshits, Arthur Gervais</small>
+            </li>
+        </ul>
+
+        <h3>
+            DeFi Security - MEV/BEV
+            <label for="sn-5" class="sidenote-toggle sidenote-number"></label>
+            <input type="checkbox" id="sn-5" class="sidenote-toggle"/>
+            <span class="sidenote">
+MEV (Miner/Maximum Extracted Value) and BEV (Blockchain Extracted Value) refer to any value that is extracted or extractable from a blockchain through the actions of miners or other blockchain participants. It can be challenging to determine whether a particular MEV/BEV opportunity is an attack or not, as there are instances where MEV/BEV opportunities are not attacks (e.g., arbitrage) and instances where attacks are not MEV/BEV (e.g., compromise of a wallet private key). In other words, MEV/BEV and attacks are not necessarily mutually exclusive.
+        </span>
+        </h3>
+        <ul>
+            <li>
+                <a href="https://arxiv.org/abs/2101.05511">Quantifying Blockchain Extractable Value: How dark is the
+                    forest?</a><br>
+                <small><i>IEEE Symposium on Security and Privacy (S&P'22)</i></small><br>
+                <small>Kaihua Qin, Liyi Zhou, Arthur Gervais</small>
+            </li>
+            <li>
+                <a href="https://arxiv.org/abs/2105.02784">Cyclic Arbitrage in Decentralized Exchanges</a><br>
+                <small><i>Companion Proceedings of the Web Conference 2022</i></small><br>
+                <small>Ye Wang, Yan Chen, Haotian Wu, Liyi Zhou, Shuiguang Deng, Roger Wattenhofer</small>
+            </li>
+            <li>
+                <a href="https://arxiv.org/abs/2103.02228">On the Just-In-Time Discovery of Profit-Generating
+                    Transactions in DeFi Protocols</a><br>
+                <small><i>IEEE Symposium on Security and Privacy (S&P'21)</i></small><br>
+                <small>Liyi Zhou, Kaihua Qin, Antoine Cully, Benjamin Livshits, Arthur Gervais</small>
+            </li>
+            <li>
+                <a href="https://arxiv.org/abs/2009.14021">High-Frequency Trading on Decentralized On-Chain
+                    Exchanges</a><br>
+                <small><i>IEEE Symposium on Security and Privacy (S&P'21)</i></small><br>
+                <small>Liyi Zhou, Kaihua Qin, Christof Ferreira Torres, Duc V Le, Arthur Gervais</small>
+            </li>
+            <li>
+                <a href="https://arxiv.org/abs/2106.07371">A2mm: Mitigating frontrunning, transaction reordering and
+                    consensus instability in decentralized exchanges</a> <br>
+                <small><i>Preprint</i></small><br>
+                <small>Liyi Zhou, Kaihua Qin, Arthur Gervais</small>
+            </li>
+            <li>
+                <a href="https://arxiv.org/abs/2106.06389">An Empirical Study of DeFi Liquidations: Incentives, Risks,
+                    and Instabilities</a><br>
+                <small><i>ACM Internet Measurement Conference (IMC'21)</i></small><br>
+                <small>Kaihua Qin, Liyi Zhou, Pablo Gamito, Philipp Jovanovic, Arthur Gervais</small>
+            </li>
+        </ul>
+
+        <h3>Privacy</h3>
+        <ul>
+            <li>
+                <a href="https://arxiv.org/abs/2201.09035">On How Zero-Knowledge Proof Blockchain Mixers Improve, and
+                    Worsen User Privacy</a> <br>
+                <small><i>Preprint</i></small><br>
+                <small>Zhipeng Wang, Stefanos Chaliasos, Kaihua Qin, <b>Liyi Zhou</b>, Lifeng Gao, Pascal Berrang, Ben
+                    Livshits, Arthur Gervais</small>
+            </li>
+        </ul>
+
+        <h3>Other</h3>
+        <ol>
+            <li>
+                <a href="https://arxiv.org/abs/2106.08157,">CeFi vs. DeFi--Comparing Centralized to Decentralized
+                    Finance</a><br>
+                <small><i>CryptoValley Conference (CVC) 2021</i></small><br>
+                <small>Kaihua Qin*, Liyi Zhou*, Yaroslav Afonin, Ludovico Lazzaretti, Arthur Gervais</small>
+            </li>
+            <li>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-030-28061-1_30">Data quality transaction on
+                    different distributed ledger technologies</a> <br>
+                <small><i>International Conference on Big Scientific Data Management</i></small><br>
+                <small>Chao Wu, Liyi Zhou, Chulin Xie, Yuhang Zheng, Jiawei Yu</small>
+            </li>
+        </ol>
+    </article>
+
+    <article>
+        <h2 id="services">Services</h2>
+        <ul>
+            <li>External Reviewer @ IEEE Symposium on Security and Privacy (S&P'23)</li>
+            <li>Invited Reviewer @ Financial Innovation (2021, 2022)</li>
+            <li>Program Committee @ ACM CCS Workshop on Decentralized Finance and Security, 2021</li>
+            <li>Shadow PC @ IEEE Symposium on Security and Privacy (S&P'21)</li>
+        </ul>
+    </article>
+
+    <article>
+        <h2 id="experiences">Experiences</h2>
+
+
+
+        <ul>
+            <li>
+                Sep 2022 ~ Dec 2022 - Research Internship @ Chainlink Labs<label for="sn-1" class="sidenote-toggle sidenote-number"></label>
+                <input type="checkbox" id="sn-1" class="sidenote-toggle"/>
+                <span class="sidenote left" style=" margin-left: -24vw;">
+                If you are considering internships in the field of decentralised technology, I highly recommend checking out Chainlink Research. As a leading provider of reliable and secure data feeds to the blockchain ecosystem, Chainlink has a wealth of research opportunities available for interns. Their team is composed of experts in the field who are dedicated to advancing the capabilities of decentralised systems. Interning at Chainlink would provide a valuable opportunity to gain hands-on experience and make meaningful contributions to the industry.
+                </span>
+                <br>
+            </li>
+            <li>
+                Jul 2021 ~ Current - Teaching Assistant @ DeFi MOOC (<a href="https://defi-learning.org">https://defi-learning.org</a>)
+                <label for="sn-1" class="sidenote-toggle sidenote-number"></label>
+                <input type="checkbox" id="sn-1" class="sidenote-toggle"/>
+                <span class="sidenote">
+                I highly recommend DeFi MOOC for anyone interested in learning about decentralised finance. As a TA for the course, I have seen firsthand the quality of the materials and instruction offered by leading researchers in the field, including Dan Boneh, Andrew Miller, Dawn Song, Arthur Gervais, and Christine Parlour. The course covers a wide range of topics, from the basics of blockchain technology to advanced concepts in decentralised finance. Whether you are new to the field or looking to deepen your understanding, DeFi MOOC is an excellent resource taught by industry experts who are passionate about sharing their knowledge and experience.
+                </span>
+                <br>
+            </li>
+            <li>
+                Jun 2019 ~ Oct 2019 - Software Engineer @ Imperial College London, Data Science Institute
+            </li>
+            <li>
+                Jun 2019 ~ Oct 2019 - Software Engineer @ Imperial College London, Data Science Institute
+            </li>
+            <li>
+                Mar 2017 ~ Jun 2017 - Software Engineer @ Automic, Sydney, Australia
+            </li>
+            <li>
+                Oct 2014 ~ Jan 2016 - Software Engineer @ Superchoice, Sydney, Australia
+            </li>
+            <li>
+                Jun 2013 ~ Sep 2013 - Internship @ NewVoiceMedia
+            </li>
+            <li>
+                Jul 2012 ~ Aug 2012 - Internship @ J P Morgan
+            </li>
+        </ul>
+    </article>
+
+    <article>
+        <h2 id="education">Education</h2>
+        <ul>
+            <li>
+                Oct 2019 ~ ??? &#129315;&#129315; <br>
+                PhD student in Computer Science <br>
+                Imperial College London
+            </li>
+            <li>
+                Oct 2017 ~ Sep 2018 <br>
+                MRes in Web Science and Big Data Analytics <br>
+                University College London
+            </li>
+            <li>
+                Oct 2010 ~ Sep 2014 <br>
+                MSci & ARCS in Mathematics and Computer Science <br>
+                Imperial College London
+            </li>
+        </ul>
+    </article>
+
+    <article>
+        <h2 id="selectedtalks">Selected Talks</h2>
+        <p>2022</p>
+        <ul>
+            <li>
+                DeFi Attacks Talk @ 8th International Workshop P2PFISY workshop
+                <label for="sn-4" class="sidenote-toggle sidenote-number"></label>
+                <input type="checkbox" id="sn-4" class="sidenote-toggle"/>
+                <span class="sidenote left" style="margin-left: -24vw;">
+                P2PFISY workshop @ UCL CBT, <a
+                        href="https://twitter.com/uclcbt/status/1598278428708446210?s=20&t=jM5ieRrrNqbm4eDI_vv_xA">[source]</a><img
+                        src=p2pfisy.jpeg loading="lazy" alt="Liyi Zhou's photo" width="400"/></span>.
+            </li>
+            <li>
+                Dark Forest Talk @ The Science of Blockchain (SBC) Conference<br>
+                <a href="https://www.youtube.com/watch?v=YjHdeupYTVE">[Youtube video]</a>
+            </li>
+            <li>
+                Dark Forest Talk @ IEEE S&P
+            </li>
+            <li>
+                DeFi Security Talk @ The University of Sydney (Prof. Qiang Tang's group)
+            </li>
+        </ul>
+        <p>2021</p>
+        <ul>
+            <li>
+                High Frequency Trading Talk (Sandwich Attacks) @ IEEE S&P<br>
+                <a href="https://www.youtube.com/watch?v=t42hmuScvC8">[Youtube video]</a>
+            </li>
+            <li>
+                DeFi Security Talk @ Monash Univeristy (Prof. Jiangshan Yu's group)
+            </li>
+            <li>
+                DeFi Security Talk @ University of Guelph (Prof. Xiaodong Lin's group)
+            </li>
+        </ul>
+    </article>
+
+
+</main>
+
+</body>
+
+<hr>
+
+<footer>
+    <p>Made using <a href="https://latex.vercel.app">https://latex.vercel.app</a> and <a href="https://chat.openai.com">ChatGPT</a> &#10084; &#10084;</p>
+</footer>
+
+</html>
