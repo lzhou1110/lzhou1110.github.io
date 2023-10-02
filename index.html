@@ -374,42 +374,6 @@ MEV/BEV risks refer to the potential for miners or other blockchain participants
   };
 </script>
 
-<script>
-  var publicationData = {
-    "defi-security-cat-mouse": [
-      {
-        link: "https://arxiv.org/abs/2208.13035",
-        title: "SoK: Decentralized Finance (DeFi) Attacks",
-        conference: "IEEE Symposium on Security and Privacy (S&P'23)",
-        authors: "Liyi Zhou, Xihan Xiong, Jens Ernstberger, Stefanos Chaliasos, Zhipeng Wang, Ye Wang, Kaihua Qin, Roger Wattenhofer, Dawn Song, Arthur Gervais"
-      },
-    ],
-    "defi-security-mev-bev": [
-    ],
-    "privacy": [
-    ],
-    "other": [
-    ]
-  };
-
-  window.onload = function () {
-    for (var section in publicationData) {
-      var sectionContainer = document.getElementById(section);
-      var publicationList = "<ul>";
-
-      for (var i = 0; i < publicationData[section].length; i++) {
-        var pub = publicationData[section][i];
-        publicationList += "<li><a href='" + pub.link + "'>" + pub.title + "</a><br>";
-        publicationList += "<small><i>" + pub.conference + "</i></small><br>";
-        publicationList += "<small>" + pub.authors + "</small></li>";
-      }
-
-      publicationList += "</ul>";
-      sectionContainer.innerHTML = publicationList;
-    }
-  };
-</script>
-
 </body>
 
 <hr>
