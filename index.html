@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<h1>Simplify, Don't Over-Simplify</h1>
+<h1>Simplify. Don't Over-Simplify</h1>
 <p class="author">
     Liyi Zhou, Email: lzhou1110 (at) gmail (dot) com<br>
     <a href="https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en">[Google Scholar]</a>
@@ -63,7 +63,7 @@
         </ul>
 
 
-        <h2>I am Hiring!</h2>
+        <h2>🌟I am Hiring!🌟</h2>
 
         My research interests include, but not limited to:
         <ul>
@@ -76,7 +76,7 @@
             <li>Coin mixers / tracing transactions</li>
         </ul>
 
-        <h4>PhD Candidates</h4>
+        <h5>PhD Candidates 🎓</h5>
 
         If you are passionate about pursuing a PhD<span id="footnote-4"></span> with me, please email:
 
@@ -88,7 +88,7 @@
         </ol>
 
 
-        <h4>Research Interns + Engineers (Remote)</h4>
+        <h5>Research Interns + Engineers (Remote) 💻</h5>
         We are hiring both research interns<span id="footnote-5"></span> and engineers (Solidity, Golang, Postgres, NextJS) at <a href="https://d23e.ch">D23E.ch</a>. If you are interested, please email me your CV.
 
         <h2 id="cv">My CV</h2>
@@ -98,7 +98,7 @@
 </main>
 
 <script>
-  var footnotes = [
+  const footnotes = [
     {
       id: 1,
       // align: 'left',
@@ -127,13 +127,13 @@
   ];
 
   window.onload = function () {
-    for (var i = 0; i < footnotes.length; i++) {
-      var fn = footnotes[i];
-      var footnoteHTML =
+    for (let i = 0; i < footnotes.length; i++) {
+      const fn = footnotes[i];
+      const footnoteHTML =
         '<label for="sn-' + fn.id + '" class="sidenote-toggle sidenote-number"></label>' +
         '<input type="checkbox" id="sn-' + fn.id + '" class="sidenote-toggle"/>' +
         '<span class="sidenote ' + (fn.align || '') + '">' + fn.content + '</span>';
-      var placeHolder = document.getElementById('footnote-' + fn.id);
+      const placeHolder = document.getElementById('footnote-' + fn.id);
       placeHolder.outerHTML = footnoteHTML;
     }
   };
