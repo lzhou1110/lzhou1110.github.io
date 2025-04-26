@@ -3,154 +3,329 @@
 
 
 <head>
-    <meta charset="UTF-8"/>
-    <title>Liyi Zhou</title>
-    <meta name="description" content="Liyi Zhou's personal website."/>
-    <meta name="keywords" content="blockchain, security, privacy, machine learning"/>
-    <link rel="stylesheet" href="https://latex.now.sh/style.css">
-    <style>
-        .pdf-container {
-            width: 100%;
-            padding-top: calc(3.8 * 100%); /* Replace k with your desired ratio */
-            position: relative; /* This is important for the inner content positioning */
-        }
+  <meta charset="UTF-8" />
+  <title>Liyi Zhou</title>
+  <meta name="description" content="Liyi Zhou's personal website." />
+  <meta name="keywords" content="blockchain, security, privacy, machine learning" />
+  <link rel="stylesheet" href="https://latex.now.sh/style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
 
-        .pdf-iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
+    :root {
+      --text-color: #111;
+      --secondary-color: #333;
+      --background-color: #fff;
+      --border-color: #222;
+      --link-color: #000;
+      --hover-color: #444;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.4;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1rem 3rem;
+      font-family: "Crimson Text", Georgia, serif;
+      font-size: 15px;
+      position: relative;
+    }
+
+    .title-container {
+      text-align: center;
+      margin: 1.5rem 0;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0;
+      padding: 0;
+      color: var(--text-color);
+    }
+
+    h1 .dont {
+      display: block;
+      font-size: 1.6rem;
+      margin: 0.2rem 0;
+      font-weight: 600;
+      color: var(--secondary-color);
+    }
+
+    h2 {
+      color: var(--text-color);
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.2rem;
+      width: 600px;
+    }
+
+    .author {
+      text-align: center;
+      font-size: 0.95rem;
+      margin: 1rem 0 2rem 0;
+      color: var(--secondary-color);
+    }
+
+    .author a {
+      color: var(--link-color);
+      text-decoration: none;
+      margin: 0 0.5rem;
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .author a:hover {
+      color: var(--hover-color);
+      background-color: rgba(0, 0, 0, 0.05);
+      text-decoration: none;
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    a:hover {
+      color: var(--hover-color);
+      border-bottom-color: var(--hover-color);
+      text-decoration: none;
+    }
+
+    p {
+      margin: 0.8rem 0;
+      text-align: justify;
+      font-size: 0.95rem;
+      hyphens: auto;
+    }
+
+    .content {
+      width: 600px;
+      position: relative;
+      margin-right: 250px;
+    }
+
+    /* Sidenote styling */
+    .sidenote {
+      float: right;
+      clear: right;
+      margin-right: -250px;
+      width: 220px;
+      font-size: 0.8rem;
+      line-height: 1.3;
+      padding: 0.5rem;
+      background-color: #fafafa;
+      border-left: 1px solid var(--border-color);
+      border-radius: 3px;
+      margin-top: 0;
+      position: relative;
+    }
+
+    .sidenote img {
+      border-radius: 4px;
+      max-width: 100%;
+      margin: 0.3rem 0;
+    }
+
+    .sidenote-number {
+      color: var(--secondary-color);
+      font-weight: bold;
+      font-size: 0.7em;
+      vertical-align: super;
+    }
+
+    /* List styling */
+    ul {
+      padding-left: 1.2rem;
+      margin: 0.8rem 0;
+    }
+
+    li {
+      margin: 0.4rem 0;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      color: var(--secondary-color);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1000px) {
+      body {
+        padding: 1rem;
+      }
+
+      .content {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      h2 {
+        width: 100%;
+      }
+
+      .sidenote {
+        float: none;
+        width: auto;
+        margin: 0.8rem 0;
+        margin-right: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<h1>Simplify. Don't Over-Simplify</h1>
-<p class="author">
+  <div class="title-container">
+    <h1>
+      Simplify<br>
+      <span class="dont">Don't Over-Simplify</span>
+    </h1>
+  </div>
+  <div class="author">
     Liyi Zhou, Email: lzhou1110 (at) gmail (dot) com<br>
+    <a href="https://www.sydney.edu.au/engineering/about/our-people/academic-staff/liyi-zhou.html">[USyd]</a>
     <a href="https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en">[Google Scholar]</a>
     <a href="https://twitter.com/lzhou1110">[Twitter]</a>
-<!--    <a href="https://www.linkedin.com/in/liyi-zhou-a64731111">[Linkedin]</a>-->
-<!--    <a href="https://github.com/lzhou1110">[Github]</a>-->
-</p>
+    <!--    <a href="https://www.linkedin.com/in/liyi-zhou-a64731111">[Linkedin]</a>-->
+    <!--    <a href="https://github.com/lzhou1110">[Github]</a>-->
+  </div>
 
-<div class="abstract">
+  <div class="content">
     <h2>Abstract</h2>
-    <p style="text-align:left; margin-bottom: 20px;">
-        I<span id="footnote-1"></span> am a Computer Science Lecturer (roughly equivalent to a US Assistant Professor) at the <a href="https://csrankings.org/#/index?all&australasia">University of Sydney</a>. I co-founded <a href="https://d23e.ch">D23E.ch</a><span id="footnote-2"></span>.<br/><br/>
+    <p>
+      I<span id="footnote-1"></span> am a Computer Science Lecturer (roughly equivalent to a US Assistant Professor) at
+      the <a href="https://csrankings.org/#/index?all&australasia">University of Sydney</a>. I co-founded
+      <a href="https://d23e.ch">D23E.ch</a> with Professor Arthur Gervais (UCL) and Dr Kaihua Qin (Yale).<br /><br />
 
-        My focus is on security and privacy issues, with the ultimate goal of developing generalized AI in system/software security to identify vulnerabilities, much like how Noam Brown created the first Poker AI. While I am not limited to blockchain, I find it particularly engaging due to its vast amount of open code and bytecode, transparent data from <a href="https://www.nansen.ai/guides/defi-statistics-in-2022#:~:text=Unique%20DeFi%20users%20have%20risen,to%20more%20than%206.5%20million.">millions of users and bots</a>, and <a href="">real-world attacks involving billions of USD</a><span id="footnote-3"></span>. Don't get tricked by the term "blockchain" though. My research in blockchain aligns closely with general system/software security, despite the specialized name.
+      My focus is on security and privacy issues, with the ultimate goal of developing generalized AI in system/software
+      security to identify vulnerabilities, much like how Noam Brown created the first Poker AI. While I am not limited
+      to blockchain, I find it particularly engaging due to its vast amount of open code and bytecode, transparent data
+      from <a
+        href="https://www.nansen.ai/guides/defi-statistics-in-2022#:~:text=Unique%20DeFi%20users%20have%20risen,to%20more%20than%206.5%20million.">millions
+        of users and bots</a>, and <a href="">real-world attacks involving billions of USD</a><span
+        id="footnote-2"></span>. Don't get tricked by the term "blockchain" though. My research in blockchain aligns
+      closely with general system/software security, despite the specialized name.
     </p>
-</div>
 
-<main>
-    <article>
+    <main>
+      <article>
         <h2>I am Hiring!</h2>
 
-        My research interests include, but not limited to:
+        I am actively looking for PhD students to join my research group at the University of Sydney. My primary vision
+        is
+        to develop the next generation of AI security agents - systems that can autonomously identify, analyze, and
+        prevent security vulnerabilities, similar to how AI has revolutionized games like Poker. I am proud to have
+        co-founded <a href="https://d23e.ch">D23E.ch</a>, where we are tackling some of the most challenging problems in
+        blockchain security and privacy.
+
+        While my current research heavily leverages blockchain as a rich testbed due to its transparent nature and
+        real-world impact, my interests span across:
         <ul>
-            <li>Real-time intrusion detection and prevention 🔔</li>
-            <li>Large security models -- using LLMs to enhance existing security tools</li>
-            <li>Fuzzing</li>
-            <li>Symbolic execution</li>
-            <li>Coin mixers / tracing transactions</li>
+          <li>AI-powered security agents for vulnerability detection and prevention </li>
+          <li>Large security models -- using LLMs to enhance existing security tools</li>
+          <li>Real-time intrusion detection and prevention 🔔</li>
+          <li>Advanced program analysis (fuzzing, symbolic execution)</li>
+          <li>Privacy-preserving transaction systems</li>
         </ul>
 
         <h5>PhD Candidates 🎓</h5>
 
-        If you are passionate about pursuing a PhD<span id="footnote-5"></span> with me at the University of Sydney, please email:
+        If you are passionate about pursuing a PhD<span id="footnote-5"></span> with me at the University of Sydney,
+        please email:
 
         <ol>
-            <li>Three bullet points highlighting your achievements (anything).</li>
-            <li>At least one technical achievements (research / engineering).</li>
-            <li>Your CV.</li>
+          <li>Three bullet points highlighting your achievements (anything).</li>
+          <li>At least one technical achievements (research / engineering).</li>
+          <li>Your CV.</li>
         </ol>
 
-        <h5>Research Interns + Engineers (Remote) 💻</h5>
-        We are hiring both research interns<span id="footnote-6"></span> and engineers (Solidity, Golang, Postgres, NextJS) at <a href="https://d23e.ch">D23E.ch</a>. If you are interested, please email me your CV.
-
-
         <h2>My Achievements</h2>
-        Rankings do not mean much<span id="footnote-4"></span>, they are provided here to illustrate <mark>my dedication to high-impact, top-tier research</mark>, especially for prospective PhD students.
+        Rankings do not mean much<span id="footnote-4"></span>, they are provided here to illustrate <mark>my dedication
+          to high-impact, top-tier research</mark>, especially for prospective PhD students.
         <ul>
-            <li>I am currently ranked <a href="https://nebelwelt.net/pubstats/top-authors-sys_sec.html">1016th on the Systems Circus worldwide</a> (not normalized by academic age).</li>
-            <li>I have three papers that made it into the <a href="https://www.mlsec.org/topnotch/sec_ntop100.html">Normalized Top-100 Security Papers</a> in the past:
-                <ul>
-                    <li><a href="https://arxiv.org/abs/2208.13035">SoK: Decentralized Finance (DeFi) Attacks</a> (currently ranked 50th)</li>
-                    <li><a href="https://arxiv.org/abs/2101.05511">Quantifying Blockchain Extractable Value: How Dark is the Forest?</a> (currently ranked 67th)</li>
-                    <li><a href="https://arxiv.org/abs/2009.14021">High-Frequency Trading on Decentralized On-Chain Exchanges</a> (no longer on the list 😅)</li>
-                </ul>
-            </li>
+          <li>I am currently ranked <a href="https://nebelwelt.net/pubstats/top-authors-sys_sec.html">1016th on the
+              Systems Circus worldwide</a> (not normalized by academic age).</li>
+          <li>My notable papers in security and blockchain:
+            <ul>
+              <li><a href="https://arxiv.org/abs/2208.13035">SoK: Decentralized Finance (DeFi) Attacks</a></li>
+              <li><a href="https://arxiv.org/abs/2101.05511">Quantifying Blockchain Extractable Value: How Dark is the
+                  Forest?</a></li>
+              <li><a href="https://arxiv.org/abs/2009.14021">High-Frequency Trading on Decentralized On-Chain
+                  Exchanges</a></li>
+            </ul>
+          </li>
         </ul>
 
         <h2 id="cv">My CV</h2>
-        <p>Details of my publications, academic services, and experiences. <a href="./CV_Liyi_Zhou.pdf">[Download]</a></p>
+        <p>Details of my publications, academic services, and experiences. <a href="./CV_Liyi_Zhou.pdf">[Download]</a>
+        </p>
         <img src="CV_Liyi_Zhou.png">
-    </article>
-</main>
+      </article>
+    </main>
+  </div>
 
-<script>
-  const footnotes = [
-    {
-      id: 1,
-      // align: 'left',
-      content: 'A photo of me <img src="me.png" loading="lazy" alt="Liyi Zhou\'s photo" width="400"/>'
-    },
-    {
-      id: 2,
-      content: `I work closely with Professor Arthur Gervais and Dr Kaihua Qin.<br/><br/>
-    <a href="https://arthurgervais.com">Arthur</a> is my PhD supervisor, currently affiliated with UCL. I chose to pursue my PhD with Arthur due to his renowned work on <a href="https://eprint.iacr.org/2016/555.pdf">the security and performance of PoW blockchains</a>, ranked 64th in the <a href="https://www.mlsec.org/topnotch/sec_top100.html">Top-100 Security Papers</a>.
-    <br/><br/>
-    <a href="https://kaihuaqin.com">Kaihua</a>, currently affiliated with Yale, is best known for his work on <a href="https://www.usenix.org/system/files/usenixsecurity23-qin.pdf">imitation</a> and <a href="https://arxiv.org/abs/2101.05511">the dark forest</a>.<br/><br/>
-    Together, we co-founded <a href="https://d23e.ch">D23E.ch</a>.`
-    },
-    {
-      id: 3,
-      content: `This accessibility to real and extensive data makes blockchain an ideal test ground for developing intrusion detection and prevention tools. The methods developed in this domain are general and can be applied to a wide range of security and privacy challenges, making the research not only impactful but also broadly relevant.`
-    },
-    {
-      id: 4,
-      content: 'Rankings often fail to capture the complete picture. Note that these rankings change frequently and may not always be up-to-date.'
-    },
-    {
-      id: 5,
-      content: 'A PhD allows you to deeply explore one or two areas. You\'ll learn to express a research hypothesis, design experiments, and validate your thesis. You\'ll also learn to write clearly and convey research ideas concisely to a science-interested audience. Science encourages questioning and striving for deeper understanding. PhD is an educational journey, offering a unique opportunity to focus exclusively on your research without distractions.'
-    },
-    {
-      id: 6,
-      content: 'For research interns, this is an opportunity to gain experience working with Arthur, Kaihua, and myself, and to develop your research and coding skills if you are not yet ready for a PhD. We have many research questions that you can help address, potentially leading to good publications.'
-    },
-  ];
+  <script>
+    const footnotes = [
+      {
+        id: 1,
+        content: 'A photo of me <img src="me.png" loading="lazy" alt="Liyi Zhou\'s photo" width="400"/>'
+      },
+      {
+        id: 2,
+        content: 'This accessibility to real and extensive data makes blockchain an ideal test ground for developing intrusion detection and prevention tools. The methods developed in this domain are general and can be applied to a wide range of security and privacy challenges.'
+      },
+      {
+        id: 4,
+        content: 'Rankings often fail to capture the complete picture. Note that these rankings change frequently and may not always be up-to-date.'
+      },
+      {
+        id: 5,
+        content: 'A PhD allows you to deeply explore one or two areas. You\'ll learn to express a research hypothesis, design experiments, and validate your thesis. You\'ll also learn to write clearly and convey research ideas concisely to a science-interested audience. Science encourages questioning and striving for deeper understanding. PhD is an educational journey, offering a unique opportunity to focus exclusively on your research without distractions.'
+      },
+    ];
 
-  window.onload = function () {
-    for (let i = 0; i < footnotes.length; i++) {
-      const fn = footnotes[i];
-      const footnoteHTML =
-        '<label for="sn-' + fn.id + '" class="sidenote-toggle sidenote-number"></label>' +
-        '<input type="checkbox" id="sn-' + fn.id + '" class="sidenote-toggle"/>' +
-        '<span class="sidenote ' + (fn.align || '') + '">' + fn.content + '</span>';
-      const placeHolder = document.getElementById('footnote-' + fn.id);
-      placeHolder.outerHTML = footnoteHTML;
-    }
-  };
-</script>
+    window.onload = function () {
+      for (let i = 0; i < footnotes.length; i++) {
+        const fn = footnotes[i];
+        const footnoteHTML =
+          '<label for="sn-' + fn.id + '" class="sidenote-toggle sidenote-number"></label>' +
+          '<input type="checkbox" id="sn-' + fn.id + '" class="sidenote-toggle"/>' +
+          '<span class="sidenote ' + (fn.align || '') + '">' + fn.content + '</span>';
+        const placeHolder = document.getElementById('footnote-' + fn.id);
+        placeHolder.outerHTML = footnoteHTML;
+      }
+    };
+  </script>
 
 </body>
 
 <hr>
 
 <footer>
-    <p>Made using <a href="https://latex.vercel.app">https://latex.vercel.app</a> and <a href="https://chat.openai.com">ChatGPT</a>
-        &#10084; &#10084;</p>
+  <p>Made using <a href="https://latex.vercel.app">https://latex.vercel.app</a>, <a
+      href="https://chat.openai.com">ChatGPT</a>, and <a href="https://cursor.sh">Cursor</a>
+    &#10084; &#10084;</p>
 </footer>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1PCCFJEZJT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
 
   gtag('config', 'G-1PCCFJEZJT');
