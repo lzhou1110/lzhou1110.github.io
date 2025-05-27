@@ -1,4 +1,4 @@
-Investigator Capability
+Capability
 
 Liyi is a researcher specialized in cybersecurity and artificial intelligence. Over the past five years, he has published extensively in leading international security conferences, and his work has been widely cited. His research mainly focuses on developing innovative ways to detect software vulnerabilities automatically, particularly by using advanced machine learning techniques. Liyi has built several practical, effective systems to identify security threats and anomalies in software. He has hands-on experience includes finding critical software vulnerabilities, which earned him multiple awards from bug bounty programs. He collaborates with top international researchers from universities like UC Berkeley and ETH Zurich, helping to extend the real-world impact and visibility of his research.
 
