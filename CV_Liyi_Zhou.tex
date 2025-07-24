@@ -1,0 +1,271 @@
+% --- LaTeX CV Template - S. Venkatraman ---
+
+% Set document class and font size
+\documentclass[letterpaper, 8pt]{article}
+\usepackage[utf8]{inputenc}
+
+% Set page margins for multiple pages
+
+% Use single spacing
+\usepackage{setspace}
+\singlespacing
+
+% Package imports
+\usepackage{setspace, longtable, graphicx, hyphenat, hyperref, fancyhdr, ifthen, everypage, enumitem, amsmath, setspace}
+\usepackage{xspace}
+
+
+% --- Page layout settings ---
+
+% Set page margins <------ Switch here for single page or multiple pages
+
+% Single page:
+% \usepackage[paperheight=65cm, left=0.4in, right=0.4in, bottom=0.3in, top=0.3in]{geometry}
+
+% Multiple pages:
+\usepackage[left=0.4in, right=0.4in, bottom=0.3in, top=0.3in]{geometry}
+
+% Set line spacing
+\renewcommand{\baselinestretch}{1.15}
+
+% --- Page formatting ---
+
+% Set link colors
+\usepackage[dvipsnames]{xcolor}
+\hypersetup{colorlinks=true, linkcolor=RoyalBlue, urlcolor=RoyalBlue}
+
+% Set font to Libertine, including math support
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+
+% Remove page numbering
+\pagenumbering{gobble}
+
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+% Shared box style
+\tcbset{
+  commonstyle/.style={
+    on line,
+    arc=1mm,
+    fontupper=\small,
+    boxrule=0pt,
+    boxsep=0pt,
+    left=2pt,
+    right=2pt,
+    top=1pt,
+    bottom=1pt,
+    tcbox raise base
+  }
+}
+
+\newtcbox{\corebox}[3][]{commonstyle,
+  colframe=#2!100,
+  colback=#2!#3,
+  #1}
+
+% Now use the new command to define the boxes
+\newcommand{\corerankingAA}{\corebox{red}{30}{\xspace A* \xspace}\xspace}
+\newcommand{\corerankingA}{\corebox{red}{15}{\xspace A \xspace}\xspace}
+
+\newcommand{\tagSecurity}{\corebox{blue}{10}{Security}\xspace}
+\newcommand{\tagPrivacy}{\corebox{green}{10}{Privacy}\xspace}
+% \newcommand{\tagBEV}{\corebox{gray}{20}{BEV}\xspace}
+
+\newcommand{\tagML}{\corebox{yellow}{20}{Machine Learning}\xspace}
+\newcommand{\tagSA}{\corebox{brown}{20}{System Analysis}\xspace}
+
+
+
+% --- Document starts here ---
+
+\begin{document}
+
+% Name and date of last update to this document
+{
+\Huge{Liyi Zhou}
+\hfill{\it\footnotesize \textbf{Email}: lzhou1110@gmail.com \textbf{Website}: lzhou1110.github.io \textbf{Updated:} \today}
+}
+
+% --- Contact information and other items ---
+% \begin{flushright}
+% \small
+% \begin{tabular}{lll}
+% \textbf{Email}: lzhou1110@gmail.com & \textbf{Website}: lzhou1110.github.io \\
+% \end{tabular}
+% \end{flushright}
+
+% --- Start the two-column table storing the main content ---
+
+% Set spacing between columns
+\setlength{\tabcolsep}{10pt}
+
+% Set the width of each column
+\begin{longtable}{p{0.5in}p{5.5in}}
+
+% \multicolumn{2}{p{7.4in}}{\textbf{I focus on \tagSecurity and \tagPrivacy.}} \\
+\\
+% --- Section: Experiences ---
+\color{OliveGreen}{Affiliations} 
+& CS Lecturer ($\sim$Assistant Professor) @ \textbf{The Univeristy of Sydney}\hfill \textit{June 2024 -- Present} \\
+% & Co-founder @ \textbf{Decentralized Intelligence AG (\href{https://d23e.ch}{D23E})} \hfill \textit{Dec 2022} \\
+& \\
+
+
+
+% --- Section: Publications ---
+
+% \multicolumn{2}{p{7.4in}}{\textcolor{gray}{\small The \href{http://portal.core.edu.au/conf-ranks/}{CORE ranking} is one assessment metric for academic conference quality. Of the $792$ assessed venues, \corerankingAA occupies the top $7.45\%$, whereas \corerankingA encompasses the top $16.41\%$. Regarding authorship, the first author indicates a primary contribution, ``co-first (*)'' authors denote equivalent principal contributions, following authors are sequenced by diminishing contributions, and the last author(s) generally signify supervisory roles.}} \\
+
+% \\
+\nohyphens{\color{OliveGreen}{Selected Publications +Preprints}} 
+& \noindent\textcolor{gray}{\small The \href{http://portal.core.edu.au/conf-ranks/}{CORE ranking} is one assessment metric for academic conference quality. Of the $792$ assessed venues, \corerankingAA occupies the top $7.45\%$, whereas \corerankingA encompasses the top $16.41\%$. The first author indicates a primary contribution, and the last author(s) signify supervisory roles.}\\
+& \textbf{AI Agent Smart Contract Exploit Generation} \tagSecurity \tagML \\
+& {\footnotesize A Gervais, \underline{L Zhou}} \\
+& \textbf{Do you still need a manual smart contract audit?} \tagSecurity \tagML \\
+& {\footnotesize I David, \underline{L Zhou}, K Qin, D Song, L Cavallaro, A Gervais.} \\
+& \textbf{SoK: Decentralized Finance (DeFi) Attacks} \tagSecurity \tagPrivacy \\
+& {\footnotesize \underline{L Zhou}, X Xiong, J Ernstberger, S Chaliasos, Z Wang, Y Wang, K Qin, R Wattenhofer, D Song, A Gervais } \\
+& {\footnotesize\corerankingAA \textit{IEEE Symposium on Security and Privacy (SP'23)}}\\
+& \textbf{High-Frequency Trading on Decentralized On-Chain Exchanges} \tagSecurity \\
+& {\footnotesize \underline{L Zhou}, K Qin, C Torres, D Le, A Gervais. } \\
+& {\footnotesize \corerankingAA \textit{IEEE Symposium on Security and Privacy (SP'21)}}\\
+& \textbf{On the Just-In-Time Discovery of Profit-Generating Transactions in DeFi Protocols} \tagSecurity \tagSA \\
+& {\footnotesize \underline{L Zhou}, K Qin, A Cully, B Livshits, A Gervais.} \\
+& {\footnotesize \corerankingAA \textit{IEEE Symposium on Security and Privacy (SP'21)}}\\
+& \textbf{Blockchain Amplification Attack} \tagSecurity \\
+& {\footnotesize T Tsuchiya, \underline{L Zhou}, K Qin, A Gervais, N Christin} \\
+& {\footnotesize \corerankingAA \textit{Measurement and Modeling of Computer Systems (Sigmetrics '25)}}\\
+& \textbf{Quantifying Blockchain Extractable Value: How dark is the forest?} \tagSecurity \\
+& {\footnotesize K Qin, \underline{L Zhou}, A Gervais.} \\
+& {\footnotesize \corerankingAA \textit{IEEE Symposium on Security and Privacy (SP'22)}}\\
+& \textbf{Speculative Denial-of-Service Attacks in Ethereum} \tagSecurity \\
+& {\footnotesize A Yaish, K Qin, \underline{L Zhou}, Aviv Zohar, A Gervais.} \\
+& {\footnotesize \corerankingAA \textit{Usenix Security Symposium (USENIX-Security'24)}}\\
+& \textbf{The Blockchain Imitation Game} \tagSecurity \tagSA \\
+& {\footnotesize K Qin, S Chaliasos, \underline{L Zhou}, B Livshits, D Song, A Gervais.} \\
+& {\footnotesize \corerankingAA \textit{Usenix Security Symposium (USENIX-Security'23)}}\\
+& \textbf{Blockchain Censorship} \tagSecurity \\
+& {\footnotesize A Wahrst\"atter, J Ernstberger, A Yaish, \underline{L Zhou}, K Qin, T Tsuchiya, S Steinhorst, D Svetinovic, N Christin, M Barczentewicz, A Gervais} \\
+& {\footnotesize \corerankingAA \textit{International World Wide Web Conference (WWW'24)}} \\
+& \textbf{On How Zero-Knowledge Proof Blockchain Mixers Improve, and Worsen User Privacy} \tagPrivacy \\
+& {\footnotesize Z Wang, S Chaliasos, K Qin, \underline{L Zhou}, L Gao, P Berrang, B Livshits, A Gervais} \\
+& {\footnotesize \corerankingAA \textit{International World Wide Web Conference (WWW'23)}} \\
+& \textbf{Smart Contract and Defi Security Tools: Do They Meet the Needs of Practitioners?} \tagSecurity \\
+& {\footnotesize S Chaliasos, M Charalambous, \underline{L Zhou}, R Galanopoulou, A Gervais, D Mitropoulos, B Livshits.}  \\
+& {\footnotesize \corerankingAA \textit{International Conference on Software Engineering (ICSE'24)}} \\
+& \textbf{Towards Automated Security Analysis of Smart Contracts based on EPG} \tagSecurity \\
+& {\footnotesize K Qin, Z Ye, Z Wang, W Li, \underline{L Zhou}, C Zhang, D Song, A Gervais.} \\
+& {\footnotesize \corerankingA \textit{ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA'25)}}\\
+& \textbf{Mitigating Decentralized Finance Liquidations with Reversible Call Options} \\
+& {\footnotesize K Qin, J Ernstberger, \underline{L Zhou}, P Jovanovic, A Gervais} \\
+& {\footnotesize \corerankingA \textit{Financial Cryptography and Data Security (FC'23)}}\\
+& \textbf{Attacking the DeFi ecosystem with flash loans for fun and profit} \tagSecurity \tagSA \\
+& {\footnotesize K Qin, \underline{L Zhou}, B Livshits, A Gervais.} \\
+& {\footnotesize \corerankingA \textit{Financial Cryptography and Data Security (FC'21)}}\\
+& \textbf{An Empirical Study of DeFi Liquidations: Incentives, Risks, and Instabilities} \\
+& {\footnotesize K Qin, \underline{L Zhou}, Pablo Gamito, P Jovanovic, A Gervais.} \\
+& {\footnotesize \corerankingA \textit{ACM Internet Measurement Conference (IMC'21)}}\\
+& \textbf{SoK: Data Sovereignty} \\
+& {\footnotesize J Ernstberger, J Lauinger, F Elsheimy, \underline{L Zhou}, S Steinhorst, R Canetti, A Miller, A Gervais, D Song.} \\
+& {\footnotesize \textit{IEEE European Symposium on Security and Privacy (EuroS\&P'23)}} \\
+& \textbf{DeFiAligner: Leveraging Symbolic Analysis and LLMs for Inconsistency Detection in Decentralized Finance} \\
+& {\footnotesize R Gan, \underline{L Zhou}, L Wang, K Qin, X Lin} \tagSecurity \tagML \\
+& {\footnotesize \textit{6th Conference on Advances in Financial Technologies (AFT 2024)}}\\
+
+% & \textbf{Cyclic Arbitrage in Decentralized Exchanges} \\
+% & {\footnotesize Y Wang, Y Chen, H Wu, \underline{L Zhou}, S Deng, R Wattenhofer.} \\
+% & {\footnotesize \textit{Companion Proceedings of the Web Conference (WWW'22)}}\\
+% & \textbf{CeFi vs. DeFi --- Comparing Centralized to Decentralized Finance} \\
+% & {\footnotesize K Qin*  (equal), \underline{L Zhou* (equal)}, A Gervais.} \\
+% & {\footnotesize \textit{Crypto Valley Conference (CVC'21)}}\\
+% & \textbf{Evasion Under Blockchain Sanctions} \tagPrivacy \\
+% & {\footnotesize E Liu, M Ryan, \underline{L Zhou* (equal)}, P Berrang* (equal)} \\
+% & \textbf{Do You Need a Zero Knowledge Proof?} \\
+% & {\footnotesize J Ernstberger, S Chaliasos, \underline{L Zhou}, P Jovanovic, A Gervais.} \\
+% & \textbf{Blockchain Large Language Models} \tagSecurity \tagML \\
+% & {\footnotesize Yu Gai* (equal), \underline{L Zhou* (equal)}, K Qin, D Song, A Gervais.} \\
+% & \textbf{Time to Bribe: Measuring Block Construction Market} \tagSecurity \\
+% & {\footnotesize A Wahrst\"atter, \underline{L Zhou}, K Qin, D Svetinovic, A Gervais.} \\
+% & \textbf{A2MM: Mitigating Frontrunning, Transaction Reordering and Consensus Instability in DEXes} \tagSA \\
+% & {\footnotesize \underline{L Zhou}, K Qin, A Gervais.} \\
+& \\
+
+
+% --- Section: Teaching experience ---
+
+{\color{OliveGreen}{Teaching}} 
+& \textbf{INFO2222: Computing 2 Usability and Security} @ The University of Sydney \hfill \textit{2025} \\
+% & \textbf{Guest Lecturer} @ The Hong Kong Polytechnic University, Speculative DoS attacks \hfill \textit{March 2024} \\
+% & \textbf{Guest Lecturer} @ Univeristy College London, CeFi vs DeFi \hfill \textit{December 2023} \\
+% & \textbf{Guest Lecturer} @ University of Zurich Summer School, Smart contract security \hfill \textit{July 2023} \\
+% & \textbf{Teaching Assistant} @ \href{https://defi-learning.org}{DeFi MOOC} (Stanford, UC Berkeley, UIUC, and UCL) \hfill \textit{2021, 2022} \\
+\\
+
+
+{\color{OliveGreen}{Services}}
+& \textbf{Program Committee Co-Chair} \\
+& ACM CCS Workshop on Decentralized Finance and Security  \hfill 2024, 2025 \\
+& \textbf{Program Committee} \\
+& \corerankingAA The ACM Conference on Computer and Communications Security (CCS) \hfill 2025 \\
+& \corerankingA Financial Cryptography and Data Security (FC) \hfill 2024, 2025 \\
+& The Science of Blockchain (Stanford) \hfill 2023, 2024, 2025 \\
+& The Latest in DeFi Research (TL;DR), \hfill 2024, 2025 \\
+& CESC Crypto Economics Security Conference (UC Berkeley) \hfill 2022 \\
+& ACM CCS Workshop on Decentralized Finance and Security \hfill 2021, 2022, 2023 \\
+& \textbf{Invited Reviewer} \\
+& Transactions on Information Forensics \& Security \hfill 2023\\
+& Financial Innovation \hfill 2021, 2022, 2023, 2024\\
+& Transactions on Dependable and Secure Computing \hfill 2023\\
+& \textbf{External Reviewer} \\
+& \corerankingAA IEEE Symposium on Security and Privacy \hfill 2023 \\
+\\
+{\color{OliveGreen}{Grants}}
+& \href{https://sui.io/research-awards}{Sui Academic Research Awards}, 25k USD \hfill \textit{Ongoing}, 2025 \\
+& \href{https://www.innosuisse.ch/inno/en/home/promotion-of-national-projects/startup-innovationprojects/approved-start-up-innovation-projects.html}{Innosuisse Start-Up Innovation}, 703k CHF, AI-Enhanced Smart Contract Auditing \hfill \textit{Ongoing}, 2024 \\
+% & UC Berkeley RDI Frontier Research Fellows, 20k USD, DeFi’s Composable Quirks, \hfill \textit{Not-started}, 2024 \\
+& \href{https://blog.ethereum.org/2025/01/17/academic-grants-recipients}{Ethereum Academic Grant 2024}, 55k USD, Training an EVM-native GPT \hfill \textit{Completed, 2024}\\
+& \href{https://blog.ethereum.org/2023/06/28/academic-grants-round-23}{Ethereum Academic Grant 2023}, 72k USD, Blockchain Censorship DoS \hfill \textit{Completed}, 2023 \\
+& \href{https://blog.ethereum.org/2023/06/28/academic-grants-round-23}{Ethereum Academic Grant 2023}, 25k USD, Blockchain Censorship Measurement \hfill \textit{Completed}, 2023\\
+
+% {\color{OliveGreen}{Talks}} 
+% & \textbf{Web3 Scholar Conference}, Hong Kong \hfill 2024\\
+% & \textbf{Ecole Polytechnique}, Blockchain@polytechnique-OMI workshop \hfill 2023\\
+% & \textbf{Imperial College London Summer School}, DeFi Hack Detection and Prevention \hfill 2023 \\
+% & \textbf{Second DeFi Security Summit (DSS Paris)}, DeFi Hack Detection and Prevention \hfill 2023 \\
+% & \textbf{The Hong Kong Polytech University}, Real-time DeFi IDS/IPS \hfill 2023 \\
+% & \textbf{0xU Hong Kong Blockchain Club}, Real-time DeFi IDS/IPS \hfill 2023 \\
+% & \textbf{Decentralised Finance Research Group Oxford--Man Institute}, Real-time DeFi IDS/IPS \hfill 2023 \\
+% & \textbf{8th International Workshop P2PFISY workshop DeFi Attacks} \hfill 2022 \\
+% & \textbf{The Science of Blockchain (SBC)} Dark Forest \hfill 2022\\
+% & \textbf{IEEE Symposium on Security and Privacy}, Dark Forest \hfill 2022 \\
+% & \textbf{IEEE Symposium on Security and Privacy}, High Frequency Trading (Sandwich Attacks) \hfill 2021 \\
+% & \textbf{Monash University},  DeFi Security (Invited Presentation) \hfill 2021 \\
+% & \textbf{University of Guelph},  DeFi Security (Group Research Seminar) \hfill 2021 \\
+\\
+% --- Section: Education ---
+
+{\color{OliveGreen}{Education}} 
+& \textbf{PhD in Computer Science} \hfill  Imperial College London \textit{Oct 2019 -- Feb 2025} \\ 
+& \textbf{MRes in Web Science and Big Data Analytics} \hfill  University College London \textit{Oct 2017 -- Sep 2018} \\
+& \textbf{MSci \& ARCS in Maths and Computer Science}  \hfill Imperial College London \textit{Oct 2010 -- Sep 2014}\\
+
+% --- Section: Industry experience ---
+% {\color{OliveGreen}{Experiences}} 
+% & Research Intern @ {\textbf{Chainlink Labs,}} London, United Kingdom \hfill \textit{Sep 2022 -- Dec 2022} \\
+% & Software Engineer @ {\textbf{Imperial College London,}} Data Science Institute, United Kingdom  \hfill \textit{24th June 2019 -- 7th Oct 2019} \\
+% & Full-Stack Software Engineer @ {\textbf{Automic,}} Sydney, Australia \hfill \textit{23rd Mar 2017 -- 20th June 2017}\\
+% & Software Engineer @ {\textbf{SuperChoice,}} Sydney, Australia \hfill \textit{20th Oct 2014 -- 4th Jan 2016}\\
+% & Internship @ {\textbf{NewVoiceMedia,}} Basingstoke, United Kingdom \hfill \textit{3rd Jun 2013 -- 20th Sep 2013} \\
+% & Internship @ {\textbf{J P Morgan,}} London, United Kingdom \hfill \textit{25th July 2012 -- 31st Aug 2012} \\
+
+% {\color{OliveGreen}{Skills}} 
+% & \textbf{Programming:} Golang, Python, Solidity, SQL. \\
+
+
+% --- End of CV! ---
+
+\end{longtable}
+\end{document}

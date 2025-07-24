@@ -1,0 +1,25 @@
+name: Build LaTeX CV
+
+on:
+  push:
+    paths:
+      - '**/*.tex'
+      - '.github/workflows/latex.yml'
+  pull_request:
+    paths:
+      - '**/*.tex'
+      - '.github/workflows/latex.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: CV_Liyi_Zhou.tex
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: CV_Liyi_Zhou
+          path: CV_Liyi_Zhou.pdf
