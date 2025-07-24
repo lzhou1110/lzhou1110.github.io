@@ -61,12 +61,10 @@
   }
 }
 
-\newtcbox{\corebox}[3][]{{
-  commonstyle,
+\newtcbox{\corebox}[3][]{commonstyle,
   colframe=#2!100,
   colback=#2!#3,
-  #1
-}}
+  #1}
 
 % Now use the new command to define the boxes
 \newcommand{\corerankingAA}{\corebox{red}{30}{\xspace A* \xspace}\xspace}
