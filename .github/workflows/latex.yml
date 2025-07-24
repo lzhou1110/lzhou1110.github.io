@@ -3,11 +3,11 @@ name: Build LaTeX CV
 on:
   push:
     paths:
-      - '**.tex'
+      - '**/*.tex'
       - '.github/workflows/latex.yml'
   pull_request:
     paths:
-      - '**.tex'
+      - '**/*.tex'
       - '.github/workflows/latex.yml'
 
 jobs:
