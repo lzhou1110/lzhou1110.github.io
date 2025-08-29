@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Liyi Zhou</title>
   <meta name="description" content="Liyi Zhou — Computer Science Lecturer at the University of Sydney." />
+  <link rel="preload" as="image" href="me.png" />
   <style>
     body {
       margin: 0;
@@ -31,6 +32,17 @@
       object-fit: cover;
       display: block;
       margin: 0 auto 16px;
+      transition: filter 220ms ease, opacity 220ms ease;
+    }
+
+    .head img.blur {
+      filter: blur(10px);
+      opacity: 0.8;
+    }
+
+    .head img.loaded {
+      filter: none;
+      opacity: 1;
     }
 
     h1 {
@@ -102,7 +114,7 @@
 <body>
   <div class="wrap">
     <div class="head">
-      <img src="me.png" alt="Liyi Zhou" />
+      <img src="me.png" alt="Liyi Zhou" loading="eager" decoding="async" class="blur" />
       <h1>Liyi Zhou</h1>
       <p class="tag">Computer Science Lecturer, University of Sydney</p>
       <p class="email">Email: lzhou1110 (at) gmail (dot) com</p>
@@ -124,6 +136,15 @@
   </div>
   <script>
     (function () {
+      // Progressive image loading: remove blur once high-res is decoded
+      var hero = document.querySelector('.head img');
+      if (hero) {
+        if (hero.complete) { hero.classList.add('loaded'); hero.classList.remove('blur'); }
+        else {
+          hero.addEventListener('load', function () { hero.classList.add('loaded'); hero.classList.remove('blur'); });
+        }
+      }
+
       var terminal = document.getElementById('terminal');
       var navLinks = document.querySelectorAll('.links a[data-target]');
 
