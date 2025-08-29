@@ -72,6 +72,12 @@
       border-bottom-color: #444;
     }
 
+    .links a.disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
     /* removed disabled state now that we don't block clicks while typing */
 
     .terminal {
@@ -148,6 +154,7 @@
 
       var terminal = document.getElementById('terminal');
       var navLinks = document.querySelectorAll('.links a[data-target]');
+      var allTopLinks = document.querySelectorAll('.links a');
       var isTyping = false;
       var typingTimeout = null;
       var typingToken = 0; // increments to cancel in-flight typing
@@ -202,19 +209,28 @@
 
       function clearTerminal() { terminal.textContent = ''; }
 
+      function setNavDisabled(disabled) {
+        for (var i = 0; i < allTopLinks.length; i++) {
+          if (disabled) { allTopLinks[i].classList.add('disabled'); allTopLinks[i].setAttribute('aria-disabled', 'true'); }
+          else { allTopLinks[i].classList.remove('disabled'); allTopLinks[i].removeAttribute('aria-disabled'); }
+        }
+      }
+
       function cancelTyping() {
         typingToken++;
         if (typingTimeout) { clearTimeout(typingTimeout); typingTimeout = null; }
         isTyping = false;
+        setNavDisabled(false);
       }
 
       function typeLines(lines, done) {
         isTyping = true;
+        setNavDisabled(true);
         var i = 0, char = 0;
         var myToken = ++typingToken;
         function step() {
           if (myToken !== typingToken) { return; }
-          if (i >= lines.length) { isTyping = false; if (myToken === typingToken && done) done(); return; }
+          if (i >= lines.length) { isTyping = false; setNavDisabled(false); if (myToken === typingToken && done) done(); return; }
           var line = lines[i];
           if (char < line.length) {
             terminal.textContent += line.charAt(char);
@@ -224,7 +240,7 @@
             i++; char = 0;
           }
           terminal.scrollTop = terminal.scrollHeight;
-          typingTimeout = setTimeout(step, 8);
+          typingTimeout = setTimeout(step, 4);
         }
         typingTimeout = setTimeout(step, 0);
       }
