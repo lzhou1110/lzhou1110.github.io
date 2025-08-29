@@ -72,8 +72,7 @@
       border-bottom-color: #444;
     }
 
-    /* no disabled state now that we don't redirect while typing */
-    .links a.disabled {}
+    /* removed disabled state now that we don't block clicks while typing */
 
     .terminal {
       display: block;
@@ -150,6 +149,8 @@
       var terminal = document.getElementById('terminal');
       var navLinks = document.querySelectorAll('.links a[data-target]');
       var isTyping = false;
+      var typingTimeout = null;
+      var typingToken = 0; // increments to cancel in-flight typing
 
       var contentMap = {
         goal: [
@@ -199,15 +200,21 @@
         ]
       };
 
-      function clearTerminal() {
-        terminal.textContent = '';
+      function clearTerminal() { terminal.textContent = ''; }
+
+      function cancelTyping() {
+        typingToken++;
+        if (typingTimeout) { clearTimeout(typingTimeout); typingTimeout = null; }
+        isTyping = false;
       }
 
       function typeLines(lines, done) {
         isTyping = true;
         var i = 0, char = 0;
+        var myToken = ++typingToken;
         function step() {
-          if (i >= lines.length) { isTyping = false; if (done) done(); return; }
+          if (myToken !== typingToken) { return; }
+          if (i >= lines.length) { isTyping = false; if (myToken === typingToken && done) done(); return; }
           var line = lines[i];
           if (char < line.length) {
             terminal.textContent += line.charAt(char);
@@ -217,9 +224,9 @@
             i++; char = 0;
           }
           terminal.scrollTop = terminal.scrollHeight;
-          setTimeout(step, 8);
+          typingTimeout = setTimeout(step, 8);
         }
-        step();
+        typingTimeout = setTimeout(step, 0);
       }
 
       function linkify() {
@@ -235,6 +242,7 @@
       function show(key) {
         var lines = contentMap[key] || ['> unknown command'];
         terminal.hidden = false;
+        cancelTyping();
         clearTerminal();
         typeLines(lines, linkify);
         terminal.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -255,10 +263,9 @@
           'link: ' + url
         ];
         terminal.hidden = false;
+        cancelTyping();
         clearTerminal();
-        typeLines(lines, function () {
-          linkify();
-        });
+        typeLines(lines, function () { linkify(); });
         terminal.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
