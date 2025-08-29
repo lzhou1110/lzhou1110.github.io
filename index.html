@@ -72,6 +72,9 @@
       border-bottom-color: #444;
     }
 
+    /* no disabled state now that we don't redirect while typing */
+    .links a.disabled {}
+
     .terminal {
       display: block;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -118,9 +121,8 @@
       <h1>Liyi Zhou</h1>
       <p class="tag">Computer Science Lecturer, University of Sydney</p>
       <p class="email">Email: lzhou1110 (at) gmail (dot) com</p>
-      <p class="tag">My research goal: Pushing AI to replace me — in teaching, supervising, and hacking.</p>
       <p class="links">
-        <a href="./CV_Liyi_Zhou.pdf">CV</a>
+        <a href="https://lzhou1110.github.io/CV_Liyi_Zhou.pdf">CV</a>
         <a href="https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en">Google Scholar</a>
         <a href="https://bsky.app/profile/lzhou1110.bsky.social">Bluesky</a>
         <a href="https://twitter.com/lzhou1110">Twitter</a>
@@ -147,15 +149,21 @@
 
       var terminal = document.getElementById('terminal');
       var navLinks = document.querySelectorAll('.links a[data-target]');
+      var isTyping = false;
 
       var contentMap = {
+        goal: [
+          '> goal',
+          '',
+          'My research goal: Pushing AI to replace me — in teaching, supervising, and hacking.'
+        ],
         hiring: [
           '> open hiring',
           '',
           'Looking for:',
-          '  • Really self-motivated (most important; I dislike pushing people)',
-          '  • Want to do something fun, while I can also contribute',
-          '  • Open to collaborate briefly before committing (double selection)',
+          '(i) Really self-motivated (most important; I dislike pushing people)',
+          '(ii) Want to do something fun, while I can also contribute',
+          '(iii) Open to collaborate briefly (e.g., 3 months) before committing (i.e., double selection)',
           '',
           'To start: email me three exceptional achievements and why you are a good fit.'
         ],
@@ -163,25 +171,31 @@
           '> open phd-story',
           '',
           'During my PhD, I benefited immensely from the guidance of Professor Arthur Gervais and close collaboration with Dr Kaihua Qin. Their groups are exceptionally strong — highly recommended to explore their work:',
-          '  • Arthur Gervais (UCL): https://arthurgervais.com',
-          '  • Kaihua Qin (Joining Warwick):     https://qin.ac'
+          '(i) Arthur Gervais (UCL): https://arthurgervais.com',
+          '(ii) Kaihua Qin (Joining Warwick):     https://qin.ac'
         ],
         media: [
           '> open media',
           '',
           'Press:',
-          '  • The Register: AI agents steal crypto',
+          '(i) The Register: AI agents steal crypto',
           '    https://www.theregister.com/2025/07/10/ai_agents_automatically_steal_cryptocurrency/',
-          '  • BankInfoSecurity: AI agents hack smart contracts on autopilot',
+          '(ii) BankInfoSecurity: AI agents hack smart contracts on autopilot',
           '    https://www.bankinfosecurity.com/ai-agents-hack-smart-contracts-on-autopilot-a-29104'
         ],
         students: [
           '> open students',
           '',
           'Current PhD:',
-          '  • Xiangwen Yang (Secondary Supervisor)',
+          '(i) Xiangwen Yang (2nd Supervisor)',
+          '',
           'Incoming PhD:',
-          '  • Ziyue Wang — https://zyy0530.github.io'
+          '(i) Ziyue Wang https://zyy0530.github.io (2026)',
+          '',
+          'Honours (2025):',
+          '(i) Jie Xu',
+          '(ii) Shane Yeow',
+          '(iii) Shanshan Gao',
         ]
       };
 
@@ -190,9 +204,10 @@
       }
 
       function typeLines(lines, done) {
+        isTyping = true;
         var i = 0, char = 0;
         function step() {
-          if (i >= lines.length) { if (done) done(); return; }
+          if (i >= lines.length) { isTyping = false; if (done) done(); return; }
           var line = lines[i];
           if (char < line.length) {
             terminal.textContent += line.charAt(char);
@@ -237,30 +252,37 @@
         var lines = [
           '> open ' + String(label || 'link').toLowerCase().replace(/\s+/g, '-'),
           '',
-          'redirecting to: ' + url
+          'link: ' + url
         ];
         terminal.hidden = false;
         clearTerminal();
         typeLines(lines, function () {
           linkify();
-          setTimeout(function () { window.location.href = url; }, 1400);
         });
         terminal.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
       var redirectLinks = document.querySelectorAll('.links a[href]:not([data-target])');
       for (var r = 0; r < redirectLinks.length; r++) {
-        redirectLinks[r].addEventListener('click', function (e) {
-          e.preventDefault();
-          var url = this.getAttribute('href');
-          var label = (this.textContent || '').trim();
-          showRedirect(label, url);
-        });
+        (function (link) {
+          var original = link.getAttribute('href');
+          link.setAttribute('data-url', original);
+          link.setAttribute('href', '#');
+          link.setAttribute('role', 'button');
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+            var url = this.getAttribute('data-url');
+            var label = (this.textContent || '').trim();
+            showRedirect(label, url);
+          });
+        })(redirectLinks[r]);
       }
 
       if (location.hash) {
         var hash = location.hash.replace('#', '');
         if (contentMap[hash]) { show(hash); }
+      } else {
+        show('goal');
       }
     })();
   </script>
