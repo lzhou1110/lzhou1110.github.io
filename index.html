@@ -1,435 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Liyi Zhou</title>
-  <meta name="description" content="Liyi Zhou's personal website." />
-  <meta name="keywords" content="blockchain, security, privacy, machine learning" />
-  <link rel="stylesheet" href="https://latex.now.sh/style.css">
+  <meta name="description" content="Liyi Zhou — Computer Science Lecturer at the University of Sydney." />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
-
-    :root {
-      --text-color: #111;
-      --secondary-color: #333;
-      --background-color: #fff;
-      --border-color: #222;
-      --link-color: #000;
-      --hover-color: #444;
-    }
-
     body {
-      background-color: var(--background-color);
-      color: var(--text-color);
-      line-height: 1.4;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 1rem 3rem;
-      font-family: "Crimson Text", Georgia, serif;
-      font-size: 15px;
-      position: relative;
+      margin: 0;
+      background: #fff;
+      color: #111;
+      font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
 
-    .title-container {
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
+
+    .head {
       text-align: center;
-      margin: 1.5rem 0;
-      padding-bottom: 0.3rem;
-      border-bottom: 1px solid var(--border-color);
+    }
+
+    .head img {
+      width: 140px;
+      height: 140px;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 16px;
     }
 
     h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1.1;
-      margin: 0;
-      padding: 0;
-      color: var(--text-color);
+      margin: 0 0 8px 0;
+      font-size: 28px;
     }
 
-    h1 .dont {
-      display: block;
-      font-size: 1.6rem;
-      margin: 0.2rem 0;
-      font-weight: 600;
-      color: var(--secondary-color);
+    .tag {
+      margin: 0 0 12px 0;
+      color: #555;
     }
 
-    h2 {
-      color: var(--text-color);
-      margin-top: 1.5rem;
-      margin-bottom: 0.8rem;
-      font-size: 1.2rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.2rem;
-      width: 600px;
+    .email {
+      margin: 0 0 16px 0;
+      color: #333;
     }
 
-    .author {
-      text-align: center;
-      font-size: 0.95rem;
-      margin: 1rem 0 2rem 0;
-      color: var(--secondary-color);
-    }
-
-    .author a {
-      color: var(--link-color);
+    .links a {
+      margin: 0 8px;
+      color: #111;
       text-decoration: none;
-      margin: 0 0.5rem;
-      display: inline-block;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-      font-weight: 600;
-    }
-
-    .author a:hover {
-      color: var(--hover-color);
-      background-color: rgba(0, 0, 0, 0.05);
-      text-decoration: none;
-    }
-
-    a {
-      color: var(--link-color);
-      text-decoration: none;
-      transition: color 0.3s ease;
       border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     }
 
-    a:hover {
-      color: var(--hover-color);
-      border-bottom-color: var(--hover-color);
-      text-decoration: none;
+    .links a:hover {
+      color: #444;
+      border-bottom-color: #444;
     }
 
-    p {
-      margin: 0.8rem 0;
-      text-align: justify;
-      font-size: 0.95rem;
+    .terminal {
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: #0f1117;
+      color: #e6e7eb;
+      border: 1px solid #1f2330;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 8px;
+      max-height: 360px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      line-height: 1.45;
+      font-size: 14px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
       hyphens: auto;
     }
 
-    .content {
-      width: 600px;
-      position: relative;
-      margin-right: 250px;
+    .terminal a {
+      color: #8ab4f8;
+      text-decoration: underline;
     }
 
-    /* Sidenote styling */
-    .sidenote {
-      float: right;
-      clear: right;
-      margin-right: -250px;
-      width: 220px;
-      font-size: 0.8rem;
-      line-height: 1.3;
-      padding: 0.5rem;
-      background-color: #fafafa;
-      border-left: 1px solid var(--border-color);
-      border-radius: 3px;
-      margin-top: 0;
-      position: relative;
+    .terminal a:hover {
+      color: #cde3ff;
     }
 
-    .sidenote img {
-      border-radius: 4px;
-      max-width: 100%;
-      margin: 0.3rem 0;
+    .terminal[hidden] {
+      display: none;
     }
 
-    .sidenote-number {
-      color: var(--secondary-color);
-      font-weight: bold;
-      font-size: 0.7em;
-      vertical-align: super;
-    }
-
-    /* List styling */
-    ul {
-      padding-left: 1.2rem;
-      margin: 0.8rem 0;
-    }
-
-    li {
-      margin: 0.4rem 0;
-    }
-
-    footer {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-color);
-      text-align: center;
-      color: var(--secondary-color);
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 1000px) {
-      body {
-        padding: 1rem;
-      }
-
-      .content {
-        width: 100%;
-        margin-right: 0;
-      }
-
-      h2 {
-        width: 100%;
-      }
-
-      .sidenote {
-        float: none;
-        width: auto;
-        margin: 0.8rem 0;
-        margin-right: 0;
-      }
-    }
-
-    /* Add styles for details/summary */
-    details {
-      margin: 1rem 0;
-      padding: 0.5rem;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-    }
-
-    summary {
-      cursor: pointer;
-      padding: 0.5rem;
-      font-weight: 600;
-      color: var(--secondary-color);
-    }
-
-    summary:hover {
-      color: var(--hover-color);
-    }
-
-    details[open] summary {
-      margin-bottom: 0.5rem;
-    }
-
-    details p {
-      margin: 0;
-      padding: 0 0.5rem;
+    .prompt {
+      color: #6cff6c;
     }
   </style>
 </head>
 
 <body>
-  <div class="title-container">
-    <h1>
-      Simplify<br>
-      <span class="dont">Don't Over-Simplify</span>
-    </h1>
+  <div class="wrap">
+    <div class="head">
+      <img src="me.png" alt="Liyi Zhou" />
+      <h1>Liyi Zhou</h1>
+      <p class="tag">Computer Science Lecturer, University of Sydney</p>
+      <p class="email">Email: lzhou1110 (at) gmail (dot) com</p>
+      <p class="tag">My research goal: Pushing AI to replace me — in teaching, supervising, and hacking.</p>
+      <p class="links">
+        <a href="./CV_Liyi_Zhou.pdf">CV</a>
+        <a href="https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en">Google Scholar</a>
+        <a href="https://bsky.app/profile/lzhou1110.bsky.social">Bluesky</a>
+        <a href="https://twitter.com/lzhou1110">Twitter</a>
+        <a href="#hiring" data-target="hiring">Hiring</a>
+        <a href="#phd" data-target="phd">PhD Story</a>
+        <a href="#media" data-target="media">Media</a>
+        <a href="#students" data-target="students">Students</a>
+      </p>
+    </div>
+    <div class="body">
+      <div id="terminal" class="terminal" aria-live="polite" hidden></div>
+    </div>
   </div>
-  <div class="author">
-    Liyi Zhou, Email: lzhou1110 (at) gmail (dot) com<br>
-    <a href="https://www.sydney.edu.au/engineering/about/our-people/academic-staff/liyi-zhou.html">[USyd]</a>
-    <a href="https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en">[Google Scholar]</a>
-    <a href="https://twitter.com/lzhou1110">[Twitter]</a>
-    <!--    <a href="https://www.linkedin.com/in/liyi-zhou-a64731111">[Linkedin]</a>-->
-    <!--    <a href="https://github.com/lzhou1110">[Github]</a>-->
-  </div>
-
-  <div class="content">
-    <h2>Abstract</h2>
-    <p>
-      I<span id="footnote-1"></span> am a Computer Science Lecturer (roughly equivalent to a US Assistant Professor) at
-      the <a href="https://csrankings.org/#/index?all&australasia">University of Sydney</a>. I co-founded
-      <a href="https://d23e.ch">D23E.ch</a> with Professor Arthur Gervais (UCL) and Dr Kaihua Qin (Yale).<br /><br />
-
-      My focus is on security and privacy issues, with the ultimate goal of developing generalized AI in system/software
-      security to identify vulnerabilities, much like how Noam Brown created the first Poker AI. While my research spans
-      beyond
-      blockchain, I find it particularly engaging as a testbed due to its vast amount of open code and bytecode,
-      transparent data
-      from <a
-        href="https://www.nansen.ai/guides/defi-statistics-in-2022#:~:text=Unique%20DeFi%20users%20have%20risen,to%20more%20than%206.5%20million.">millions
-        of users and bots</a>, and <a href="">real-world attacks involving billions of USD</a><span
-        id="footnote-2"></span>. Don't let the term "blockchain" mislead you though - my research in this space directly
-      advances
-      general system/software security principles.
-    </p>
-
-    <main>
-      <article>
-        <h2>I am Hiring!</h2>
-
-        I am actively looking for PhD students to join my research group at the University of Sydney. My primary vision
-        is to
-        develop the next generation of AI security agents - systems that can autonomously identify, analyze, and prevent
-        security vulnerabilities, similar to how AI has revolutionized games like Poker.
-
-        My research interests span across:
-        <ul>
-          <li>AI-powered security agents for vulnerability detection and prevention</li>
-          <li>Large security models - using LLMs to enhance existing security tools</li>
-          <li>Real-time intrusion detection and prevention 🔔</li>
-          <li>Advanced program analysis (fuzzing, symbolic execution)</li>
-          <li>Privacy-preserving transaction systems</li>
-        </ul>
-
-        <h5>PhD Candidates 🎓</h5>
-
-        If you are passionate about pursuing a PhD<span id="footnote-5"></span> with me at the University of Sydney,
-        please email me with:
-
-        <ol>
-          <li>Three bullet points highlighting your achievements (anything)</li>
-          <li>At least one technical achievement (research / engineering)</li>
-          <li>Your CV</li>
-        </ol>
-
-        <h2>I am Seeking Funding Opportunities!</h2>
-        I am actively seeking funding and collaboration opportunities. My research philosophy emphasizes practical value
-        and real-world impact - I believe the best research not only advances academic understanding but also solves
-        concrete problems in industry.
-
-        If you have interesting research questions you'd like me to explore, or if you're interested in my research and
-        want
-        to discuss potential opportunities, I'd love to hear from you. I'm always eager to tackle challenging problems
-        that have real-world impact.
-
-        <h2>My Achievements</h2>
-        Rankings do not mean much<span id="footnote-4"></span>, but they help illustrate <mark>my dedication
-          to high-impact, top-tier research</mark>, especially for prospective PhD students.
-        <ul>
-          <li>I am proud to have co-founded <a href="https://d23e.ch">D23E.ch</a>, where we are tackling some of the
-            most challenging problems in blockchain security and privacy.</li>
-          <li>I am currently ranked <a href="https://nebelwelt.net/pubstats/top-authors-sys_sec.html">1016th on the
-              Systems Circus worldwide</a> (not normalized by academic age).</li>
-          <li>I pioneered the discovery of sandwich attacks in October 2019, reporting them to Uniswap. This has since
-            evolved into a multi-million dollar market for MEV extraction, with platforms like <a
-              href="https://eigenphi.io">EigenPhi</a> now tracking these activities.</li>
-          <li>I have published extensively in top-tier venues including IEEE S&P, USENIX Security, SIGMETRICS, IMC,
-            ICSE, and ISSTA, with several papers making it into the <a
-              href="https://www.mlsec.org/topnotch/sec_ntop100.html">Top-100 Security Papers</a> list.</li>
-          <li>I have successfully completed several Ethereum Foundation grants and received bug bounties from both the
-            Ethereum Foundation and Flashbots for responsible vulnerability disclosure.</li>
-          <li>My notable papers in security and blockchain:
-            <ul>
-              <li><a href="https://arxiv.org/abs/2208.13035">SoK: Decentralized Finance (DeFi) Attacks</a></li>
-              <li><a href="https://arxiv.org/abs/2101.05511">Quantifying Blockchain Extractable Value: How Dark is the
-                  Forest?</a></li>
-              <li><a href="https://arxiv.org/abs/2009.14021">High-Frequency Trading on Decentralized On-Chain
-                  Exchanges</a></li>
-            </ul>
-          </li>
-        </ul>
-
-        <h2>My Research Summary</h2>
-        <details>
-          <summary>Click to expand research summary</summary>
-          <p>
-            Liyi is a researcher specialized in cybersecurity and artificial intelligence. Over the past five years, he
-            has published extensively in leading international security conferences, and his work has been widely cited.
-            His research mainly focuses on developing innovative ways to detect software vulnerabilities automatically,
-            particularly by using advanced machine learning techniques. Liyi has built several practical, effective
-            systems to identify security threats and anomalies in software. He has hands-on experience includes finding
-            critical software vulnerabilities, which earned him multiple awards from bug bounty programs. He
-            collaborates
-            with top international researchers from universities like UC Berkeley and ETH Zurich, helping to extend the
-            real-world impact and visibility of his research.
-            <br><br>
-
-            Liyi's current focus is about creating intelligent software tools that can independently identify and
-            exploit
-            software vulnerabilities without needing constant human supervision. His work introduces new ways for AI
-            systems to reason about complex security issues on their own, adapting dynamically to emerging threats and
-            iteratively refining their strategies. Using real-world data, especially from blockchain security incidents,
-            Liyi's approach advances current cybersecurity methods through reinforcement learning, automated reasoning,
-            and focused fine-tuning techniques. This research fills an important gap in existing technologies, moving
-            cybersecurity systems from simple pattern matching towards more genuine, strategic problem-solving
-            abilities.
-            The goal is to significantly improve accuracy and reliability of automated cybersecurity solutions.
-            <br><br>
-
-            Liyi's research is valuable because it creates tools that can automatically identify software
-            vulnerabilities,
-            preventing dangerous exploits. These innovations can greatly benefit academic researchers, industries,
-            governments, and broader society by reducing the need for costly and slow manual security reviews. Liyi's
-            work
-            aligns with Australia's national cybersecurity priorities, helping build local expertise in security
-            technologies. Through mentoring and training the next generation of cybersecurity experts and through strong
-            international collaborations, Liyi contributes to strengthening national cybersecurity capabilities.
-            Additionally, insights from his research will shape responsible public policies around artificial
-            intelligence, protecting important digital infrastructure and enhancing public trust in technology.
-            <br><br>
-
-            Liyi has demonstrated success previously by integrating artificial intelligence effectively with
-            cybersecurity, shown clearly through practical prototypes and research projects he has completed. He
-            receives
-            strong support from the University of Sydney, including access to advanced computing equipment, funding
-            resources, and expert collaborators in relevant fields. His project strategy focuses on adapting existing
-            machine learning technologies and using cloud infrastructure to ensure his methods are practical and
-            scalable.
-            Initial experiments and prototype systems have already shown promising results, confirming the feasibility
-            and
-            potential of his approach.
-          </p>
-        </details>
-
-        <h2 id="cv">My CV</h2>
-        <p>Details of my publications, academic services, and experiences. <a href="./CV_Liyi_Zhou.pdf">[Download]</a>
-        </p>
-        <img src="CV_Liyi_Zhou.png">
-      </article>
-    </main>
-  </div>
-
-
-
   <script>
-    const footnotes = [
-      {
-        id: 1,
-        content: 'A photo of me <img src="me.png" loading="lazy" alt="Liyi Zhou\'s photo" width="400"/>'
-      },
-      {
-        id: 2,
-        content: 'This accessibility to real and extensive data makes blockchain an ideal test ground for developing intrusion detection and prevention tools. The methods developed in this domain are general and can be applied to a wide range of security and privacy challenges.'
-      },
-      {
-        id: 4,
-        content: 'Rankings often fail to capture the complete picture. Note that these rankings change frequently and may not always be up-to-date.'
-      },
-      {
-        id: 5,
-        content: 'A PhD allows you to deeply explore one or two areas. You\'ll learn to express a research hypothesis, design experiments, and validate your thesis. You\'ll also learn to write clearly and convey research ideas concisely to a science-interested audience. Science encourages questioning and striving for deeper understanding. PhD is an educational journey, offering a unique opportunity to focus exclusively on your research without distractions.'
-      },
-    ];
+    (function () {
+      var terminal = document.getElementById('terminal');
+      var navLinks = document.querySelectorAll('.links a[data-target]');
 
-    window.onload = function () {
-      for (let i = 0; i < footnotes.length; i++) {
-        const fn = footnotes[i];
-        const footnoteHTML =
-          '<label for="sn-' + fn.id + '" class="sidenote-toggle sidenote-number"></label>' +
-          '<input type="checkbox" id="sn-' + fn.id + '" class="sidenote-toggle"/>' +
-          '<span class="sidenote ' + (fn.align || '') + '">' + fn.content + '</span>';
-        const placeHolder = document.getElementById('footnote-' + fn.id);
-        placeHolder.outerHTML = footnoteHTML;
+      var contentMap = {
+        hiring: [
+          '> open hiring',
+          '',
+          'Looking for:',
+          '  • Really self-motivated (most important; I dislike pushing people)',
+          '  • Want to do something fun, while I can also contribute',
+          '  • Open to collaborate briefly before committing (double selection)',
+          '',
+          'To start: email me three exceptional achievements and why you are a good fit.'
+        ],
+        phd: [
+          '> open phd-story',
+          '',
+          'During my PhD, I benefited immensely from the guidance of Professor Arthur Gervais (UCL)and close collaboration with Dr Kaihua Qin (joining Warwick). Their groups are exceptionally strong — highly recommended to explore their work:',
+          '  • Arthur Gervais: https://arthurgervais.com',
+          '  • Kaihua Qin:     https://qin.ac'
+        ],
+        media: [
+          '> open media',
+          '',
+          'Press:',
+          '  • The Register: AI agents steal crypto',
+          '    https://www.theregister.com/2025/07/10/ai_agents_automatically_steal_cryptocurrency/',
+          '  • BankInfoSecurity: AI agents hack smart contracts on autopilot',
+          '    https://www.bankinfosecurity.com/ai-agents-hack-smart-contracts-on-autopilot-a-29104'
+        ],
+        students: [
+          '> open students',
+          '',
+          'Incoming PhD (expected 2026):',
+          '  • Ziyue Wang — https://zyy0530.github.io'
+        ]
+      };
+
+      function clearTerminal() {
+        terminal.textContent = '';
       }
-    };
+
+      function typeLines(lines, done) {
+        var i = 0, char = 0;
+        function step() {
+          if (i >= lines.length) { if (done) done(); return; }
+          var line = lines[i];
+          if (char < line.length) {
+            terminal.textContent += line.charAt(char);
+            char++;
+          } else {
+            terminal.textContent += '\n';
+            i++; char = 0;
+          }
+          terminal.scrollTop = terminal.scrollHeight;
+          setTimeout(step, 8);
+        }
+        step();
+      }
+
+      function linkify() {
+        var text = terminal.textContent;
+        var html = text
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener">$1<\/a>');
+        terminal.innerHTML = html;
+      }
+
+      function show(key) {
+        var lines = contentMap[key] || ['> unknown command'];
+        terminal.hidden = false;
+        clearTerminal();
+        typeLines(lines, linkify);
+        terminal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      for (var k = 0; k < navLinks.length; k++) {
+        navLinks[k].addEventListener('click', function (e) {
+          e.preventDefault();
+          var target = this.getAttribute('data-target');
+          show(target);
+        });
+      }
+
+      function showRedirect(label, url) {
+        var lines = [
+          '> open ' + String(label || 'link').toLowerCase().replace(/\s+/g, '-'),
+          '',
+          'redirecting to: ' + url
+        ];
+        terminal.hidden = false;
+        clearTerminal();
+        typeLines(lines, function () {
+          linkify();
+          setTimeout(function () { window.location.href = url; }, 1400);
+        });
+        terminal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      var redirectLinks = document.querySelectorAll('.links a[href]:not([data-target])');
+      for (var r = 0; r < redirectLinks.length; r++) {
+        redirectLinks[r].addEventListener('click', function (e) {
+          e.preventDefault();
+          var url = this.getAttribute('href');
+          var label = (this.textContent || '').trim();
+          showRedirect(label, url);
+        });
+      }
+
+      if (location.hash) {
+        var hash = location.hash.replace('#', '');
+        if (contentMap[hash]) { show(hash); }
+      }
+    })();
   </script>
 </body>
-
-<hr>
-
-<footer>
-  <p>Made using <a href="https://latex.vercel.app">https://latex.vercel.app</a>, <a
-      href="https://chat.openai.com">ChatGPT</a>, and <a href="https://cursor.sh">Cursor</a>
-    &#10084; &#10084;</p>
-</footer>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1PCCFJEZJT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-1PCCFJEZJT');
-</script>
 
 </html>
