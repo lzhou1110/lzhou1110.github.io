@@ -163,47 +163,37 @@
         goal: [
           '> goal',
           '',
-          'Pushing AI to replace me — in teaching, supervising, and hacking.'
+          'Pushing AI to replace me — in teaching, supervision, and hacking.'
         ],
         hiring: [
           '> open hiring',
           '',
           'Looking for:',
-          '(i) Really self-motivated (most important; I dislike pushing people)',
-          '(ii) Want to do something fun, while I can also contribute',
-          '(iii) Open to collaborate briefly (e.g., 3 months) before committing (i.e., double selection)',
+          '(i) Highly self-motivated (I dislike pushing people)',
+          '(ii) Want to do something fun where I can contribute',
+          '(iii) Open to a brief trial (~3 months) before committing',
           '',
-          'To start: email me three exceptional achievements and why you are a good fit.'
+          'Start: email three standout achievements and why you fit.'
         ],
         phd: [
           '> open phd-story',
           '',
-          'During my PhD, I benefited immensely from the guidance of Professor Arthur Gervais and close collaboration with Dr Kaihua Qin. Their groups are exceptionally strong — highly recommended to explore their work:',
+          'Grateful for guidance from Prof. Arthur Gervais and close collaboration with Dr Kaihua Qin. Their groups are outstanding — explore:',
           '(i) Arthur Gervais (UCL): https://arthurgervais.com',
-          '(ii) Kaihua Qin (Joining Warwick):     https://qin.ac'
+          '(ii) Kaihua Qin (Joining Warwick): https://qin.ac'
         ],
         media: [
           '> open media',
           '',
-          'Press:',
-          '(i) The Register: AI agents steal crypto',
-          '    https://www.theregister.com/2025/07/10/ai_agents_automatically_steal_cryptocurrency/',
-          '(ii) BankInfoSecurity: AI agents hack smart contracts on autopilot',
-          '    https://www.bankinfosecurity.com/ai-agents-hack-smart-contracts-on-autopilot-a-29104'
+          '(i) https://www.theregister.com/2025/07/10/ai_agents_automatically_steal_cryptocurrency/',
+          '(ii) https://www.bankinfosecurity.com/ai-agents-hack-smart-contracts-on-autopilot-a-29104'
         ],
         students: [
           '> open students',
           '',
-          'Current PhD:',
-          '(i) Xiangwen Yang (2nd Supervisor)',
-          '',
-          'Incoming PhD:',
-          '(i) Ziyue Wang https://zyy0530.github.io (2026)',
-          '',
-          'Honours (2025):',
-          '(i) Jie Xu',
-          '(ii) Shane Yeow',
-          '(iii) Shanshan Gao',
+          'Current PhD: Xiangwen Yang (2nd Supervisor)',
+          'Incoming PhD: Wesley Ziyue Wang https://zyy0530.github.io (2026)',
+          'Honours (2025): Jie Xu; Shane Yeow; Shanshan Gao',
         ]
       };
 
@@ -272,33 +262,10 @@
         });
       }
 
-      function showRedirect(label, url) {
-        var lines = [
-          '> open ' + String(label || 'link').toLowerCase().replace(/\s+/g, '-'),
-          '',
-          'link: ' + url
-        ];
-        terminal.hidden = false;
-        cancelTyping();
-        clearTerminal();
-        typeLines(lines, function () { linkify(); });
-        terminal.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      var redirectLinks = document.querySelectorAll('.links a[href]:not([data-target])');
-      for (var r = 0; r < redirectLinks.length; r++) {
-        (function (link) {
-          var original = link.getAttribute('href');
-          link.setAttribute('data-url', original);
-          link.setAttribute('href', '#');
-          link.setAttribute('role', 'button');
-          link.addEventListener('click', function (e) {
-            e.preventDefault();
-            var url = this.getAttribute('data-url');
-            var label = (this.textContent || '').trim();
-            showRedirect(label, url);
-          });
-        })(redirectLinks[r]);
+      var externalLinks = document.querySelectorAll('.links a[href]:not([data-target])');
+      for (var r = 0; r < externalLinks.length; r++) {
+        externalLinks[r].setAttribute('target', '_blank');
+        externalLinks[r].setAttribute('rel', 'noopener');
       }
 
       if (location.hash) {
