@@ -13,12 +13,14 @@
       background: #fff;
       color: #111;
       font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     .wrap {
       max-width: 720px;
       margin: 0 auto;
-      padding: 48px 20px;
+      padding: 56px 24px;
     }
 
     .head {
@@ -31,8 +33,9 @@
       border-radius: 8px;
       object-fit: cover;
       display: block;
-      margin: 0 auto 16px;
+      margin: 0 auto 20px;
       transition: filter 220ms ease, opacity 220ms ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     }
 
     .head img.blur {
@@ -47,29 +50,46 @@
 
     h1 {
       margin: 0 0 8px 0;
-      font-size: 28px;
+      font-size: 30px;
+      letter-spacing: -0.02em;
+      font-weight: 600;
     }
 
     .tag {
-      margin: 0 0 12px 0;
+      margin: 0 0 16px 0;
       color: #555;
+      font-weight: 400;
+      line-height: 1.4;
     }
 
-    .email {
-      margin: 0 0 16px 0;
-      color: #333;
+
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
     }
 
     .links a {
-      margin: 0 8px;
+      margin: 0;
       color: #111;
       text-decoration: none;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      transition: all 200ms ease;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1.2;
+      font-weight: 400;
+      padding: 4px 0;
     }
 
+
+
     .links a:hover {
-      color: #444;
-      border-bottom-color: #444;
+      color: #333;
+      transform: translateY(-1px);
     }
 
     .links a.disabled {
@@ -78,7 +98,13 @@
       pointer-events: none;
     }
 
-    /* removed disabled state now that we don't block clicks while typing */
+    .links a:focus-visible {
+      outline: 2px solid #111;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+
 
     .terminal {
       display: block;
@@ -124,17 +150,18 @@
     <div class="head">
       <img src="me.png" alt="Liyi Zhou" loading="eager" decoding="async" class="blur" />
       <h1>Liyi Zhou</h1>
-      <p class="tag">Computer Science Lecturer, University of Sydney</p>
-      <p class="email">Email: lzhou1110 (at) gmail (dot) com</p>
+      <p class="tag">Computer Science Lecturer at the University of Sydney</p>
       <p class="links">
-        <a href="https://lzhou1110.github.io/CV_Liyi_Zhou.pdf">CV</a>
-        <a href="https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en">Google Scholar</a>
-        <a href="https://bsky.app/profile/lzhou1110.bsky.social">Bluesky</a>
-        <a href="https://twitter.com/lzhou1110">Twitter</a>
+        <a href="#email" data-target="email">Email</a>
         <a href="#hiring" data-target="hiring">Hiring</a>
-        <a href="#phd" data-target="phd">PhD Story</a>
-        <a href="#media" data-target="media">Media</a>
         <a href="#students" data-target="students">Students</a>
+        <a href="#phd" data-target="phd">MyPhD</a>
+        <a href="#media" data-target="media">Media</a>
+        <a href="https://lzhou1110.github.io/CV_Liyi_Zhou.pdf" aria-label="CV" title="CV">CV↗</a>
+        <a href="https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en" aria-label="Google Scholar"
+          title="Google Scholar">Scholar↗</a>
+        <a href="https://bsky.app/profile/lzhou1110.bsky.social" aria-label="Bluesky" title="Bluesky">Sky↗</a>
+        <a href="https://twitter.com/lzhou1110" aria-label="Twitter" title="Twitter">X↗</a>
       </p>
     </div>
     <div class="body">
@@ -143,14 +170,14 @@
   </div>
   <script>
     (function () {
-      // Progressive image loading: remove blur once high-res is decoded
+      // Image loading and tagline
       var hero = document.querySelector('.head img');
-      if (hero) {
-        if (hero.complete) { hero.classList.add('loaded'); hero.classList.remove('blur'); }
-        else {
-          hero.addEventListener('load', function () { hero.classList.add('loaded'); hero.classList.remove('blur'); });
-        }
-      }
+      var tagEl = document.querySelector('.tag');
+
+      if (hero && hero.complete) hero.classList.add('loaded'), hero.classList.remove('blur');
+      else if (hero) hero.onload = () => (hero.classList.add('loaded'), hero.classList.remove('blur'));
+
+      if (tagEl) tagEl.innerHTML = 'CS Lecturer (~Assistant Prof) at USyd<br>Advancing AI in Security and Beyond';
 
       var terminal = document.getElementById('terminal');
       var navLinks = document.querySelectorAll('.links a[data-target]');
@@ -160,11 +187,6 @@
       var typingToken = 0; // increments to cancel in-flight typing
 
       var contentMap = {
-        goal: [
-          '> goal',
-          '',
-          'Pushing AI to replace me — in teaching, supervision, and hacking.'
-        ],
         hiring: [
           '> open hiring',
           '',
@@ -194,16 +216,21 @@
           'Current PhD: Xiangwen Yang (2nd Supervisor)',
           'Incoming PhD: Wesley Ziyue Wang https://zyy0530.github.io (2026)',
           'Honours (2025): Jie Xu; Shane Yeow; Shanshan Gao',
+        ],
+        email: [
+          '> open email',
+          '',
+          'Email: lzhou1110 (at) gmail (dot) com'
         ]
       };
 
       function clearTerminal() { terminal.textContent = ''; }
 
       function setNavDisabled(disabled) {
-        for (var i = 0; i < allTopLinks.length; i++) {
-          if (disabled) { allTopLinks[i].classList.add('disabled'); allTopLinks[i].setAttribute('aria-disabled', 'true'); }
-          else { allTopLinks[i].classList.remove('disabled'); allTopLinks[i].removeAttribute('aria-disabled'); }
-        }
+        allTopLinks.forEach(link => {
+          link.classList.toggle('disabled', disabled);
+          disabled ? link.setAttribute('aria-disabled', 'true') : link.removeAttribute('aria-disabled');
+        });
       }
 
       function cancelTyping() {
@@ -254,26 +281,17 @@
         terminal.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
-      for (var k = 0; k < navLinks.length; k++) {
-        navLinks[k].addEventListener('click', function (e) {
-          e.preventDefault();
-          var target = this.getAttribute('data-target');
-          show(target);
-        });
-      }
+      navLinks.forEach(link => {
+        link.onclick = e => (e.preventDefault(), show(link.dataset.target));
+      });
 
-      var externalLinks = document.querySelectorAll('.links a[href]:not([data-target])');
-      for (var r = 0; r < externalLinks.length; r++) {
-        externalLinks[r].setAttribute('target', '_blank');
-        externalLinks[r].setAttribute('rel', 'noopener');
-      }
+      document.querySelectorAll('.links a[href]:not([data-target]):not([href^="mailto:"])').forEach(link => {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      });
 
-      if (location.hash) {
-        var hash = location.hash.replace('#', '');
-        if (contentMap[hash]) { show(hash); }
-      } else {
-        show('goal');
-      }
+      const hash = location.hash.slice(1);
+      if (hash && contentMap[hash]) show(hash);
     })();
   </script>
 </body>
