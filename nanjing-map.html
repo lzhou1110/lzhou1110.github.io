@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>南京主要办公区、大学城与高端社区示意图</title>
+  <meta name="description" content="南京主要办公区、大学城与高端社区的半透明圈层示意图。" />
+  <style>
+    :root {
+      --ink: #152033;
+      --muted: #667085;
+      --river: #9bd6ff;
+      --land: #f7f3e8;
+      --road: #d5dbe7;
+      --office: #ff8a3d;
+      --campus: #3f8cff;
+      --premium: #8b5cf6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, #f5fbff 0, #ffffff 42%, #f7f3e8 100%);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif;
+    }
+
+    .page {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 32px 0 44px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-end;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .back {
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid #d0d5dd;
+      border-radius: 999px;
+      padding: 9px 14px;
+      white-space: nowrap;
+      background: rgba(255,255,255,0.72);
+    }
+
+    .map-card {
+      position: relative;
+      border: 1px solid rgba(21, 32, 51, 0.12);
+      border-radius: 28px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.68);
+      box-shadow: 0 24px 80px rgba(21, 32, 51, 0.12);
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 620px;
+    }
+
+    .district {
+      fill: var(--land);
+      stroke: #d4cbb7;
+      stroke-width: 1.2;
+    }
+
+    .river { fill: var(--river); opacity: 0.78; }
+    .lake { fill: #bde7ff; stroke: #82c9f4; stroke-width: 1.1; opacity: 0.9; }
+    .road { fill: none; stroke: var(--road); stroke-width: 5; stroke-linecap: round; opacity: 0.78; }
+    .metro { fill: none; stroke: #98a2b3; stroke-width: 2; stroke-dasharray: 6 7; opacity: 0.72; }
+
+    .circle {
+      stroke-width: 3;
+      cursor: default;
+      transition: opacity 160ms ease, stroke-width 160ms ease;
+    }
+
+    .circle:hover { opacity: 0.92; stroke-width: 5; }
+    .office { fill: rgba(255, 138, 61, 0.27); stroke: var(--office); }
+    .campus { fill: rgba(63, 140, 255, 0.24); stroke: var(--campus); }
+    .premium { fill: rgba(139, 92, 246, 0.23); stroke: var(--premium); }
+
+    text { font-family: inherit; }
+    .city-label { fill: #344054; font-size: 15px; font-weight: 600; }
+    .small-label { fill: #475467; font-size: 12px; }
+    .circle-label { fill: #111827; font-size: 14px; font-weight: 700; paint-order: stroke; stroke: rgba(255,255,255,0.82); stroke-width: 4; stroke-linejoin: round; }
+    .circle-sub { fill: #344054; font-size: 11px; paint-order: stroke; stroke: rgba(255,255,255,0.8); stroke-width: 3; }
+
+    .legend {
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      width: min(310px, calc(100% - 48px));
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(21, 32, 51, 0.12);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 36px rgba(21, 32, 51, 0.12);
+    }
+
+    .legend h2 { margin: 0 0 10px; font-size: 17px; }
+    .legend p { margin: 10px 0 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .legend-item { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 14px; }
+    .swatch { width: 20px; height: 20px; border-radius: 999px; border: 2px solid; }
+    .swatch.office { background: rgba(255, 138, 61, 0.27); border-color: var(--office); }
+    .swatch.campus { background: rgba(63, 140, 255, 0.24); border-color: var(--campus); }
+    .swatch.premium { background: rgba(139, 92, 246, 0.23); border-color: var(--premium); }
+
+    .note {
+      margin: 18px 4px 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 760px) {
+      header { display: block; }
+      .back { display: inline-block; margin-top: 16px; }
+      .legend { position: static; width: auto; margin: 14px; }
+      svg { min-height: 520px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <h1>南京圈层速览</h1>
+        <p class="subtitle">半透明圈为示意范围：橙色代表主要办公/商务区，蓝色代表大学城/高校集群，紫色代表高端居住社区圈。未追求行政边界精确，只突出南京较主要、辨识度较高的片区。</p>
+      </div>
+      <a class="back" href="index.html">← Back home</a>
+    </header>
+
+    <section class="map-card" aria-label="南京主要办公区、大学城与高端社区示意地图">
+      <svg viewBox="0 0 1160 760" role="img" aria-labelledby="map-title map-desc">
+        <title id="map-title">南京主要办公区、大学城与高端社区圈层示意图</title>
+        <desc id="map-desc">地图以半透明彩色圈标注南京新街口、河西、江北新区、软件谷、仙林大学城、江宁大学城、鼓楼高校圈、河西高端社区、紫金山玄武湖社区与江宁百家湖九龙湖社区。</desc>
+
+        <path class="district" d="M82,153 C185,65 318,47 438,84 C543,116 608,84 710,67 C849,44 1011,89 1082,204 C1147,309 1120,469 1035,584 C942,710 759,727 620,689 C497,655 412,710 292,681 C162,650 61,542 45,404 C33,300 22,219 82,153 Z" />
+        <path class="river" d="M20,236 C168,206 258,236 376,259 C492,282 568,262 681,214 C807,160 934,153 1140,168 L1140,267 C983,244 854,237 721,286 C589,335 488,348 344,316 C222,289 124,275 20,305 Z" />
+        <path class="lake" d="M566,248 C617,218 681,229 708,276 C738,329 701,391 630,398 C568,404 523,358 528,306 C531,280 544,261 566,248 Z" />
+        <path class="lake" d="M742,375 C793,352 850,372 867,421 C884,470 846,520 789,518 C731,516 697,468 711,421 C716,400 727,385 742,375 Z" />
+        <path class="road" d="M171,584 C300,497 431,437 579,381 C740,320 894,295 1047,309" />
+        <path class="road" d="M392,118 C405,243 432,364 488,486 C528,573 591,632 683,690" />
+        <path class="metro" d="M138,407 C282,389 422,363 567,321 C736,273 889,251 1050,252" />
+        <path class="metro" d="M274,650 C344,535 424,423 535,326 C619,253 736,202 879,158" />
+
+        <text class="city-label" x="520" y="335">主城</text>
+        <text class="small-label" x="595" y="323">玄武湖</text>
+        <text class="small-label" x="772" y="455">紫金山</text>
+        <text class="small-label" x="820" y="194">长江</text>
+        <text class="small-label" x="315" y="183">江北新区</text>
+        <text class="small-label" x="470" y="575">江宁</text>
+        <text class="small-label" x="828" y="122">仙林</text>
+
+        <ellipse class="circle office" cx="545" cy="394" rx="92" ry="70" />
+        <text class="circle-label" x="506" y="389">新街口</text>
+        <text class="circle-sub" x="488" y="408">传统CBD / 金融零售</text>
+
+        <ellipse class="circle office" cx="404" cy="461" rx="123" ry="92" transform="rotate(-18 404 461)" />
+        <text class="circle-label" x="356" y="456">河西 CBD</text>
+        <text class="circle-sub" x="335" y="476">金融城 / 奥体 / 元通</text>
+
+        <ellipse class="circle office" cx="317" cy="220" rx="116" ry="82" transform="rotate(9 317 220)" />
+        <text class="circle-label" x="264" y="218">江北新区</text>
+        <text class="circle-sub" x="247" y="238">研创园 / 浦口核心</text>
+
+        <ellipse class="circle office" cx="514" cy="612" rx="103" ry="64" transform="rotate(16 514 612)" />
+        <text class="circle-label" x="475" y="608">软件谷</text>
+        <text class="circle-sub" x="447" y="628">雨花台软件产业带</text>
+
+        <ellipse class="circle campus" cx="855" cy="171" rx="126" ry="77" transform="rotate(-10 855 171)" />
+        <text class="circle-label" x="806" y="169">仙林大学城</text>
+        <text class="circle-sub" x="781" y="189">南大 / 南师大 / 南财等</text>
+
+        <ellipse class="circle campus" cx="612" cy="662" rx="140" ry="62" transform="rotate(10 612 662)" />
+        <text class="circle-label" x="561" y="658">江宁大学城</text>
+        <text class="circle-sub" x="529" y="678">东南 / 南航 / 河海等</text>
+
+        <ellipse class="circle campus" cx="521" cy="296" rx="93" ry="64" transform="rotate(-9 521 296)" />
+        <text class="circle-label" x="478" y="293">鼓楼高校圈</text>
+        <text class="circle-sub" x="467" y="313">南大鼓楼 / 东大四牌楼</text>
+
+        <ellipse class="circle premium" cx="384" cy="394" rx="118" ry="78" transform="rotate(-14 384 394)" />
+        <text class="circle-label" x="333" y="391">河西居住圈</text>
+        <text class="circle-sub" x="304" y="411">奥体 / 鱼嘴 / 江心洲</text>
+
+        <ellipse class="circle premium" cx="654" cy="364" rx="121" ry="72" transform="rotate(18 654 364)" />
+        <text class="circle-label" x="602" y="359">玄武湖-紫金山</text>
+        <text class="circle-sub" x="606" y="379">城中改善 / 山水资源</text>
+
+        <ellipse class="circle premium" cx="616" cy="548" rx="117" ry="71" transform="rotate(-8 616 548)" />
+        <text class="circle-label" x="558" y="545">百家湖-九龙湖</text>
+        <text class="circle-sub" x="581" y="565">江宁高端改善圈</text>
+      </svg>
+
+      <aside class="legend" aria-label="图例">
+        <h2>图例</h2>
+        <div class="legend-item"><span class="swatch office"></span><span>办公 / 商务区</span></div>
+        <div class="legend-item"><span class="swatch campus"></span><span>大学城 / 高校集群</span></div>
+        <div class="legend-item"><span class="swatch premium"></span><span>高端社区圈</span></div>
+        <p>圈层大小表示大致辐射范围与片区影响力，并不等同于精确边界或房价排序。</p>
+      </aside>
+    </section>
+
+    <p class="note">注：这是面向快速沟通的手绘风格城市示意图，保留南京长江、玄武湖、紫金山、主城与江宁/江北/仙林的相对位置关系；如果需要用于投资、选址或通勤决策，建议再叠加地铁站点、产业园边界和实际成交数据。</p>
+  </main>
+</body>
+</html>
