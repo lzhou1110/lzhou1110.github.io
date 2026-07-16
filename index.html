@@ -8,19 +8,28 @@
   <meta name="description" content="Liyi Zhou — Computer Science Lecturer at the University of Sydney." />
   <link rel="preload" as="image" href="me.png" />
   <style>
+    :root {
+      --ink: #171918;
+      --muted: #666b68;
+      --line: #e1e5e2;
+      --soft: #f4f6f3;
+      --paper: #fff;
+      --accent: #275c49;
+    }
+
     body {
       margin: 0;
-      background: #fff;
-      color: #111;
+      background: var(--soft);
+      color: var(--ink);
       font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
     .wrap {
-      max-width: 720px;
+      max-width: 820px;
       margin: 0 auto;
-      padding: 56px 24px;
+      padding: 56px 24px 80px;
     }
 
     .head {
@@ -28,14 +37,14 @@
     }
 
     .head img {
-      width: 140px;
-      height: 140px;
-      border-radius: 8px;
+      width: 132px;
+      height: 132px;
+      border-radius: 14px;
       object-fit: cover;
       display: block;
       margin: 0 auto 20px;
       transition: filter 220ms ease, opacity 220ms ease;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 8px 24px rgba(35, 45, 40, 0.09);
       background-color: #f5f5f5;
       background-image: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
     }
@@ -52,97 +61,602 @@
 
     h1 {
       margin: 0 0 8px 0;
-      font-size: 30px;
-      letter-spacing: -0.02em;
-      font-weight: 600;
+      font-size: 32px;
+      letter-spacing: -0.035em;
+      font-weight: 650;
     }
 
     .tag {
       margin: 0 0 16px 0;
-      color: #555;
+      color: var(--muted);
       font-weight: 400;
-      line-height: 1.4;
+      line-height: 1.5;
     }
-
-
 
     .links {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 16px;
-      margin-top: 8px;
+      gap: 8px 18px;
+      margin: 10px 0 0;
     }
 
     .links a {
-      margin: 0;
-      color: #111;
+      position: relative;
+      color: #454a47;
       text-decoration: none;
-      transition: all 200ms ease;
+      transition: color 180ms ease, transform 180ms ease;
       display: inline-flex;
       align-items: center;
       line-height: 1.2;
-      font-weight: 400;
-      padding: 4px 0;
+      font-size: 14px;
+      font-weight: 520;
+      padding: 6px 0;
     }
 
-
-
     .links a:hover {
-      color: #333;
+      color: var(--ink);
       transform: translateY(-1px);
     }
 
-    .links a.disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-      pointer-events: none;
+    .links a[data-target]::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 1px;
+      left: 0;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 180ms ease;
+    }
+
+    .links a[data-target].active {
+      color: var(--accent);
+    }
+
+    .links a[data-target].active::after {
+      transform: scaleX(1);
     }
 
     .links a:focus-visible {
-      outline: 2px solid #111;
-      outline-offset: 2px;
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
       border-radius: 4px;
     }
 
-
-
-    .terminal {
-      display: block;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      background: #0f1117;
-      color: #e6e7eb;
-      border: 1px solid #1f2330;
-      border-radius: 8px;
-      padding: 12px 14px;
-      margin-top: 8px;
-      max-height: 360px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      line-height: 1.45;
-      font-size: 14px;
-      white-space: pre-wrap;
-      word-break: break-word;
-      overflow-wrap: anywhere;
-      hyphens: auto;
+    .content-panel {
+      margin-top: 34px;
+      padding: 38px 42px 42px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 18px 55px rgba(36, 46, 41, 0.07);
     }
 
-    .terminal a {
-      color: #8ab4f8;
-      text-decoration: underline;
-    }
-
-    .terminal a:hover {
-      color: #cde3ff;
-    }
-
-    .terminal[hidden] {
+    .content-panel[hidden] {
       display: none;
     }
 
-    .prompt {
-      color: #6cff6c;
+    .eyebrow {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .content-panel h2 {
+      margin: 0;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 500;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+    }
+
+    .content-panel h3 {
+      margin: 30px 0 12px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .content-panel p {
+      margin: 14px 0 0;
+      color: #3f4441;
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    .content-panel .lead {
+      margin-top: 18px;
+      color: #272b29;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      font-size: 20px;
+      line-height: 1.58;
+    }
+
+    .content-panel a {
+      color: var(--accent);
+      text-decoration-color: rgba(39, 92, 73, 0.35);
+      text-underline-offset: 3px;
+    }
+
+    .content-panel a:hover {
+      text-decoration-color: currentColor;
+    }
+
+    .content-panel h2 a {
+      color: inherit;
+      text-decoration-color: rgba(23, 25, 24, 0.2);
+    }
+
+    .timeline {
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 104px 1fr;
+      gap: 18px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-item time {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .contact-list,
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .contact-item,
+    .principle,
+    .story-card {
+      padding: 16px 18px;
+      background: #f8f9f7;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .contact-item {
+      color: #3f4441;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .principle strong,
+    .story-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .principle p,
+    .story-card p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      background: #edf3ef;
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .note p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .student-groups {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .student-group {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .student-group h3 {
+      margin: 0 0 6px;
+    }
+
+    .student-card {
+      display: block;
+      padding: 14px 0;
+      color: inherit !important;
+      text-decoration: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .student-card:first-of-type {
+      margin-top: 12px;
+    }
+
+    .student-card > strong,
+    .student-card > span {
+      display: block;
+    }
+
+    .student-card > strong {
+      font-size: 16px;
+    }
+
+    .student-card > span {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .student-card:hover strong {
+      color: var(--accent);
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-bottom: 24px;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .story-card.wide {
+      grid-column: 1 / -1;
+    }
+
+    .achievement-list {
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .achievement {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .achievement time {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .achievement strong {
+      font-size: 15px;
+    }
+
+    .achievement p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .media-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .media-link {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 15px 17px;
+      color: var(--ink) !important;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      transition: border-color 160ms ease, transform 160ms ease;
+    }
+
+    .media-link:hover {
+      border-color: #b8c8c0;
+      transform: translateY(-1px);
+    }
+
+    .media-link > span:last-child {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 36px 16px 56px;
+      }
+
+      .content-panel {
+        margin-top: 26px;
+        padding: 28px 22px 30px;
+        border-radius: 14px;
+      }
+
+      .student-groups,
+      .story-grid,
+      .principles,
+      .contact-list {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 78px 1fr;
+        gap: 12px;
+      }
+
+      .media-link {
+        display: block;
+      }
+
+      .media-link > span:last-child {
+        display: block;
+        margin-top: 4px;
+      }
+    }
+
+    /* Keep the presentation deliberately simple. */
+    .wrap {
+      max-width: 720px;
+    }
+
+    .content-panel {
+      margin-top: 30px;
+      padding: 22px 24px 24px;
+      background: #eaf0ec;
+      border: 1px solid #d4ddd7;
+      border-radius: 10px;
+      box-shadow: none;
+    }
+
+    .eyebrow {
+      display: none;
+    }
+
+    .content-panel h2 {
+      font-family: inherit;
+      font-size: 24px;
+      font-weight: 620;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    .content-panel h3 {
+      margin: 26px 0 10px;
+      font-size: 15px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .content-panel .lead {
+      margin-top: 12px;
+      font-family: inherit;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .timeline {
+      margin-top: 6px;
+      border: 0;
+    }
+
+    .timeline-item {
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      padding: 7px 0;
+      border: 0;
+    }
+
+    .contact-list,
+    .principles {
+      display: block;
+      margin-top: 8px;
+    }
+
+    .contact-item,
+    .principle,
+    .story-card {
+      padding: 5px 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .note {
+      margin-top: 16px;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .note p {
+      font-weight: 550;
+    }
+
+    .student-groups {
+      display: block;
+      margin-top: 18px;
+    }
+
+    .student-group {
+      margin-top: 24px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .student-card,
+    .student-card:first-of-type {
+      margin: 0;
+      padding: 8px 0;
+      border: 0;
+    }
+
+    .story-grid {
+      display: block;
+      margin-top: 20px;
+    }
+
+    .achievement-list {
+      margin-top: 8px;
+      border: 0;
+    }
+
+    .achievement {
+      grid-template-columns: 54px 1fr;
+      gap: 12px;
+      padding: 8px 0;
+      border: 0;
+    }
+
+    .media-list {
+      display: block;
+      margin-top: 18px;
+    }
+
+    .media-link {
+      padding: 9px 0;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .media-link:hover {
+      border: 0;
+      transform: none;
+    }
+
+    .generated-word {
+      opacity: 0.12;
+      filter: blur(3px);
+      transition: opacity 180ms ease, filter 220ms ease;
+    }
+
+    .generated-word.visible {
+      opacity: 1;
+      filter: blur(0);
+    }
+
+    .simple-content {
+      color: #303733;
+      font-size: 15px;
+      line-height: 1.62;
+    }
+
+    .simple-title {
+      margin-bottom: 10px;
+      color: #1f2622;
+      font-size: 16px;
+      font-weight: 650;
+    }
+
+    .simple-line {
+      margin: 3px 0;
+    }
+
+    .simple-heading {
+      margin: 13px 0 5px;
+      color: #252c28;
+      font-weight: 650;
+    }
+
+    .simple-student-name {
+      margin: 11px 0 3px;
+      color: #252c28;
+      font-weight: 650;
+    }
+
+    .simple-detail {
+      padding-left: 14px;
+    }
+
+    .simple-space {
+      height: 8px;
+    }
+
+    .copy-prompt-button {
+      margin-top: 14px;
+      padding: 9px 13px;
+      border: 1px solid #cbd5cf;
+      border-radius: 8px;
+      background: #f7faf8;
+      color: var(--accent);
+      font: inherit;
+      font-weight: 650;
+      cursor: pointer;
+      transition: background 160ms ease, border-color 160ms ease;
+    }
+
+    .copy-prompt-button:hover {
+      border-color: #9fb5aa;
+      background: #eff5f1;
+    }
+
+    .copy-prompt-button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .copy-status {
+      display: inline-block;
+      margin-left: 9px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      .content-panel {
+        margin-top: 24px;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 72px 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .generated-word {
+        opacity: 1;
+        filter: none;
+        transition: none;
+      }
     }
   </style>
 </head>
@@ -154,22 +668,156 @@
       <h1>Liyi Zhou</h1>
       <p class="tag">Computer Science Lecturer at the University of Sydney</p>
       <p class="links">
-        <a href="#email" data-target="email">Email</a>
-        <a href="#hiring" data-target="hiring">Hiring</a>
+        <a href="#about" data-target="about">About Me</a>
         <a href="#students" data-target="students">Students</a>
-        <a href="#phd" data-target="phd">MyPhD</a>
-        <a href="#media" data-target="media">Media</a>
-        <a href="https://lzhou1110.github.io/CV_Liyi_Zhou.pdf" aria-label="CV" title="CV">CV↗</a>
-        <a href="https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en" aria-label="Google Scholar"
-          title="Google Scholar">Scholar↗</a>
-        <a href="https://bsky.app/profile/lzhou1110.bsky.social" aria-label="Bluesky" title="Bluesky">Sky↗</a>
-        <a href="https://twitter.com/lzhou1110" aria-label="Twitter" title="Twitter">X↗</a>
+        <a href="#hiring" data-target="hiring">Hiring</a>
       </p>
     </div>
     <div class="body">
-      <div id="terminal" class="terminal" aria-live="polite" hidden></div>
+      <main id="content-panel" class="content-panel" aria-live="polite" hidden></main>
     </div>
   </div>
+  <script id="research-fit-prompt" type="text/plain">
+You are my research-fit interviewer. Your job is not to help me impress Liyi Zhou. Your job is to determine whether I understand research, understand Liyi's work, and may fit his supervision style.
+
+This is a self-selection exercise, not an admissions decision. Be a skeptical but fair senior researcher. Do not flatter me. Begin with the default conclusion: I should not contact Liyi yet. Change it only when I provide specific, credible evidence.
+
+I may be considering one of three routes:
+- USyd Research Pathway
+- USyd Thesis
+- PhD trial
+
+Do not invent formal program requirements. Ask me to provide relevant official constraints when needed.
+
+START HERE
+
+Your first question must ask what I am actually trying to do: a USyd Research Pathway, a USyd Thesis, a PhD trial, or whether I am still unsure. Then ask why I want that route, what I hope to get from it, what stage I am currently at, and how much time I can realistically commit. Ask these one at a time.
+
+Do not continue to the research-fit assessment until my goal is concrete. If I mainly want a credential, a publication, admission, or access to a supervisor without a clear interest in the research process, challenge that motivation directly. If I am unsure, help me distinguish the routes without inventing their formal requirements.
+
+First, ask me to study Liyi's About Me and Students pages at https://lzhou1110.github.io. Then interview me one question at a time. Adapt each question to my previous answer. Do not silently improve weak answers for me: identify the weakness and make me think again.
+
+Use four gates. Grade each PASS, BORDERLINE, or STOP. For BORDERLINE, ask at most two additional challenge questions. If the evidence remains weak, change it to STOP. A STOP ends the application path: explain what I need to learn or do, and do not generate an email.
+
+GATE 1 — UNDERSTANDING LIYI
+
+Ask me to explain, in my own words:
+- what problems currently interest Liyi;
+- which student project interests me most and why;
+- one weakness, unanswered question, or next step in that project;
+- where Liyi could specifically improve my work; and
+- why another supervisor might be a better fit.
+
+STOP if my description could apply to any AI or security researcher, if I merely repeat the website, or if I focus mainly on rankings, funding, reputation, immigration, or obtaining a position.
+
+GATE 2 — UNDERSTANDING RESEARCH
+
+Test whether I can distinguish research from coursework, implementing an existing idea, reproducing a paper, building a large system without a clear claim, or collecting benchmark results without knowing what they prove.
+
+Require me to state a research question, a non-obvious claim, and evidence that could falsify it. Make clear that research involves uncertainty, failed ideas, critical feedback, and long periods without obvious progress.
+
+STOP if I expect a supervisor to provide the question and every next step, confuse engineering effort with a research contribution, or cannot explain what would make my claim wrong.
+
+GATE 3 — TOP-TIER RESEARCH TASTE
+
+Take my strongest idea and try to reject it as a demanding reviewer. Ask:
+- Why does the problem matter, and who would care?
+- Is the gap real?
+- Is the contribution new and non-obvious?
+- Is this only an application of an existing method?
+- What is the strongest baseline or competing explanation?
+- What is the smallest decisive experiment?
+- What result would make the work uninteresting?
+- What would make a reviewer say "so what?"
+
+Teach me that strong research requires an important question, a clear contribution, convincing evidence, knowledge of prior work, and honest limitations—not just complexity or higher benchmark numbers. Require me to defend, substantially revise, narrow, or abandon the idea.
+
+STOP if I respond to criticism with enthusiasm rather than reasoning, or cannot improve the idea after challenge.
+
+PUBLICATION UNCERTAINTY TEST
+
+Give me this scenario: I have done work that I still believe is meaningful, but it has been rejected several times. At the same time, another paper that I expected to be rejected is accepted.
+
+Ask how I would decide whether to revise, resubmit, change the framing, run more experiments, or stop. Ask how I would separate useful reviewer feedback, review noise, research value, and my own disappointment. Test whether I can accept that meaningful work is not guaranteed publication, while my personal taste is also fallible and work I underestimate may still deserve acceptance.
+
+STOP if I treat acceptance as the only evidence of research value, expect a supervisor to guarantee publication, become dismissive of others' accepted work, or cannot continue thinking clearly after repeated rejection.
+
+GATE 4 — WORKING-STYLE FIT
+
+Begin with an exceptional-achievement depth test. Ask for the single most outstanding thing I have done. It need not be academic, but it must be something I personally helped push to an unusually high standard.
+
+Interrogate it in depth:
+- What made the outcome exceptional relative to my stage and opportunities?
+- What did I personally own, rather than merely participate in?
+- How long did I stay with it, and how many meaningful iterations did it take?
+- What was the hardest plateau, failure, or period with little visible progress?
+- What did I do after the work was already "good enough"?
+- Which final improvements required the most patience and judgment?
+- What concrete artifact, result, external response, or other evidence supports the claim?
+- When did persistence stop being useful, and how did I decide whether to continue or change direction?
+
+Do not accept prestige, team membership, a title, or a polished outcome as proof by itself. Look for sustained ownership, repeated refinement, high personal standards, and the patience to carry one difficult thing much further than most people would.
+
+STOP if I cannot identify one example with credible evidence of depth, if the achievement mainly belongs to other people, or if I repeatedly move on once the novelty or easy progress disappears.
+
+Then ask for two additional achievements more briefly. For each, ask what I personally did, what was difficult, what failed, and what concrete outcome resulted.
+
+Also ask how I behave when stuck, how I decide what to try next, how I respond to criticism, what I can own independently, what I expect from a supervisor, and what time I can realistically commit.
+
+Liyi works best with self-motivated people and does not want to push someone continuously or define every next step. STOP if I consistently wait for instructions, hide failures, need frequent motivation, respond defensively to criticism, or want the title of doing research more than its daily process. Limited experience alone is not a reason to stop; lack of initiative or intellectual honesty is.
+
+PRESSURE TEST
+
+Before the final recommendation, present the strongest case against the collaboration:
+1. why I may not be ready for research;
+2. why Liyi may be the wrong supervisor;
+3. which claim in my answers has the weakest evidence;
+4. which expectation is most likely to cause disappointment; and
+5. what I would probably dislike about working this way.
+
+Ask me to respond. Then ask what I changed my mind about, what I am now less confident about, and whether I still want to proceed. Do not continue until I answer thoughtfully.
+
+FINAL RECOMMENDATION
+
+Choose exactly one:
+1. Do not contact Liyi yet.
+2. Research may suit me, but Liyi is probably not the right fit.
+3. Possible fit, but complete the preparation plan first.
+4. Contact Liyi.
+
+Choose Contact Liyi only if all four gates receive PASS. When evidence is mixed, prefer not to recommend contact.
+
+For recommendations 1–3, give me a concrete preparation plan and explicitly tell me not to send an application email yet.
+
+For recommendation 4, produce two separate items:
+
+A. RESEARCH FIT BRIEF
+
+Include the route considered, concise background, three achievements and personal contributions, understanding of Liyi's work, understanding of research, research-taste assessment, strongest evidence of fit, concerns, a route-appropriate plan, confidence, and what could change the assessment.
+
+For a Research Pathway, propose a tightly scoped first research experience. For a Thesis, propose a thesis-scale direction and an early viability milestone. For a PhD trial, propose a roughly three-month project with a question, expected contribution, early falsification test, and milestones for weeks 1, 4, and 12.
+
+B. FINAL EMAIL
+
+Keep the email under 120 words.
+
+Subject:
+[Research Fit] [Route] | [Full Name]
+
+Required opening:
+I completed your research-fit interview using [agent]. Its recommendation was: Contact Liyi.
+
+Then include only:
+- one Liyi project I studied and why it interests me;
+- my three strongest achievements, stated very briefly;
+- one proposed research question and its falsification test;
+- my intended route and biggest fit risk.
+
+End with exactly:
+FIT TRACE: [route] | [project] | [research claim] | [fit risk]
+
+Every field must come from our conversation. Do not use generic statements of passion. Tell me to send the short email and attach the Research Fit Brief separately.
+  </script>
   <script>
     (function () {
       // Image loading and tagline
@@ -181,14 +829,38 @@
 
       if (tagEl) tagEl.innerHTML = 'CS Lecturer at USyd; ARC DECRA Fellow;<br>Practical Researcher; Advancing AI in Security and Beyond';
 
-      var terminal = document.getElementById('terminal');
+      var contentPanel = document.getElementById('content-panel');
       var navLinks = document.querySelectorAll('.links a[data-target]');
-      var allTopLinks = document.querySelectorAll('.links a');
-      var isTyping = false;
-      var typingTimeout = null;
-      var typingToken = 0; // increments to cancel in-flight typing
+      var generationToken = 0;
+      var generationTimeout = null;
 
       var contentMap = {
+        about: [
+          '> open about-me',
+          '',
+          'I have tried a few different paths, but research is still what I enjoy most.',
+          '',
+          'As a child, I loved the satisfaction that came from solving mathematics problems. Looking back, it was one of the earliest signs of my love for problem-solving. My earliest research came through my computer science theses at Imperial (2014) and UCL (2018). From October 2019 to February 2025, I worked mainly on blockchain with my supervisor, [Arthur Gervais](https://arthurgervais.com), and my collaborator, [Kaihua Qin](https://qin.ac). I was incredibly fortunate to have Arthur as my supervisor. Working with Arthur and Kaihua was when I truly began to take research seriously.',
+          '',
+          'I am now at the University of Sydney, where I supervise students in their research and teach [INFO5995](https://info5995.github.io/Leaderboard/). I reflected on the course in a [LinkedIn article](https://www.linkedin.com/pulse/can-ai-help-train-next-generation-australian-bug-hunters-liyi-zhou-r4m2c). I still try to stay hands-on and contribute to research across a wide range of areas, including LLMs, self-evolving agents, computer-use agents, and ideas beyond security.',
+          '',
+          'What interests me most now is how to make AI complete tasks reliably and generate new knowledge, far beyond security. I believe AI will fully replace researchers in the near future, and that the mission of our generation is to make it happen.',
+          '',
+          'Links',
+          '[CV](https://lzhou1110.github.io/CV_Liyi_Zhou.pdf) · [Google Scholar](https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en) · [Bluesky](https://bsky.app/profile/lzhou1110.bsky.social) · [X](https://twitter.com/lzhou1110)',
+          '',
+          'Media coverage',
+          '- 2026 — [EvoHunt outperformed OpenAI\'s Codex Security — Help Net Security](https://www.helpnetsecurity.com/2026/06/23/codex-security-ai-security-auditing/)',
+          '- 2025 — [AI agents find smart contract exploits — Anthropic](https://www.anthropic.com/research/smart-contracts)',
+          '- 2025 — [A2: AI-powered Android vulnerability discovery — SecurityWeek](https://www.securityweek.com/academics-build-ai-powered-android-vulnerability-discovery-and-validation-tool/)',
+          '- 2025 — [A2 found more than 100 Android zero-days — The Register](https://www.theregister.com/2025/09/04/boffins_build_automated_android_bug_hunting/)',
+          '- 2025 — [A1: AI agents hack smart contracts on autopilot — BankInfoSecurity](https://www.bankinfosecurity.com/ai-agents-hack-smart-contracts-on-autopilot-a-29104)',
+          '- 2025 — [A1: AI agents automatically steal cryptocurrency — The Register](https://www.theregister.com/2025/07/10/ai_agents_automatically_steal_cryptocurrency/)',
+          '',
+          'Email',
+          '- lzhou1110 (at) gmail (dot) com — non-academic matters',
+          '- liyi (dot) zhou (at) sydney (dot) edu (dot) au — academic matters'
+        ],
         hiring: [
           '> open hiring',
           '',
@@ -199,98 +871,479 @@
           '',
           'To start, email three standout achievements and why you fit.'
         ],
-        phd: [
-          '> open my-phd',
-          '',
-          'Really appreciate Arthur\'s time + supervision + support. Kaihua is my favorite research collaborator. They\'re both funny and good friends.',
-          '- Prof. Arthur Gervais (UCL): https://arthurgervais.com',
-          '- Dr. Kaihua Qin (Warwick): https://qin.ac'
-        ],
         media: [
           '> open media',
           '',
-          '- Anthropic (Claude) expands A1 - https://red.anthropic.com/2025/smart-contracts/',
-          '- A2 (Android) - https://www.securityweek.com/academics-build-ai-powered-android-vulnerability-discovery-and-validation-tool/',
-          '- A2 (Android) - https://www.theregister.com/2025/09/04/boffins_build_automated_android_bug_hunting/',
-          '- A1 (DeFi) - https://www.theregister.com/2025/07/10/ai_agents_automatically_steal_cryptocurrency/',
-          '- A1 (DeFi) - https://www.bankinfosecurity.com/ai-agents-hack-smart-contracts-on-autopilot-a-29104'
+          '- [Anthropic (Claude) expands A1](https://red.anthropic.com/2025/smart-contracts/)',
+          '- [A2 (Android) — SecurityWeek](https://www.securityweek.com/academics-build-ai-powered-android-vulnerability-discovery-and-validation-tool/)',
+          '- [A2 (Android) — The Register](https://www.theregister.com/2025/09/04/boffins_build_automated_android_bug_hunting/)',
+          '- [A1 (DeFi) — The Register](https://www.theregister.com/2025/07/10/ai_agents_automatically_steal_cryptocurrency/)',
+          '- [A1 (DeFi) — BankInfoSecurity](https://www.bankinfosecurity.com/ai-agents-hack-smart-contracts-on-autopilot-a-29104)'
         ],
         students: [
           '> open students',
           '',
-          '- Wesley Ziyue Wang - https://zyy0530.github.io (incoming PhD, AI4Sec)',
-          '- Xiangwen Yang - https://chnyangs.github.io (current PhD, AI4Sec, 2nd supervisor)',
-          '- Jie Xu (honours student)',
-          '- Shane Yeow (honours student)',
-          '- Shanshan Gao (honours student)',
-        ],
-        email: [
-          '> open email',
+          'These are a few projects I find especially interesting. Together, they offer a sense of what it is like to do research with me.',
           '',
-          '- lzhou1110 (at) gmail (dot) com',
-          '- liyi (dot) zhou (at) sydney (dot) edu (dot) au'
+          'PhD students',
+          '## [Ziyue Wang](https://zyy0530.github.io)',
+          'Ziyue is my first PhD student. He formally joined the PhD program in 2026, but we have been working together since 2025. Our most exciting project so far is [EvoHunt](https://arxiv.org/abs/2606.16420), a self-evolving security agent that learns and refines vulnerability-hunting playbooks through experience. His other achievements include [TxRay](https://arxiv.org/abs/2602.01317), which reproduced 92% of real DeFi attacks with executable PoCs; a Binance bug bounty in 2026; and [A2](https://arxiv.org/abs/2508.21579), which found 104 real-world Android zero-days in 2025.',
+          '',
+          '## [Michael Tiancheng Mai](https://scholar.google.com/citations?user=Wa0UF7UAAAAJ&hl=zh-CN)',
+          'I am Michael\'s secondary supervisor. We work together on finding vulnerabilities in cryptographic proofs.',
+          '',
+          '## [Xiangwen Yang](https://chnyangs.github.io)',
+          'I am Xiangwen\'s secondary supervisor. Our most significant result so far is a medium-severity Ethereum bug bounty awarded in 2025.',
+          '',
+          'Honours students (USyd, one-year program)',
+          '## Shanshan Gao',
+          'Shanshan works on the security of computer-use and mobile-use agents, as well as the reliability of the benchmarks used to evaluate them. Her thesis, [AletheiaFoundry](https://drive.google.com/file/d/1L9j00uj4bZ18_ZboLfg-COpIRTPHxzYg/view?usp=sharing), built an evidence-admitted benchmark and adaptive red-teaming system that confirmed policy violations in 70.9% of eligible attack runs across five mobile agents.',
+          '',
+          '## Shane Yeow',
+          'Shane used unlearning to investigate how much performance on security tasks comes from memorisation rather than genuine reasoning. His [thesis](https://drive.google.com/file/d/11IAYmmny1tje7BeUu1BqZ7ky_sN-3Ipz/view?usp=sharing) exposed 22.5% score inflation in one security benchmark.',
+          '',
+          'Independent collaboration',
+          '## Strick Sheng',
+          'Strick works with me in his spare time, outside any formal degree or research program. In 2026, we co-authored [EvoHunt](https://arxiv.org/abs/2606.16420) and [EnvTrustBench](https://arxiv.org/abs/2605.08828), which studies whether LLM agents overtrust stale, incorrect, or malicious evidence from their environments.'
+        ],
+        'student-ziyue': [
+          '> open students/ziyue',
+          '[← Students](#students)',
+          '',
+          '[Ziyue Wang](https://zyy0530.github.io) — PhD student',
+          '',
+          'From 0 → 1',
+          'We started with a question: can AI agents complete the full security workflow, rather than stop at warnings?',
+          '',
+          'What resulted',
+          '· 2026 — [EvoHunt](https://arxiv.org/abs/2606.16420): self-evolving playbooks that boosted Codex\'s exploit success 6×',
+          '· 2026 — [TxRay](https://arxiv.org/abs/2602.01317): reproduced 92% of real DeFi attacks with executable PoCs',
+          '· 2026 — earned a Binance bug bounty',
+          '· 2025 — [A2](https://arxiv.org/abs/2508.21579): found 104 real-world Android zero-days'
+        ],
+        'student-xiangwen': [
+          '> open students/xiangwen',
+          '[← Students](#students)',
+          '',
+          '[Xiangwen Yang](https://chnyangs.github.io) — PhD student (co-supervised)',
+          '',
+          'From 0 → 1',
+          'The goal is to turn AI4Sec ideas into findings that matter on live blockchain systems.',
+          '',
+          'What resulted',
+          '· 2025 — earned an Ethereum bug bounty'
+        ],
+        'student-shane': [
+          '> open students/shane',
+          '[← Students](#students)',
+          '',
+          'Shane Yeow — Honours student (Bachelor\'s level)',
+          '',
+          'From 0 → 1',
+          'Security benchmarks could not separate memorisation from genuine reasoning, so Shane built an end-to-end measurement framework from scratch.',
+          '',
+          'What resulted',
+          '· 2026 — [Memorisation vs. Reasoning](https://drive.google.com/file/d/11IAYmmny1tje7BeUu1BqZ7ky_sN-3Ipz/view?usp=sharing): exposed 22.5% score inflation in one security benchmark'
+        ],
+        'student-shanshan': [
+          '> open students/shanshan',
+          '[← Students](#students)',
+          '',
+          'Shanshan Gao — Honours student (Bachelor\'s level)',
+          '',
+          'From 0 → 1',
+          'Agent benchmarks could claim success or safety without evidence that decided the outcome, so Shanshan built an evidence-admitted benchmark and adaptive red-teaming system from scratch.',
+          '',
+          'What resulted',
+          '· 2026 — [AletheiaFoundry](https://drive.google.com/file/d/1L9j00uj4bZ18_ZboLfg-COpIRTPHxzYg/view?usp=sharing): confirmed policy violations in 70.9% of eligible attack runs across five mobile agents'
         ]
       };
 
-      function clearTerminal() { terminal.textContent = ''; }
+      // Keep old deep links working.
+      contentMap.email = contentMap.about;
+      contentMap.phd = contentMap.about;
 
-      function setNavDisabled(disabled) {
-        allTopLinks.forEach(link => {
-          link.classList.toggle('disabled', disabled);
-          disabled ? link.setAttribute('aria-disabled', 'true') : link.removeAttribute('aria-disabled');
+      function escapeHtml(text) {
+        return text
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+      }
+
+      function escapeAttribute(text) {
+        return escapeHtml(text)
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function linkify(source) {
+        var links = [];
+        var textWithPlaceholders = source.replace(
+          /\[([^\]]+)\]\(((?:https?:\/\/|#)[^\s)]+)\)/g,
+          function (_, label, url) {
+            var index = links.push({ label: label, url: url }) - 1;
+            return '\uE000' + index + '\uE001';
+          }
+        );
+
+        var html = escapeHtml(textWithPlaceholders)
+          .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener">$1<\/a>');
+
+        html = html.replace(/\uE000(\d+)\uE001/g, function (_, index) {
+          var link = links[Number(index)];
+          if (link.url.charAt(0) === '#') {
+            return '<a href="' + escapeAttribute(link.url) + '" data-content-key="' +
+              escapeAttribute(link.url.slice(1)) + '">' + escapeHtml(link.label) + '<\/a>';
+          }
+          return '<a href="' + escapeAttribute(link.url) + '" target="_blank" rel="noopener">' +
+            escapeHtml(link.label) + '<\/a>';
+        });
+
+        return html;
+      }
+
+      function renderAbout(lines) {
+        var journey = lines.filter(line => line.indexOf('@ ') === 0).map(line => {
+          var separator = line.indexOf(' | ');
+          var label = line.slice(2, separator);
+          var description = line.slice(separator + 3);
+          return '<div class="timeline-item"><time>' + escapeHtml(label) + '<\/time><p>' +
+            linkify(description) + '<\/p><\/div>';
+        }).join('');
+
+        var emailIndex = lines.indexOf('Email');
+        var contacts = lines.slice(emailIndex + 1).filter(line => line.indexOf('- ') === 0).map(line =>
+          '<div class="contact-item">' + escapeHtml(line.slice(2)) + '<\/div>'
+        ).join('');
+
+        return '<span class="eyebrow">About me<\/span>' +
+          '<h2>' + escapeHtml(lines[2]) + '<\/h2>' +
+          '<p class="lead">' + escapeHtml(lines[4]) + '<\/p>' +
+          '<p>' + escapeHtml(lines[6]) + '<\/p>' +
+          '<h3>Research journey<\/h3><div class="timeline">' + journey + '<\/div>' +
+          '<h3>Email<\/h3><div class="contact-list">' + contacts + '<\/div>';
+      }
+
+      function renderHiring(lines) {
+        var principles = lines.filter(line => line.indexOf('- ') === 0).map(line =>
+          '<div class="principle"><p>' + escapeHtml(line.slice(2)) + '<\/p><\/div>'
+        ).join('');
+
+        return '<span class="eyebrow">Join the group<\/span>' +
+          '<h2>Hiring<\/h2>' +
+          '<p class="lead">' + escapeHtml(lines[2]) + '<\/p>' +
+          '<div class="principles">' + principles + '<\/div>' +
+          '<div class="note"><p>' + escapeHtml(lines[lines.length - 1]) + '<\/p><\/div>';
+      }
+
+      function studentCard(line) {
+        var match = line.match(/^- \[([^\]]+)\]\(#([^)]+)\) — (.+)$/);
+        if (!match) return '';
+        return '<a class="student-card" href="#' + escapeAttribute(match[2]) +
+          '" data-content-key="' + escapeAttribute(match[2]) + '">' +
+          '<strong>' + escapeHtml(match[1]) + '<\/strong>' +
+          '<span>' + escapeHtml(match[3]) + '<\/span><\/a>';
+      }
+
+      function renderStudents(lines) {
+        return '<span class="eyebrow">Supervision<\/span>' +
+          '<h2>Students<\/h2>' +
+          '<p class="lead">A small selection of students and the stories behind their work.<\/p>' +
+          '<div class="student-groups">' +
+          '<section class="student-group"><h3>PhD students<\/h3>' +
+          studentCard(lines[3]) + studentCard(lines[4]) + '<\/section>' +
+          '<section class="student-group"><h3>Honours students<\/h3>' +
+          studentCard(lines[7]) + studentCard(lines[8]) + '<\/section>' +
+          '<\/div>';
+      }
+
+      function renderStudent(key, lines) {
+        var identity = lines[3].split(' — ');
+        var role = identity.slice(1).join(' — ');
+        var focusMap = {
+          'student-ziyue': 'Building AI agents that discover, validate, and reproduce real vulnerabilities.',
+          'student-xiangwen': 'AI4Sec and blockchain security, grounded in real-world validation.',
+          'student-shane': 'Measuring when LLM security benchmarks reflect memorisation rather than reasoning.',
+          'student-shanshan': 'Building evidence-admitted benchmarks for agentic mobile security.'
+        };
+
+        var achievements = lines.filter(line => line.indexOf('· ') === 0).map(line => {
+          var match = line.match(/^·\s+(\d{4})\s+—\s+(.+)$/);
+          if (!match) return '';
+          var detail = match[2];
+          var colon = detail.indexOf(':');
+          var title = colon === -1 ? detail : detail.slice(0, colon);
+          var description = colon === -1 ? '' : detail.slice(colon + 1).trim();
+          return '<div class="achievement"><time>' + escapeHtml(match[1]) + '<\/time><div>' +
+            '<strong>' + linkify(title) + '<\/strong>' +
+            (description ? '<p>' + linkify(description) + '<\/p>' : '') +
+            '<\/div><\/div>';
+        }).join('');
+
+        return '<a class="back-link" href="#students" data-content-key="students">← Students<\/a>' +
+          '<span class="eyebrow">' + escapeHtml(role) + '<\/span>' +
+          '<h2>' + linkify(identity[0]) + '<\/h2>' +
+          '<p class="lead">' + escapeHtml(focusMap[key] || '') + '<\/p>' +
+          '<div class="story-grid"><div class="story-card wide"><strong>From 0 → 1<\/strong>' +
+          '<p>' + escapeHtml(lines[6]) + '<\/p><\/div><\/div>' +
+          '<h3>What resulted<\/h3><div class="achievement-list">' + achievements + '<\/div>';
+      }
+
+      function renderMedia(lines) {
+        var items = lines.filter(line => line.indexOf('- ') === 0).map(line => {
+          var match = line.match(/^- \[([^\]]+)\]\((https?:\/\/[^\s)]+)\)$/);
+          if (!match) return '';
+          var titleParts = match[1].split(' — ');
+          var source = titleParts.length > 1 ? titleParts.pop() : 'Anthropic';
+          var title = titleParts.join(' — ');
+          return '<a class="media-link" href="' + escapeAttribute(match[2]) +
+            '" target="_blank" rel="noopener"><span>' + escapeHtml(title) + '<\/span>' +
+            '<span>' + escapeHtml(source) + ' ↗<\/span><\/a>';
+        }).join('');
+
+        return '<span class="eyebrow">Selected coverage<\/span>' +
+          '<h2>Media<\/h2>' +
+          '<p class="lead">Selected coverage of our work on AI agents and security.<\/p>' +
+          '<div class="media-list">' + items + '<\/div>';
+      }
+
+      function renderEditorial(key, lines) {
+        if (key === 'about') return renderAbout(lines);
+        if (key === 'hiring') return renderHiring(lines);
+        if (key === 'students') return renderStudents(lines);
+        if (key.indexOf('student-') === 0) return renderStudent(key, lines);
+        if (key === 'media') return renderMedia(lines);
+        return '<span class="eyebrow">Not found<\/span><h2>Unknown section<\/h2>';
+      }
+
+      function renderSimple(key, lines) {
+        var titles = {
+          about: 'About Me',
+          hiring: 'Hiring',
+          students: 'Students',
+          media: 'Media'
+        };
+        var isStudent = key.indexOf('student-') === 0;
+        var headings = [
+          'Research journey',
+          'Links',
+          'Media coverage',
+          'Email',
+          'PhD students',
+          'Honours students (Bachelor\'s level)',
+          'Honours students (USyd, one-year program)',
+          'Independent collaboration',
+          'From 0 → 1',
+          'What resulted'
+        ];
+        var html = '<div class="simple-content">';
+        var start = 1;
+
+        if (isStudent) {
+          html += '<div class="simple-line">' + linkify(lines[1]) + '<\/div>' +
+            '<div class="simple-space"><\/div>' +
+            '<div class="simple-title">' + linkify(lines[3]) + '<\/div>';
+          start = 5;
+        } else {
+          html += '<div class="simple-title">' + escapeHtml(titles[key] || '') + '<\/div>';
+        }
+
+        lines.slice(start).forEach(line => {
+          if (!line) {
+            html += '<div class="simple-space"><\/div>';
+            return;
+          }
+
+          if (line.indexOf('@ ') === 0) {
+            var separator = line.indexOf(' | ');
+            var label = line.slice(2, separator);
+            var description = line.slice(separator + 3);
+            html += '<div class="simple-line"><strong>' + escapeHtml(label) + '<\/strong> — ' +
+              linkify(description) + '<\/div>';
+            return;
+          }
+
+          if (line.indexOf('## ') === 0) {
+            html += '<div class="simple-student-name">' + linkify(line.slice(3)) + '<\/div>';
+            return;
+          }
+
+          if (headings.indexOf(line) !== -1) {
+            html += '<div class="simple-heading">' + escapeHtml(line) + '<\/div>';
+            return;
+          }
+
+          if (line.indexOf('- ') === 0) {
+            html += '<div class="simple-line">• ' + linkify(line.slice(2)) + '<\/div>';
+            return;
+          }
+
+          if (line.indexOf('· ') === 0) {
+            html += '<div class="simple-line simple-detail">' + linkify(line.slice(2)) + '<\/div>';
+            return;
+          }
+
+          html += '<div class="simple-line">' + linkify(line) + '<\/div>';
+        });
+
+        return html + '<\/div>';
+      }
+
+      function renderHiringPromptPage() {
+        return '<div class="simple-content">' +
+          '<div class="simple-title">Hiring<\/div>' +
+          '<div class="simple-line">Before contacting me, use an AI agent to decide whether research — and working with me — is actually right for you.<\/div>' +
+          '<div class="simple-space"><\/div>' +
+          '<div class="simple-line">The interview begins by asking what you actually want: a USyd Research Pathway, a USyd Thesis, a PhD trial, or help deciding.<\/div>' +
+          '<div class="simple-space"><\/div>' +
+          '<div class="simple-line">The interview is intentionally demanding. It may convince you not to contact me, or not to pursue research at all. That is a useful outcome.<\/div>' +
+          '<button class="copy-prompt-button" type="button" data-copy-prompt>Copy research-fit prompt<\/button>' +
+          '<span class="copy-status" data-copy-status aria-live="polite"><\/span>' +
+          '<div class="simple-space"><\/div>' +
+          '<div class="simple-line">Paste it into Codex, Claude Code, or another capable agent. If the final recommendation is <strong>Contact Liyi<\/strong>, send me the short email and the generated Research Fit Brief.<\/div>' +
+          '<\/div>';
+      }
+
+      function fallbackCopy(text) {
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        var copied = false;
+        try { copied = document.execCommand('copy'); } catch (_) { copied = false; }
+        document.body.removeChild(textarea);
+        return copied;
+      }
+
+      function copyResearchFitPrompt() {
+        var source = document.getElementById('research-fit-prompt');
+        var prompt = source ? source.textContent.trim() : '';
+        if (!prompt) return Promise.resolve(false);
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          return navigator.clipboard.writeText(prompt)
+            .then(() => true)
+            .catch(() => fallbackCopy(prompt));
+        }
+
+        return Promise.resolve(fallbackCopy(prompt));
+      }
+
+      function collectTextNodes(node, output) {
+        Array.prototype.slice.call(node.childNodes).forEach(child => {
+          if (child.nodeType === 3 && child.nodeValue.trim()) {
+            output.push(child);
+          } else if (child.nodeType === 1) {
+            collectTextNodes(child, output);
+          }
         });
       }
 
-      function cancelTyping() {
-        typingToken++;
-        if (typingTimeout) { clearTimeout(typingTimeout); typingTimeout = null; }
-        isTyping = false;
-        setNavDisabled(false);
-      }
+      function animateResponse(container) {
+        generationToken++;
+        var myToken = generationToken;
 
-      function typeLines(lines, done) {
-        isTyping = true;
-        setNavDisabled(true);
-        var i = 0, char = 0;
-        var myToken = ++typingToken;
-        function step() {
-          if (myToken !== typingToken) { return; }
-          if (i >= lines.length) { isTyping = false; setNavDisabled(false); if (myToken === typingToken && done) done(); return; }
-          var line = lines[i];
-          if (char < line.length) {
-            terminal.textContent += line.charAt(char);
-            char++;
-          } else {
-            terminal.textContent += '\n';
-            i++; char = 0;
-          }
-          terminal.scrollTop = terminal.scrollHeight;
-          typingTimeout = setTimeout(step, 4);
+        if (generationTimeout) {
+          clearTimeout(generationTimeout);
+          generationTimeout = null;
         }
-        typingTimeout = setTimeout(step, 0);
+
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          return;
+        }
+
+        var textNodes = [];
+        var words = [];
+        collectTextNodes(container, textNodes);
+
+        textNodes.forEach(textNode => {
+          var fragment = document.createDocumentFragment();
+          textNode.nodeValue.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) {
+              fragment.appendChild(document.createTextNode(part));
+              return;
+            }
+
+            var word = document.createElement('span');
+            word.className = 'generated-word';
+            word.textContent = part;
+            words.push(word);
+            fragment.appendChild(word);
+          });
+          textNode.parentNode.replaceChild(fragment, textNode);
+        });
+
+        if (!words.length) return;
+
+        var revealOrder = words.slice();
+        for (var i = revealOrder.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var swap = revealOrder[i];
+          revealOrder[i] = revealOrder[j];
+          revealOrder[j] = swap;
+        }
+
+        var index = 0;
+        var batchSize = Math.max(2, Math.ceil(revealOrder.length / 28));
+
+        function revealBatch() {
+          if (myToken !== generationToken) return;
+
+          var end = Math.min(index + batchSize, revealOrder.length);
+          for (; index < end; index++) revealOrder[index].classList.add('visible');
+
+          if (index < revealOrder.length) {
+            generationTimeout = setTimeout(() => requestAnimationFrame(revealBatch), 18);
+          } else {
+            generationTimeout = null;
+          }
+        }
+
+        requestAnimationFrame(revealBatch);
       }
 
-      function linkify() {
-        var text = terminal.textContent;
-        var html = text
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener">$1<\/a>');
-        terminal.innerHTML = html;
-      }
+      function show(key, shouldScroll) {
+        var normalizedKey = (key === 'email' || key === 'phd') ? 'about' : key;
+        var lines = contentMap[normalizedKey] || ['> unknown command'];
+        contentPanel.hidden = false;
+        contentPanel.innerHTML = normalizedKey === 'hiring' ?
+          renderHiringPromptPage() : renderSimple(normalizedKey, lines);
+        animateResponse(contentPanel);
 
-      function show(key) {
-        var lines = contentMap[key] || ['> unknown command'];
-        terminal.hidden = false;
-        cancelTyping();
-        clearTerminal();
-        typeLines(lines, linkify);
-        terminal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        var activeKey = normalizedKey.indexOf('student-') === 0 ? 'students' : normalizedKey;
+        navLinks.forEach(link => {
+          var isActive = link.dataset.target === activeKey;
+          link.classList.toggle('active', isActive);
+          isActive ? link.setAttribute('aria-current', 'page') : link.removeAttribute('aria-current');
+        });
+
+        if (shouldScroll !== false) {
+          contentPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
 
       navLinks.forEach(link => {
         link.onclick = e => (e.preventDefault(), show(link.dataset.target));
+      });
+
+      contentPanel.addEventListener('click', function (event) {
+        var copyButton = event.target.closest('[data-copy-prompt]');
+        if (copyButton) {
+          var status = contentPanel.querySelector('[data-copy-status]');
+          copyResearchFitPrompt().then(copied => {
+            if (status) status.textContent = copied ? 'Copied' : 'Copy failed';
+          });
+          return;
+        }
+
+        var link = event.target.closest('a[data-content-key]');
+        if (!link) return;
+        event.preventDefault();
+        show(link.dataset.contentKey);
       });
 
       document.querySelectorAll('.links a[href]:not([data-target]):not([href^="mailto:"])').forEach(link => {
@@ -300,6 +1353,7 @@
 
       const hash = location.hash.slice(1);
       if (hash && contentMap[hash]) show(hash);
+      else if (navLinks.length) show(navLinks[0].dataset.target, false);
     })();
   </script>
 </body>
