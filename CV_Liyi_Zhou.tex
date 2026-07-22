@@ -1,0 +1,176 @@
+% --- LaTeX CV Template - S. Venkatraman ---
+
+% Set document class and font size
+\documentclass[letterpaper, 10pt]{article}
+\usepackage[utf8]{inputenc}
+
+% Use single spacing
+\usepackage{setspace}
+\singlespacing
+
+% Package imports
+\usepackage{graphicx, hyphenat, hyperref, fancyhdr, ifthen, enumitem, amsmath, needspace}
+\usepackage{xspace}
+
+% --- Page layout settings ---
+
+% Single page:
+% \usepackage[paperheight=65cm, left=0.4in, right=0.4in, bottom=0.3in, top=0.3in]{geometry}
+
+% Multiple pages:
+\usepackage[margin=1in]{geometry}
+
+% Set line spacing
+\renewcommand{\baselinestretch}{1.15}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+
+% --- Page formatting ---
+
+% Set link colors
+\usepackage[dvipsnames]{xcolor}
+\hypersetup{colorlinks=true, linkcolor=RoyalBlue, urlcolor=RoyalBlue, pageanchor=false}
+
+% Set font to Libertine, including math support
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+
+% Remove page numbering
+\pagenumbering{gobble}
+
+\usepackage{tcolorbox}
+
+% Compact list settings and section heading macros
+\setlist[itemize]{label={}, leftmargin=0pt, labelsep=0pt, itemindent=0pt, listparindent=0pt, topsep=2pt, itemsep=1pt, parsep=0pt, partopsep=0pt}
+\newcommand{\cvsection}[1]{%
+  \vspace{6pt}%
+  \noindent{\color{OliveGreen}\textsc{\large #1}}\par
+  \vspace{4pt}%
+}
+\newcommand{\cvsubsection}[1]{%
+  \noindent{\color{OliveGreen!80}\textsc{#1}}\par
+}
+
+% Shared box style
+\tcbset{
+  commonstyle/.style={
+    on line,
+    arc=1mm,
+    fontupper=\small,
+    boxrule=0pt,
+    boxsep=0pt,
+    left=2pt,
+    right=2pt,
+    top=1pt,
+    bottom=1pt,
+    tcbox raise base
+  }
+}
+
+\newtcbox{\corebox}[3][]{
+  commonstyle,
+  colframe=#2!100,
+  colback=#2!#3,
+  #1
+}
+
+\newcommand{\corerankingAA}{\corebox{red}{30}{\xspace \footnotesize Core A* \xspace}\xspace}
+\newcommand{\corerankingA}{\corebox{red}{15}{\xspace \footnotesize Core A \xspace}\xspace}
+
+\newcommand{\tagSecurity}{\corebox{blue}{10}{ \footnotesize Security}\xspace}
+\newcommand{\tagPrivacy}{\corebox{green}{10}{ \footnotesize Privacy}\xspace}
+\newcommand{\tagAgentic}{\corebox{yellow}{20}{AI4Sec}\xspace}
+
+% --- Document starts here ---
+
+\begin{document}
+
+% Name and date of last update to this document
+{
+\Huge{Liyi Zhou}
+\hfill{\it\footnotesize \textbf{Email}: \href{mailto:lzhou1110@gmail.com}{lzhou1110@gmail.com}\quad \textbf{Website}: \href{https://lzhou1110.github.io}{lzhou1110.github.io}\quad \textbf{Updated:} \today}
+}
+
+\begin{itemize}[leftmargin=*, nosep, topsep=0pt, itemsep=2pt, parsep=0pt]
+\item \textbf{CS Lecturer ($\sim$US Assistant Professor)} @ The University of Sydney
+\end{itemize}
+
+\cvsection{Selected Publications}
+
+\cvsubsection{AI4Sec}
+
+{
+\small
+\begin{itemize}
+\item \corerankingA \tagAgentic \tagSecurity \textbf{AI Agent Smart Contract Exploit Generation} {\footnotesize \textit{FC'26}} \\ {\footnotesize A Gervais, \underline{L Zhou}}
+\item \tagAgentic \tagSecurity \textbf{Agentic Discovery and Validation of Android App Vulnerabilities} \\ {\footnotesize Ziyue Wang, \underline{L Zhou}}
+\end{itemize}
+}
+
+\cvsubsection{Blockchain}
+
+{
+\small
+\begin{itemize}
+\item \corerankingAA \tagSecurity \textbf{High-Frequency Trading on Decentralized On-Chain Exchanges} {\footnotesize \textit{IEEE SP'21}} \\ {\footnotesize \underline{L Zhou}, K Qin, C Torres, D Le, A Gervais.}
+\item \corerankingAA \tagSecurity \textbf{On the Just-In-Time Discovery of Profit-Generating Transactions in DeFi Protocols} {\footnotesize \textit{IEEE SP'21}}\\ {\footnotesize \underline{L Zhou}, K Qin, A Cully, B Livshits, A Gervais.}
+\item \corerankingAA \tagSecurity \textbf{Quantifying Blockchain Extractable Value: How dark is the forest?} {\footnotesize \textit{IEEE SP'22}}\\ {\footnotesize K Qin, \underline{L Zhou}, A Gervais.}
+\item \corerankingAA \tagSecurity \tagPrivacy \textbf{SoK: Decentralized Finance (DeFi) Attacks} {\footnotesize \textit{IEEE SP'23}} \\ {\footnotesize \underline{L Zhou}, X Xiong, J Ernstberger, S Chaliasos, Z Wang, Y Wang, K Qin, R Wattenhofer, D Song, A Gervais}
+\item \corerankingAA \tagSecurity \textbf{Blockchain Amplification Attack} {\footnotesize \textit{Sigmetrics '25}} \\ {\footnotesize T Tsuchiya, \underline{L Zhou}, K Qin, A Gervais, N Christin}
+\item \corerankingAA \tagSecurity \textbf{Speculative Denial-of-Service Attacks in Ethereum} {\footnotesize \textit{USENIX Security'24}}\\ {\footnotesize A Yaish, K Qin, \underline{L Zhou}, Aviv Zohar, A Gervais.}
+\item \corerankingAA \tagSecurity \textbf{The Blockchain Imitation Game} {\footnotesize \textit{USENIX Security'23}} \\ {\footnotesize K Qin, S Chaliasos, \underline{L Zhou}, B Livshits, D Song, A Gervais.}
+\item \corerankingAA \tagPrivacy \textbf{On How Zero-Knowledge Proof Blockchain Mixers Improve, and Worsen User Privacy} {\footnotesize \textit{WWW'23}}\\ {\footnotesize Z Wang, S Chaliasos, K Qin, \underline{L Zhou}, L Gao, P Berrang, B Livshits, A Gervais}
+\item \corerankingAA \tagSecurity \textbf{Smart Contract and Defi Security Tools: Do They Meet the Needs of Practitioners?} {\footnotesize \textit{ICSE'24}}\\ {\footnotesize S Chaliasos, M Charalambous, \underline{L Zhou}, R Galanopoulou, A Gervais, D Mitropoulos, B Livshits.}
+\end{itemize}
+}
+
+\cvsection{Teaching}
+\begin{itemize}[leftmargin=*, nosep, topsep=0pt, itemsep=2pt, parsep=0pt]
+\item INFO5995: Introduction to Cybersecurity @ The University of Sydney \hfill \textit{2026 Semester 1}
+\item INFO2222: Computing 2 Usability and Security @ The University of Sydney \hfill \textit{2025 Semester 1}
+\end{itemize}
+
+\cvsection{Services}
+\begin{itemize}[leftmargin=*, nosep, topsep=0pt, itemsep=2pt, parsep=0pt]
+\item \textbf{Program Committee Co-Chair}
+\item ACM CCS Workshop on Decentralized Finance and Security \hfill 2024, 2025
+\item \textbf{Program Committee}
+\item \corerankingAA Usenix Security \hfill 2026
+\item \corerankingAA The ACM Conference on Computer and Communications Security (CCS) \hfill 2025, 2026
+\item \corerankingA Financial Cryptography and Data Security (FC) \hfill 2024, 2025, 2026
+\item The Science of Blockchain (Stanford) \hfill 2023, 2024, 2025, 2026
+\item The Latest in DeFi Research (TL;DR) \hfill 2024, 2025
+\item CESC Crypto Economics Security Conference (UC Berkeley) \hfill 2022
+\item ACM CCS Workshop on Decentralized Finance and Security \hfill 2021, 2022, 2023
+\Needspace{5\baselineskip}
+\item \textbf{Invited Reviewer}
+\item Transactions on Information Forensics \& Security \hfill 2023
+\item Financial Innovation \hfill 2021, 2022, 2023, 2024
+\item Transactions on Dependable and Secure Computing \hfill 2023
+\item \textbf{External Reviewer}
+\item \corerankingAA IEEE Symposium on Security and Privacy \hfill 2023
+\end{itemize}
+
+\cvsection{Awards and Grants}
+\begin{itemize}[leftmargin=*, nosep, topsep=0pt, itemsep=2pt, parsep=0pt]
+\item \href{https://rms.arc.gov.au/RMS/Report/Download/Report/a3f6be6e-33f7-4fb5-98a6-7526aaa184cf/285}{ARC DECRA Fellowship}, 527,178 AUD, Advancing AI for Software Exploit Generation \hfill \textit{Ongoing}, \textit{2026}
+\item \href{https://sui.io/research-awards}{Sui Academic Research Awards}, 25k USD \hfill \textit{Awarded}, \textit{2025}
+\item \href{https://www.innosuisse.ch/inno/en/home/promotion-of-national-projects/startup-innovationprojects/approved-start-up-innovation-projects.html}{Innosuisse Start-Up Innovation}, 703k CHF, AI-Enhanced Smart Contract Auditing \hfill \textit{Completed}, 2024
+\item \href{https://blog.ethereum.org/2025/01/17/academic-grants-recipients}{Ethereum Academic Grant 2024}, 55k USD, Training an EVM-native GPT \hfill \textit{Completed, 2024}
+\item \href{https://blog.ethereum.org/2023/06/28/academic-grants-round-23}{Ethereum Academic Grant 2023}, 72k USD, Blockchain Censorship DoS \hfill \textit{Completed}, 2023
+\item \href{https://blog.ethereum.org/2023/06/28/academic-grants-round-23}{Ethereum Academic Grant 2023}, 25k USD, Blockchain Censorship Measurement \hfill \textit{Completed}, 2023
+\end{itemize}
+
+\cvsection{Education}
+\begin{itemize}[leftmargin=*, nosep, topsep=0pt, itemsep=2pt, parsep=0pt]
+\item PhD in Computer Science \hfill Imperial College London, United Kingdom \textit{Oct 2019 -- Feb 2025}
+\item MRes in Web Science and Big Data Analytics \hfill University College London, United Kingdom \textit{Oct 2017 -- Sep 2018}
+\item MSci \& ARCS in Maths and Computer Science \hfill Imperial College London, United Kingdom \textit{Oct 2010 -- Sep 2014}
+\end{itemize}
+
+\cvsection{Other Experiences}
+\begin{itemize}
+\item Former Co-founder, Decentralized Intelligence AG (\href{https://d23e.ch}{D23E}) \hfill 2022--2026
+\end{itemize}
+
+\end{document}
