@@ -11,6 +11,7 @@
 % Package imports
 \usepackage{graphicx, hyphenat, hyperref, fancyhdr, ifthen, enumitem, amsmath, needspace}
 \usepackage{xspace}
+\usepackage{fontawesome5}
 
 % --- Page layout settings ---
 
@@ -80,6 +81,8 @@
 \newcommand{\tagSecurity}{\corebox{blue}{10}{ \footnotesize Security}\xspace}
 \newcommand{\tagPrivacy}{\corebox{green}{10}{ \footnotesize Privacy}\xspace}
 \newcommand{\tagAgentic}{\corebox{yellow}{20}{AI4Sec}\xspace}
+\newcommand{\tagReliability}{\corebox{Orange}{15}{ \footnotesize Reliability}\xspace}
+\newcommand{\paperlink}[1]{\href{#1}{\hspace{0.16em}\raisebox{-0.02ex}{\small\faIcon{external-link-alt}}}}
 
 % --- Document starts here ---
 
@@ -97,14 +100,24 @@
 
 \cvsection{Selected Publications}
 
+\cvsubsection{Security \& Reliability of AI Agents}
+
+{
+\small
+\begin{itemize}
+\item \tagReliability \textbf{Can Agent Benchmarks Support Their Scores?}\paperlink{https://arxiv.org/abs/2605.10448} {\footnotesize \textit{arXiv'26}} \\ {\footnotesize S Gao, \underline{L Zhou}.}
+\item \tagSecurity \tagReliability \textbf{When Agents Overtrust Environmental Evidence}\paperlink{https://arxiv.org/abs/2605.08828} {\footnotesize \textit{arXiv'26}} \\ {\footnotesize S Sheng, Z Wang, \underline{L Zhou}.}
+\end{itemize}
+}
+
 \cvsubsection{AI4Sec}
 
 {
 \small
 \begin{itemize}
-\item \tagAgentic \tagSecurity \textbf{EvoHunt}: \textbf{\href{https://arxiv.org/abs/2606.16420}{Transferable Self-Evolving Playbooks for Agentic Security Auditing}} {\footnotesize \textit{arXiv'26}} \\ {\footnotesize Z Wang, C W M Ng, C Yu, S Sheng, K Qin, \underline{L Zhou}.}
-\item \corerankingA \tagAgentic \tagSecurity \textbf{AI Agent Smart Contract Exploit Generation} {\footnotesize \textit{FC'26}} \\ {\footnotesize A Gervais, \underline{L Zhou}}
-\item \tagAgentic \tagSecurity \textbf{Agentic Discovery and Validation of Android App Vulnerabilities} \\ {\footnotesize Ziyue Wang, \underline{L Zhou}}
+\item \tagAgentic \tagSecurity \textbf{EvoHunt}: \textbf{Transferable Self-Evolving Playbooks for Agentic Security Auditing}\paperlink{https://arxiv.org/abs/2606.16420} {\footnotesize \textit{arXiv'26}} \\ {\footnotesize Z Wang, C W M Ng, C Yu, S Sheng, K Qin, \underline{L Zhou}.}
+\item \corerankingA \tagAgentic \tagSecurity \textbf{AI Agent Smart Contract Exploit Generation}\paperlink{https://arxiv.org/abs/2507.05558} {\footnotesize \textit{FC'26}} \\ {\footnotesize A Gervais, \underline{L Zhou}.}
+\item \tagAgentic \tagSecurity \textbf{Agentic Discovery and Validation of Android App Vulnerabilities}\paperlink{https://arxiv.org/abs/2508.21579} {\footnotesize \textit{arXiv'25}} \\ {\footnotesize Ziyue Wang, \underline{L Zhou}.}
 \end{itemize}
 }
 
@@ -113,15 +126,16 @@
 {
 \small
 \begin{itemize}
-\item \corerankingAA \tagSecurity \textbf{High-Frequency Trading on Decentralized On-Chain Exchanges} {\footnotesize \textit{IEEE SP'21}} \\ {\footnotesize \underline{L Zhou}, K Qin, C Torres, D Le, A Gervais.}
-\item \corerankingAA \tagSecurity \textbf{On the Just-In-Time Discovery of Profit-Generating Transactions in DeFi Protocols} {\footnotesize \textit{IEEE SP'21}}\\ {\footnotesize \underline{L Zhou}, K Qin, A Cully, B Livshits, A Gervais.}
-\item \corerankingAA \tagSecurity \textbf{Quantifying Blockchain Extractable Value: How dark is the forest?} {\footnotesize \textit{IEEE SP'22}}\\ {\footnotesize K Qin, \underline{L Zhou}, A Gervais.}
-\item \corerankingAA \tagSecurity \tagPrivacy \textbf{SoK: Decentralized Finance (DeFi) Attacks} {\footnotesize \textit{IEEE SP'23}} \\ {\footnotesize \underline{L Zhou}, X Xiong, J Ernstberger, S Chaliasos, Z Wang, Y Wang, K Qin, R Wattenhofer, D Song, A Gervais}
-\item \corerankingAA \tagSecurity \textbf{Blockchain Amplification Attack} {\footnotesize \textit{Sigmetrics '25}} \\ {\footnotesize T Tsuchiya, \underline{L Zhou}, K Qin, A Gervais, N Christin}
-\item \corerankingAA \tagSecurity \textbf{Speculative Denial-of-Service Attacks in Ethereum} {\footnotesize \textit{USENIX Security'24}}\\ {\footnotesize A Yaish, K Qin, \underline{L Zhou}, Aviv Zohar, A Gervais.}
-\item \corerankingAA \tagSecurity \textbf{The Blockchain Imitation Game} {\footnotesize \textit{USENIX Security'23}} \\ {\footnotesize K Qin, S Chaliasos, \underline{L Zhou}, B Livshits, D Song, A Gervais.}
-\item \corerankingAA \tagPrivacy \textbf{On How Zero-Knowledge Proof Blockchain Mixers Improve, and Worsen User Privacy} {\footnotesize \textit{WWW'23}}\\ {\footnotesize Z Wang, S Chaliasos, K Qin, \underline{L Zhou}, L Gao, P Berrang, B Livshits, A Gervais}
-\item \corerankingAA \tagSecurity \textbf{Smart Contract and Defi Security Tools: Do They Meet the Needs of Practitioners?} {\footnotesize \textit{ICSE'24}}\\ {\footnotesize S Chaliasos, M Charalambous, \underline{L Zhou}, R Galanopoulou, A Gervais, D Mitropoulos, B Livshits.}
+\item \corerankingAA \tagSecurity \tagPrivacy \textbf{Evasion Under Blockchain Sanctions}\paperlink{https://doi.org/10.1145/3774904.3792715} {\footnotesize \textit{WWW'26}} \\ {\footnotesize E Liu, M Ryan, \underline{L Zhou}, P Berrang.}
+\item \corerankingAA \tagSecurity \textbf{Blockchain Amplification Attack}\paperlink{https://doi.org/10.1145/3711697} {\footnotesize \textit{ACM SIGMETRICS'25}} \\ {\footnotesize T Tsuchiya, \underline{L Zhou}, K Qin, A Gervais, N Christin.}
+\item \corerankingAA \tagSecurity \textbf{Speculative Denial-of-Service Attacks in Ethereum}\paperlink{https://www.usenix.org/conference/usenixsecurity24/presentation/yaish} {\footnotesize \textit{USENIX Security'24}}\\ {\footnotesize A Yaish, K Qin, \underline{L Zhou}, Aviv Zohar, A Gervais.}
+\item \corerankingAA \tagSecurity \textbf{Smart Contract and DeFi Security Tools: Do They Meet the Needs of Practitioners?}\paperlink{https://arxiv.org/abs/2304.02981} {\footnotesize \textit{ICSE'24}}\\ {\footnotesize S Chaliasos, M Charalambous, \underline{L Zhou}, R Galanopoulou, A Gervais, D Mitropoulos, B Livshits.}
+\item \corerankingAA \tagSecurity \tagPrivacy \textbf{SoK: Decentralized Finance (DeFi) Attacks}\paperlink{https://arxiv.org/abs/2208.13035} {\footnotesize \textit{IEEE S\&P'23}} \\ {\footnotesize \underline{L Zhou}, X Xiong, J Ernstberger, S Chaliasos, Z Wang, Y Wang, K Qin, R Wattenhofer, D Song, A Gervais.}
+\item \corerankingAA \tagSecurity \textbf{The Blockchain Imitation Game}\paperlink{https://www.usenix.org/conference/usenixsecurity23/presentation/qin} {\footnotesize \textit{USENIX Security'23}} \\ {\footnotesize K Qin, S Chaliasos, \underline{L Zhou}, B Livshits, D Song, A Gervais.}
+\item \corerankingAA \tagPrivacy \textbf{On How Zero-Knowledge Proof Blockchain Mixers Improve, and Worsen User Privacy}\paperlink{https://arxiv.org/abs/2201.09035} {\footnotesize \textit{WWW'23}}\\ {\footnotesize Z Wang, S Chaliasos, K Qin, \underline{L Zhou}, L Gao, P Berrang, B Livshits, A Gervais.}
+\item \corerankingAA \tagSecurity \textbf{Quantifying Blockchain Extractable Value: How dark is the forest?}\paperlink{https://arxiv.org/abs/2101.05511} {\footnotesize \textit{IEEE S\&P'22}}\\ {\footnotesize K Qin, \underline{L Zhou}, A Gervais.}
+\item \corerankingAA \tagSecurity \textbf{High-Frequency Trading on Decentralized On-Chain Exchanges}\paperlink{https://arxiv.org/abs/2009.14021} {\footnotesize \textit{IEEE S\&P'21}} \\ {\footnotesize \underline{L Zhou}, K Qin, C Torres, D Le, A Gervais.}
+\item \corerankingAA \tagSecurity \textbf{On the Just-In-Time Discovery of Profit-Generating Transactions in DeFi Protocols}\paperlink{https://arxiv.org/abs/2103.02228} {\footnotesize \textit{IEEE S\&P'21}}\\ {\footnotesize \underline{L Zhou}, K Qin, A Cully, B Livshits, A Gervais.}
 \end{itemize}
 }
 
@@ -133,13 +147,14 @@
 
 \cvsection{Services}
 \begin{itemize}[leftmargin=*, nosep, topsep=0pt, itemsep=2pt, parsep=0pt]
-\item \textbf{Program Committee Co-Chair}
+\item \textbf{Program Chair / Program Committee Co-Chair}
+\item Web3 Scholars Conference \hfill 2026
 \item ACM CCS Workshop on Decentralized Finance and Security \hfill 2024, 2025
 \Needspace{16\baselineskip}
 \item \textbf{Program Committee}
-\item \corerankingAA Usenix Security \hfill 2026
+\item \corerankingAA USENIX Security \hfill 2026
 \item \corerankingAA The ACM Conference on Computer and Communications Security (CCS) \hfill 2025, 2026
-\item \corerankingA Financial Cryptography and Data Security (FC) \hfill 2024, 2025, 2026
+\item \corerankingA Financial Cryptography and Data Security (FC) \hfill 2024, 2025, 2026, 2027
 \item The Science of Blockchain (Stanford) \hfill 2023, 2024, 2025, 2026
 \item The Latest in DeFi Research (TL;DR) \hfill 2024, 2025
 \item CESC Crypto Economics Security Conference (UC Berkeley) \hfill 2022

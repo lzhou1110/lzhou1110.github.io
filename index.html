@@ -679,7 +679,7 @@
   </div>
   <script id="research-fit-prompt" type="text/plain">
 RESEARCH FIT INTERVIEW
-PROMPT VERSION: RFI-v1.0
+PROMPT VERSION: RFI-v1.2
 
 Preserve this exact version identifier in every final deliverable. Do not shorten, translate, or alter it.
 
@@ -693,10 +693,10 @@ I may be considering one of four routes:
 - USyd Thesis
 - PhD trial
 
-These routes differ in formal eligibility, credit points, duration, team or individual structure, expected contribution, and deliverables. The interview standard does not change: all four gates test the same long-term research potential and fit. Do not lower the intellectual, ownership, honesty, or working-style bar for a shorter or less research-intensive route. At the same time, do not confuse one standard with one project size: judge my reasoning and trajectory relative to my current stage and opportunities, rather than requiring a Capstone or Research Pathway applicant to have already produced PhD-level work.
+These routes differ in formal eligibility, credit points, duration, team or individual structure, expected contribution, and deliverables. The gates test both route readiness and long-term research potential and fit. Do not lower the intellectual, ownership, honesty, or working-style bar for a shorter or less research-intensive route. At the same time, do not confuse one standard with one project size: judge my reasoning and trajectory relative to my current stage and opportunities, rather than requiring a Capstone or Research Pathway applicant to have already produced PhD-level work.
 
-Before Gate 1, briefly explain the practical difficulty of the selected route. Use this orientation, while requiring me to verify the exact current rules for my degree and unit:
-- A USyd Capstone is normally a bounded, semester-scale research or design project. The project still requires systematic investigation, relation to existing work, disciplined execution, evaluation, and communication, but a significant contribution to new knowledge may not be required. Ask for my exact unit code and whether the project is group-based or individual; examples in the Master of Computer Science include COMP5703, COMP5707/COMP5708, and COMP5709.
+Before Gate 0, briefly explain the practical difficulty of the selected route. Use this orientation, while requiring me to verify the exact current rules for my degree and unit:
+- A USyd Capstone is normally a bounded, semester-scale research or design project. The project still requires systematic investigation, relation to existing work, disciplined execution, evaluation, and communication, but a significant contribution to new knowledge may not be required. Ask for my exact degree and unit code and whether the project is group-based or individual. Examples include COMP5703, COMP5707/COMP5708, and COMP5709 in the Master of Computer Science, and DATA5709 in the Master of Data Science. Some individual Capstones require a student to meet a WAM threshold, obtain departmental or coordinator permission, and source a project and supervisor before enrolment. Do not assume these requirements are current or universal: require me to verify the current official rules for my exact unit.
 - A USyd Research Pathway is a larger and more explicitly research-focused commitment, normally combining research-methods training with a sustained project. It demands more time for literature, iteration, uncertainty, and independent research judgment.
 - A USyd Thesis normally requires an extended supervised project, an original contribution appropriate to the degree, rigorous evaluation, and substantial academic writing. Ask for the exact thesis units and official requirements.
 - A PhD trial is a short, high-uncertainty test of PhD-style research behaviour. Its scope is smaller than a PhD, but the expectation of initiative, intellectual independence, resilience, and honest reasoning is especially strong.
@@ -711,9 +711,41 @@ Do not continue to the research-fit assessment until my goal is concrete. If I m
 
 First, ask me to study Liyi's About Me and Students pages at https://lzhou1110.github.io. Then interview me one question at a time. Adapt each question to my previous answer. Do not silently improve weak answers for me: identify the weakness and make me think again.
 
-Use four gates. Grade each PASS, BORDERLINE, or STOP. For BORDERLINE, ask at most two additional challenge questions. If the evidence remains weak, change it to STOP. A STOP ends the application path: explain what I need to learn or do, and do not generate an email.
+Use six gates, numbered 0 through 5. Grade each PASS, BORDERLINE, or STOP. Gate 0 is a hard feasibility gate: do not trade a failed formal requirement or impossible commitment against strength elsewhere. For BORDERLINE, ask at most two additional challenge questions. If the evidence remains weak, change it to STOP. A STOP ends the application path: explain what I need to learn or do, and do not generate an email.
 
-GATE 1 — UNDERSTANDING LIYI
+GATE 0 — ROUTE, ELIGIBILITY, AND COMMITMENT
+
+Require me to identify my exact route, degree, unit code if applicable, intended start year and semester, and the current official source for its requirements. Verify, where applicable:
+- formal eligibility, prerequisites, WAM threshold, permission or coordinator approval, and relevant deadlines;
+- whether the project is individual or group-based and whether I must source a project or supervisor before enrolment;
+- expected duration, credit points, deliverables, and realistic total and weekly workload; and
+- whether I can actually protect that time alongside employment, coursework, travel, and other commitments.
+
+For a Capstone or Thesis, do not accept "the course team said so" or my confidence that I am eligible as sufficient evidence when current official rules can be checked. Ask for the official unit page, handbook entry, coordinator instructions, or equivalent current evidence. Do not request unnecessary sensitive documents, but ask me to state the relevant result or requirement and how I verified it.
+
+STOP if I am ineligible, cannot verify a material requirement, have missed a non-recoverable deadline, cannot make the required time commitment, or expect the supervisor to solve an administrative constraint. If the rule is genuinely unclear or unpublished, record it as an external dependency and require me to confirm it with the responsible coordinator before contacting Liyi.
+
+GATE 1 — PROJECT SUBSTANCE AND FEASIBILITY
+
+Require me to propose my own project direction before giving substantive ideas. Ask me to explain:
+- the problem or decision the project addresses, for whom, and why it matters;
+- the research question or design objective in one sentence;
+- the closest academic work and standard approaches, including their assumptions, evidence, and limitations; and, for a design-, product-, or system-led project, the closest existing products and open-source systems;
+- the data, tools, APIs, participants, or other inputs required, and whether access, privacy, ethics, licensing, and terms-of-service constraints are understood;
+- the strongest baseline, evaluation metrics, failure analysis, and what evidence would change my mind;
+- the smallest useful artifact or feasibility result I can produce in the first two weeks;
+- the semester-scale or route-appropriate milestones, main risks, fallback scope, and stopping criteria; and
+- the expected compute, equipment, funding, and other resources, including what I can access without assuming Liyi has a large dedicated GPU pool.
+
+Match the prior-art investigation to the project type:
+- For a research-led project, require a deep understanding of the relevant academic literature, its assumptions, the strongest competing explanations, what is genuinely unknown, and why resolving it would matter. Investigating related products and systems is good to have when it could change the motivation, baseline, feasibility, or impact, but it is not an automatic hard requirement for theoretical, methodological, or otherwise research-led work.
+- For a design-, product-, or system-led project, require a serious product and system landscape review as well as relevant academic literature. Ask me to identify at least three to five close products, open-source systems, or standard solutions; directly examine the strongest one or two where feasible; compare target users, workflows, data, claimed capabilities, evidence, and failure modes; and explain what important problem remains. Do not require market sizing or a business plan.
+
+Judge this gate relative to the route. A Capstone need not make a significant contribution to new knowledge, but it must contain a non-trivial, assessable data-science or computing problem and systematic evaluation; wrapping an LLM around a generic product idea is not enough. Research Pathway, Thesis, and PhD-trial proposals require progressively stronger research claims and evidence, while remaining realistically scoped. In every route, require a credible account of why the work would be meaningful: it must either produce defensible new understanding or create a non-trivially useful design whose value is demonstrated against serious alternatives.
+
+Assess my unaided problem formulation before offering solutions. STOP if the proposal is only a broad application label, if I cannot distinguish the underlying problem from the interface or agent workflow, if there is no credible path to data and evaluation, if a critical resource dependency is unresolved, if the scope is not recoverable within the route, or if I expect Liyi to supply the question and every next step.
+
+GATE 2 — UNDERSTANDING LIYI
 
 Ask me to explain, in my own words:
 - what problems currently interest Liyi;
@@ -724,7 +756,7 @@ Ask me to explain, in my own words:
 
 STOP if my description could apply to any AI or security researcher, if I merely repeat the website, or if I focus mainly on rankings, funding, reputation, immigration, or obtaining a position.
 
-GATE 2 — UNDERSTANDING RESEARCH
+GATE 3 — UNDERSTANDING RESEARCH
 
 Test whether I can distinguish research from coursework, implementing an existing idea, reproducing a paper, building a large system without a clear claim, or collecting benchmark results without knowing what they prove.
 
@@ -732,7 +764,7 @@ Require me to state a research question, a non-obvious claim, and evidence that 
 
 STOP if I expect a supervisor to provide the question and every next step, confuse engineering effort with a research contribution, or cannot explain what would make my claim wrong.
 
-GATE 3 — TOP-TIER RESEARCH TASTE
+GATE 4 — TOP-TIER RESEARCH TASTE
 
 Top-tier research taste is the common long-term target for every route. This gate does not require that my current idea is already top-tier or publishable. It tests whether I can reason toward that standard: identify what matters, distinguish a real contribution from activity, respond intelligently to criticism, revise without overclaiming, and recognise what evidence is still missing.
 
@@ -760,7 +792,7 @@ Ask how I would decide whether to revise, resubmit, change the framing, run more
 
 STOP if I treat acceptance as the only evidence of research value, expect a supervisor to guarantee publication, become dismissive of others' accepted work, or cannot continue thinking clearly after repeated rejection.
 
-GATE 4 — WORKING-STYLE FIT
+GATE 5 — WORKING-STYLE FIT
 
 Begin with an exceptional-achievement depth test. Ask for the single most outstanding thing I have done. It need not be academic, but it must be something I personally helped push to an unusually high standard.
 
@@ -803,7 +835,7 @@ Choose exactly one:
 3. Possible fit, but complete the preparation plan first.
 4. Contact Liyi.
 
-Choose Contact Liyi only if all four gates receive PASS. When evidence is mixed, prefer not to recommend contact.
+Choose Contact Liyi only if all six gates receive PASS. When evidence is mixed, prefer not to recommend contact.
 
 For recommendations 1–3, give me a concrete preparation plan and explicitly tell me not to send an application email yet.
 
@@ -815,7 +847,7 @@ Create the Research Fit Brief as an actual, separately attached, polished PDF fi
 
 If my full name or intended project start year is not yet known, ask for it before creating the file. If your environment cannot create and attach a real PDF, state that limitation explicitly and provide a clearly labelled PDF-ready brief instead; do not claim that a PDF was generated.
 
-Display PROMPT VERSION: RFI-v1.0 prominently near the beginning of the PDF. Include the route considered, intended project start year, concise background, three achievements and personal contributions, understanding of Liyi's work, understanding of research, research-taste assessment, strongest evidence of fit, concerns, a route-appropriate plan, confidence, and what could change the assessment.
+Display PROMPT VERSION: RFI-v1.2 prominently near the beginning of the PDF. Include the route considered, intended project start year, verified eligibility and constraints, concise background, three achievements and personal contributions, understanding of Liyi's work, understanding of research, research-taste assessment, project-feasibility assessment, strongest evidence of fit, concerns, a route-appropriate plan, confidence, and what could change the assessment.
 
 For a Capstone, identify the exact unit and official constraints, then propose a semester-scale, tightly bounded research or design project with a concrete deliverable, relation to existing work, systematic evaluation, risk controls, and an early feasibility milestone. Do not imply that a significant contribution to new knowledge is required, or claim that the direction is novel or feasible without evidence. For a Research Pathway, propose a tightly scoped first research experience. For a Thesis, propose a thesis-scale direction and an early viability milestone. For a PhD trial, propose a roughly three-month project with a question, expected contribution, early falsification test, and milestones for weeks 1, 4, and 12.
 
@@ -824,7 +856,7 @@ B. FINAL EMAIL IN THE CHAT
 Present the email as text in the chat, separate from the PDF. Keep it under 120 words.
 
 Subject:
-[Canonical Route YYYY] [RFI-v1.0] | [Full Name]
+[Canonical Route YYYY] [RFI-v1.2] | [Full Name]
 
 The subject must begin with one of these canonical searchable prefix formats, using my actual four-digit project start year and with no text before it:
 - [Capstone YYYY]
@@ -832,11 +864,11 @@ The subject must begin with one of these canonical searchable prefix formats, us
 - [Thesis YYYY]
 - [PhD Trial YYYY]
 
-Then add [RFI-v1.0] | [Full Name]. For example:
-[Research Pathway 2027] [RFI-v1.0] | Jane Smith
+Then add [RFI-v1.2] | [Full Name]. For example:
+[Research Pathway 2027] [RFI-v1.2] | Jane Smith
 
 Required opening:
-I completed your research-fit interview using [agent] with prompt RFI-v1.0. Its recommendation was: Contact Liyi.
+I completed your research-fit interview using [agent] with prompt RFI-v1.2. Its recommendation was: Contact Liyi.
 
 Then include only:
 - one Liyi project I studied and why it interests me;
@@ -845,7 +877,7 @@ Then include only:
 - my intended route and biggest fit risk.
 
 End with exactly:
-FIT TRACE: RFI-v1.0 | [route] | [start year] | [project] | [research claim] | [fit risk]
+FIT TRACE: RFI-v1.2 | [route] | [start year] | [project] | [research claim] | [fit risk]
 
 Every field must come from our conversation. Do not use generic statements of passion. Before finishing, confirm the searchable subject prefix, prompt version, PDF filename, that the PDF was rendered and verified, and that the email is under 120 words. Tell me to send the short email and attach the Research Fit Brief PDF separately.
   </script>
@@ -878,7 +910,7 @@ Every field must come from our conversation. Do not use generic statements of pa
           'What interests me most now is how to make AI complete tasks reliably and generate new knowledge, far beyond security. I believe AI will fully replace researchers in the near future, and that the mission of our generation is to make it happen.',
           '',
           'Links',
-          '[CV](https://lzhou1110.github.io/CV_Liyi_Zhou.pdf?v=20260723-d23e) · [Google Scholar](https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en) · [Bluesky](https://bsky.app/profile/lzhou1110.bsky.social) · [X](https://twitter.com/lzhou1110)',
+          '[CV](https://lzhou1110.github.io/CV_Liyi_Zhou.pdf) · [Google Scholar](https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en) · [Bluesky](https://bsky.app/profile/lzhou1110.bsky.social) · [X](https://twitter.com/lzhou1110)',
           '',
           'Media coverage',
           '- 2026 — [EvoHunt outperformed OpenAI\'s Codex Security — Help Net Security](https://www.helpnetsecurity.com/2026/06/23/codex-security-ai-security-auditing/)',
@@ -1227,7 +1259,7 @@ Every field must come from our conversation. Do not use generic statements of pa
           '<div class="simple-line">The interview begins by asking what you actually want: a USyd Capstone, a USyd Research Pathway, a USyd Thesis, a PhD trial, or help deciding.<\/div>' +
           '<div class="simple-space"><\/div>' +
           '<div class="simple-line">The interview is intentionally demanding. It may convince you not to contact me, or not to pursue research at all. That is a useful outcome.<\/div>' +
-          '<div class="simple-line"><strong>Prompt version:<\/strong> RFI-v1.0</div>' +
+          '<div class="simple-line"><strong>Prompt version:<\/strong> RFI-v1.2</div>' +
           '<button class="copy-prompt-button" type="button" data-copy-prompt>Copy research-fit prompt<\/button>' +
           '<span class="copy-status" data-copy-status aria-live="polite"><\/span>' +
           '<div class="simple-space"><\/div>' +
