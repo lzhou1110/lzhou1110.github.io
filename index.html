@@ -610,21 +610,43 @@
     }
 
     .copy-prompt-button {
-      margin-top: 14px;
-      padding: 9px 13px;
-      border: 1px solid #cbd5cf;
-      border-radius: 8px;
-      background: #f7faf8;
-      color: var(--accent);
+      min-height: 40px;
+      margin-top: 16px;
+      padding: 9px 16px;
+      appearance: none;
+      border: 1px solid #b9cbc1;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ffffff 0%, #f1f6f3 100%);
+      color: #214d3c;
       font: inherit;
+      font-size: 14px;
       font-weight: 650;
+      letter-spacing: 0.005em;
       cursor: pointer;
-      transition: background 160ms ease, border-color 160ms ease;
+      box-shadow:
+        0 1px 1px rgba(31, 65, 50, 0.05),
+        0 5px 14px rgba(31, 65, 50, 0.08);
+      transition:
+        color 160ms ease,
+        background 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        transform 160ms ease;
     }
 
     .copy-prompt-button:hover {
-      border-color: #9fb5aa;
-      background: #eff5f1;
+      border-color: #8fab9d;
+      background: linear-gradient(180deg, #ffffff 0%, #e8f1ec 100%);
+      color: #153f31;
+      box-shadow:
+        0 2px 2px rgba(31, 65, 50, 0.06),
+        0 8px 20px rgba(31, 65, 50, 0.11);
+      transform: translateY(-1px);
+    }
+
+    .copy-prompt-button:active {
+      box-shadow: 0 2px 7px rgba(31, 65, 50, 0.09);
+      transform: translateY(0);
     }
 
     .copy-prompt-button:focus-visible {
@@ -648,6 +670,185 @@
 
       .timeline-item {
         grid-template-columns: 72px 1fr;
+      }
+    }
+
+    /* Subtle visual polish without changing the page structure. */
+    body {
+      background:
+        radial-gradient(circle at 50% -120px, #e8f0eb 0, transparent 460px),
+        #f5f7f5;
+    }
+
+    ::selection {
+      background: #d7e7dd;
+      color: #173c2f;
+    }
+
+    .wrap {
+      max-width: 740px;
+      padding-top: 48px;
+    }
+
+    .head img {
+      width: 138px;
+      height: 138px;
+      margin-bottom: 18px;
+      border: 4px solid rgba(255, 255, 255, 0.88);
+      border-radius: 20px;
+      box-shadow: 0 12px 34px rgba(31, 58, 47, 0.14);
+    }
+
+    h1 {
+      color: #17231e;
+      font-size: 34px;
+      font-weight: 670;
+    }
+
+    .tag {
+      max-width: 560px;
+      margin-right: auto;
+      margin-left: auto;
+      color: #5d6862;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .links {
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .links a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #4d5953;
+      transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .links a:hover {
+      background: #e8efea;
+      color: var(--accent);
+    }
+
+    .links a[data-target]::after {
+      display: none;
+    }
+
+    .links a[data-target].active {
+      background: #dfeae3;
+      box-shadow: inset 0 0 0 1px rgba(39, 92, 73, 0.12);
+    }
+
+    .content-panel {
+      position: relative;
+      overflow: hidden;
+      margin-top: 28px;
+      padding: 30px 34px 34px;
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #dce4df;
+      border-radius: 16px;
+      box-shadow: 0 18px 50px rgba(35, 55, 46, 0.08);
+    }
+
+    .content-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 30px;
+      left: 30px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #84a897, transparent);
+      opacity: 0.72;
+    }
+
+    .simple-content {
+      color: #35413b;
+      font-size: 15.5px;
+      line-height: 1.7;
+    }
+
+    .simple-title {
+      margin-bottom: 14px;
+      padding-bottom: 11px;
+      color: #17231e;
+      font-size: 19px;
+      border-bottom: 1px solid #e3e9e5;
+    }
+
+    .simple-title + .simple-line,
+    .simple-title + .simple-space + .simple-line {
+      color: #26342d;
+      font-size: 15.5px;
+      font-weight: 400;
+      line-height: 1.65;
+    }
+
+    .simple-line {
+      margin: 5px 0;
+    }
+
+    .simple-heading {
+      margin: 24px 0 9px;
+      padding-bottom: 6px;
+      color: #234f3f;
+      font-size: 16.5px;
+      font-weight: 700;
+      letter-spacing: 0.015em;
+      border-bottom: 1px solid #e3e9e5;
+    }
+
+    .simple-student-name {
+      margin-top: 14px;
+      font-size: 15.5px;
+      font-weight: 650;
+    }
+
+    .simple-heading + .simple-student-name {
+      margin-top: 10px;
+    }
+
+    .simple-student-name a {
+      font-weight: 650;
+    }
+
+    .content-panel a {
+      font-weight: 520;
+      text-decoration-thickness: 1px;
+      transition: color 150ms ease, text-decoration-color 150ms ease;
+    }
+
+    .content-panel a:hover {
+      color: #153f31;
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 32px 15px 52px;
+      }
+
+      .head img {
+        width: 118px;
+        height: 118px;
+        border-radius: 18px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .tag {
+        font-size: 14px;
+      }
+
+      .links a {
+        padding: 7px 10px;
+      }
+
+      .content-panel {
+        margin-top: 22px;
+        padding: 24px 21px 27px;
+        border-radius: 14px;
       }
     }
 
@@ -903,7 +1104,7 @@ Every field must come from our conversation. Do not use generic statements of pa
           '',
           'I have tried a few different paths, but research is still what I enjoy most.',
           '',
-          'As a child, I loved the satisfaction that came from solving mathematics problems. Looking back, it was one of the earliest signs of my love for problem-solving. My earliest research came through my computer science theses at Imperial (2014) and UCL (2018). From October 2019 to February 2025, I worked mainly on blockchain with my supervisor, [Arthur Gervais](https://arthurgervais.com), and my collaborator, [Kaihua Qin](https://qin.ac). I was incredibly fortunate to have Arthur as my supervisor. Working with Arthur and Kaihua was when I truly began to take research seriously.',
+          'As a child, I loved the satisfaction that came from solving mathematics problems. Looking back, it was one of the earliest signs of my love for problem-solving. My earliest research came through my computer science theses at Imperial (2014) and UCL (2018). During my PhD, from October 2019 to February 2025, I worked mainly on blockchain with my supervisor, [Arthur Gervais](https://arthurgervais.com), and my collaborator, [Kaihua Qin](https://qin.ac). I was incredibly fortunate to have Arthur as my supervisor. Working with Arthur and Kaihua was when I truly began to take research seriously.',
           '',
           'I am now at the University of Sydney, where I supervise students in their research and teach [INFO5995](https://info5995.github.io/Leaderboard/). I reflected on the course in a [LinkedIn article](https://www.linkedin.com/pulse/can-ai-help-train-next-generation-australian-bug-hunters-liyi-zhou-r4m2c). I still try to stay hands-on and contribute directly to research.',
           '',
