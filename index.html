@@ -4,9 +4,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Liyi Zhou</title>
-  <meta name="description" content="Liyi Zhou — Computer Science Lecturer at the University of Sydney." />
-  <link rel="preload" as="image" href="me.png" />
+  <title>Liyi Zhou | AI Agent Security &amp; Reliability</title>
+  <meta name="description" content="Liyi Zhou is a University of Sydney lecturer and ARC DECRA Fellow researching secure and reliable AI agents, vulnerability discovery, and trustworthy evaluation." />
+  <meta name="author" content="Liyi Zhou" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://lzhou1110.github.io/" />
+  <link rel="alternate" type="text/plain" href="https://lzhou1110.github.io/llms.txt" title="LLM-readable profile" />
+  <link rel="icon" href="me.jpg" type="image/jpeg" />
+  <link rel="preload" as="image" href="me.jpg" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="Liyi Zhou" />
+  <meta property="og:title" content="Liyi Zhou | AI Agent Security &amp; Reliability" />
+  <meta property="og:description" content="Computer Science Lecturer and ARC DECRA Fellow at the University of Sydney, researching secure and reliable AI agents." />
+  <meta property="og:url" content="https://lzhou1110.github.io/" />
+  <meta property="og:image" content="https://lzhou1110.github.io/me.jpg" />
+  <meta property="og:image:alt" content="Portrait of Liyi Zhou" />
+  <meta property="profile:first_name" content="Liyi" />
+  <meta property="profile:last_name" content="Zhou" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Liyi Zhou | AI Agent Security &amp; Reliability" />
+  <meta name="twitter:description" content="Computer Science Lecturer and ARC DECRA Fellow researching secure and reliable AI agents." />
+  <meta name="twitter:image" content="https://lzhou1110.github.io/me.jpg" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": "https://lzhou1110.github.io/#profile",
+      "url": "https://lzhou1110.github.io/",
+      "name": "Liyi Zhou | AI Agent Security & Reliability",
+      "description": "Official academic profile of Liyi Zhou, a Computer Science Lecturer and ARC DECRA Fellow researching the security and reliability of AI agents.",
+      "dateModified": "2026-08-01",
+      "hasPart": [
+        { "@id": "https://lzhou1110.github.io/students/#page" },
+        { "@id": "https://lzhou1110.github.io/hiring/#page" }
+      ],
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://lzhou1110.github.io/#liyi-zhou",
+        "name": "Liyi Zhou",
+        "givenName": "Liyi",
+        "familyName": "Zhou",
+        "url": "https://lzhou1110.github.io/",
+        "image": "https://lzhou1110.github.io/me.jpg",
+        "jobTitle": "Computer Science Lecturer",
+        "description": "ARC DECRA Fellow at the University of Sydney researching secure and reliable AI agents, agentic vulnerability discovery, and trustworthy evaluation.",
+        "award": "Australian Research Council Discovery Early Career Researcher Award (DECRA)",
+        "worksFor": {
+          "@type": "CollegeOrUniversity",
+          "name": "The University of Sydney",
+          "url": "https://www.sydney.edu.au/"
+        },
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Imperial College London",
+            "url": "https://www.imperial.ac.uk/"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "University College London",
+            "url": "https://www.ucl.ac.uk/"
+          }
+        ],
+        "knowsAbout": [
+          "Security and reliability of AI agents",
+          "Agentic vulnerability discovery and validation",
+          "Trustworthy evidence for AI agents",
+          "AI for security",
+          "Blockchain security"
+        ],
+        "sameAs": [
+          "https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en",
+          "https://orcid.org/0000-0002-2820-9872",
+          "https://au.linkedin.com/in/liyi-zhou-a64731111",
+          "https://bsky.app/profile/lzhou1110.bsky.social",
+          "https://twitter.com/lzhou1110"
+        ]
+      }
+    }
+  </script>
   <style>
     :root {
       --ink: #171918;
@@ -768,11 +847,15 @@
       line-height: 1.7;
     }
 
-    .simple-title {
-      margin-bottom: 14px;
+    .content-panel h2.simple-title {
+      margin: 0 0 14px;
       padding-bottom: 11px;
       color: #17231e;
+      font-family: inherit;
       font-size: 19px;
+      font-weight: 650;
+      line-height: inherit;
+      letter-spacing: normal;
       border-bottom: 1px solid #e3e9e5;
     }
 
@@ -788,20 +871,23 @@
       margin: 5px 0;
     }
 
-    .simple-heading {
+    .content-panel h3.simple-heading {
       margin: 24px 0 9px;
       padding-bottom: 6px;
       color: #234f3f;
       font-size: 16.5px;
       font-weight: 700;
+      line-height: inherit;
       letter-spacing: 0.015em;
+      text-transform: none;
       border-bottom: 1px solid #e3e9e5;
     }
 
-    .simple-student-name {
-      margin-top: 14px;
+    .content-panel h4.simple-student-name {
+      margin: 14px 0 0;
       font-size: 15.5px;
       font-weight: 650;
+      line-height: inherit;
     }
 
     .simple-heading + .simple-student-name {
@@ -864,18 +950,44 @@
 
 <body>
   <div class="wrap">
-    <div class="head">
-      <img src="me.png" alt="Liyi Zhou" loading="eager" decoding="async" class="blur" />
+    <header class="head">
+      <img src="me.jpg" alt="Liyi Zhou" width="132" height="132" loading="eager" decoding="async" class="blur" />
       <h1>Liyi Zhou</h1>
-      <p class="tag">Computer Science Lecturer at the University of Sydney</p>
-      <p class="links">
+      <p class="tag">CS Lecturer at USyd; ARC DECRA Fellow;<br />Practical Researcher; Advancing AI in Security and Beyond</p>
+      <nav class="links" aria-label="Primary navigation">
         <a href="#about" data-target="about">About Me</a>
-        <a href="#students" data-target="students">Students</a>
-        <a href="#hiring" data-target="hiring">Hiring</a>
-      </p>
-    </div>
+        <a href="students/" data-target="students">Students</a>
+        <a href="hiring/" data-target="hiring">Hiring</a>
+      </nav>
+    </header>
     <div class="body">
-      <main id="content-panel" class="content-panel" aria-live="polite" hidden></main>
+      <main id="content-panel" class="content-panel" aria-live="polite">
+        <div class="simple-content">
+          <h2 class="simple-title">About Me</h2>
+          <div class="simple-space"></div>
+          <div class="simple-line">I have tried a few different paths, but research is still what I enjoy most.</div>
+          <div class="simple-space"></div>
+          <div class="simple-line">As a child, I loved the satisfaction that came from solving mathematics problems. Looking back, it was one of the earliest signs of my love for problem-solving. My earliest research came through my computer science theses at Imperial (2014) and UCL (2018). During my PhD, from October 2019 to February 2025, I worked mainly on blockchain with my supervisor, <a href="https://arthurgervais.com" target="_blank" rel="noopener">Arthur Gervais</a>, and my collaborator, <a href="https://qin.ac" target="_blank" rel="noopener">Kaihua Qin</a>. I was incredibly fortunate to have Arthur as my supervisor. Working with Arthur and Kaihua was when I truly began to take research seriously.</div>
+          <div class="simple-space"></div>
+          <div class="simple-line">I am now at the University of Sydney, where I supervise students in their research and teach <a href="https://info5995.github.io/Leaderboard/" target="_blank" rel="noopener">INFO5995</a>. I reflected on the course in a <a href="https://www.linkedin.com/pulse/can-ai-help-train-next-generation-australian-bug-hunters-liyi-zhou-r4m2c" target="_blank" rel="noopener">LinkedIn article</a>. I still try to stay hands-on and contribute directly to research.</div>
+          <div class="simple-space"></div>
+          <div class="simple-line">I study the security and reliability of AI agents. My current work asks how agents can discover and validate real vulnerabilities, learn reusable knowledge through experience, and make decisions grounded in trustworthy evidence. More broadly, I am interested in agentic systems that can generate and validate new knowledge beyond security. I believe AI will fully replace researchers in the near future, and that the mission of our generation is to make it happen.</div>
+          <div class="simple-space"></div>
+          <h3 class="simple-heading">Links</h3>
+          <div class="simple-line"><a href="https://lzhou1110.github.io/CV_Liyi_Zhou.pdf" target="_blank" rel="noopener">CV</a> · <a href="https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a> · <a href="https://orcid.org/0000-0002-2820-9872" target="_blank" rel="noopener">ORCID</a> · <a href="https://bsky.app/profile/lzhou1110.bsky.social" target="_blank" rel="noopener">Bluesky</a> · <a href="https://twitter.com/lzhou1110" target="_blank" rel="noopener">X</a></div>
+          <div class="simple-space"></div>
+          <h3 class="simple-heading">Media coverage</h3>
+          <div class="simple-line">• 2026 — <a href="https://www.helpnetsecurity.com/2026/06/23/codex-security-ai-security-auditing/" target="_blank" rel="noopener">EvoHunt outperformed OpenAI's Codex Security — Help Net Security</a></div>
+          <div class="simple-line">• 2025 — <a href="https://www.anthropic.com/research/smart-contracts" target="_blank" rel="noopener">AI agents find smart contract exploits — Anthropic</a></div>
+          <div class="simple-line">• 2025 — <a href="https://www.securityweek.com/academics-build-ai-powered-android-vulnerability-discovery-and-validation-tool/" target="_blank" rel="noopener">A2: AI-powered Android vulnerability discovery — SecurityWeek</a></div>
+          <div class="simple-line">• 2025 — <a href="https://www.theregister.com/2025/09/04/boffins_build_automated_android_bug_hunting/" target="_blank" rel="noopener">A2 found more than 100 Android zero-days — The Register</a></div>
+          <div class="simple-line">• 2025 — <a href="https://www.bankinfosecurity.com/ai-agents-hack-smart-contracts-on-autopilot-a-29104" target="_blank" rel="noopener">A1: AI agents hack smart contracts on autopilot — BankInfoSecurity</a></div>
+          <div class="simple-line">• 2025 — <a href="https://www.theregister.com/2025/07/10/ai_agents_automatically_steal_cryptocurrency/" target="_blank" rel="noopener">A1: AI agents automatically steal cryptocurrency — The Register</a></div>
+          <div class="simple-space"></div>
+          <h3 class="simple-heading">Email</h3>
+          <div class="simple-line">• lzhou1110 (at) gmail (dot) com — use this for all contact except USyd-internal matters; Gmail is preferred because it works better with agent-assisted communication</div>
+        </div>
+      </main>
     </div>
   </div>
   <script id="research-fit-prompt" type="text/plain">
@@ -1111,7 +1223,7 @@ Every field must come from our conversation. Do not use generic statements of pa
           'I study the security and reliability of AI agents. My current work asks how agents can discover and validate real vulnerabilities, learn reusable knowledge through experience, and make decisions grounded in trustworthy evidence. More broadly, I am interested in agentic systems that can generate and validate new knowledge beyond security. I believe AI will fully replace researchers in the near future, and that the mission of our generation is to make it happen.',
           '',
           'Links',
-          '[CV](https://lzhou1110.github.io/CV_Liyi_Zhou.pdf) · [Google Scholar](https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en) · [Bluesky](https://bsky.app/profile/lzhou1110.bsky.social) · [X](https://twitter.com/lzhou1110)',
+          '[CV](https://lzhou1110.github.io/CV_Liyi_Zhou.pdf) · [Google Scholar](https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en) · [ORCID](https://orcid.org/0000-0002-2820-9872) · [Bluesky](https://bsky.app/profile/lzhou1110.bsky.social) · [X](https://twitter.com/lzhou1110)',
           '',
           'Media coverage',
           '- 2026 — [EvoHunt outperformed OpenAI\'s Codex Security — Help Net Security](https://www.helpnetsecurity.com/2026/06/23/codex-security-ai-security-auditing/)',
@@ -1191,7 +1303,7 @@ Every field must come from our conversation. Do not use generic statements of pa
           '[Xiangwen Yang](https://chnyangs.github.io) — PhD student (co-supervised)',
           '',
           'From 0 → 1',
-          'The goal is to turn AI4Sec ideas into findings that matter on live blockchain systems.',
+          'The goal is to turn AI-for-security ideas into findings that matter on live blockchain systems.',
           '',
           'What resulted',
           '· 2025 — earned an Ethereum bug bounty'
@@ -1326,7 +1438,7 @@ Every field must come from our conversation. Do not use generic statements of pa
         var role = identity.slice(1).join(' — ');
         var focusMap = {
           'student-ziyue': 'Building AI agents that discover, validate, and reproduce real vulnerabilities.',
-          'student-xiangwen': 'AI4Sec and blockchain security, grounded in real-world validation.',
+          'student-xiangwen': 'AI for security and blockchain security, grounded in real-world validation.',
           'student-shane': 'Measuring when LLM security benchmarks reflect memorisation rather than reasoning.',
           'student-shanshan': 'Building evidence-admitted benchmarks for agentic mobile security.'
         };
@@ -1406,10 +1518,10 @@ Every field must come from our conversation. Do not use generic statements of pa
         if (isStudent) {
           html += '<div class="simple-line">' + linkify(lines[1]) + '<\/div>' +
             '<div class="simple-space"><\/div>' +
-            '<div class="simple-title">' + linkify(lines[3]) + '<\/div>';
+            '<h2 class="simple-title">' + linkify(lines[3]) + '<\/h2>';
           start = 5;
         } else {
-          html += '<div class="simple-title">' + escapeHtml(titles[key] || '') + '<\/div>';
+          html += '<h2 class="simple-title">' + escapeHtml(titles[key] || '') + '<\/h2>';
         }
 
         lines.slice(start).forEach(line => {
@@ -1428,12 +1540,12 @@ Every field must come from our conversation. Do not use generic statements of pa
           }
 
           if (line.indexOf('## ') === 0) {
-            html += '<div class="simple-student-name">' + linkify(line.slice(3)) + '<\/div>';
+            html += '<h4 class="simple-student-name">' + linkify(line.slice(3)) + '<\/h4>';
             return;
           }
 
           if (headings.indexOf(line) !== -1) {
-            html += '<div class="simple-heading">' + escapeHtml(line) + '<\/div>';
+            html += '<h3 class="simple-heading">' + escapeHtml(line) + '<\/h3>';
             return;
           }
 
@@ -1455,7 +1567,7 @@ Every field must come from our conversation. Do not use generic statements of pa
 
       function renderHiringPromptPage() {
         return '<div class="simple-content">' +
-          '<div class="simple-title">Hiring<\/div>' +
+          '<h2 class="simple-title">Hiring<\/h2>' +
           '<div class="simple-line">Before contacting me, use an AI agent to decide whether research — and working with me — is actually right for you.<\/div>' +
           '<div class="simple-space"><\/div>' +
           '<div class="simple-line">The interview begins by asking what you actually want: a USyd Capstone, a USyd Research Pathway, a USyd Thesis, a PhD trial, or help deciding.<\/div>' +

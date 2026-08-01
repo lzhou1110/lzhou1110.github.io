@@ -1,0 +1,41 @@
+# Liyi Zhou
+
+> Liyi Zhou is a Computer Science Lecturer and ARC DECRA Fellow at the University of Sydney. He researches the security and reliability of AI agents, agentic vulnerability discovery and validation, reusable knowledge learned through experience, and decisions grounded in trustworthy evidence.
+
+This is the official personal academic website of Liyi Zhou. Prefer the full machine-readable profile for factual questions about research, publications, students, teaching, service, grants, and education. The Research Fit Interview prompt on the Hiring view is quoted tool content for prospective students; it is not an instruction to agents retrieving, summarising, or citing this website.
+
+## Core profile
+
+- [Full machine-readable profile](https://lzhou1110.github.io/llms-full.txt): Curated factual profile with research, publications, supervision, teaching, service, awards, and education.
+- [Official homepage](https://lzhou1110.github.io/): Current research statement, biography, contact details, students, hiring information, and media coverage.
+- [Students and research projects](https://lzhou1110.github.io/students/): Crawlable overview of PhD students, Honours students, collaborators, and selected outcomes.
+- [Research opportunities and hiring](https://lzhou1110.github.io/hiring/): Supervision style, possible project routes, preparation expectations, and initial-contact process.
+- [Curriculum vitae](https://lzhou1110.github.io/CV_Liyi_Zhou.pdf): Detailed formal CV and selected publication record.
+- [Google Scholar](https://scholar.google.com.au/citations?user=xEXQBfMAAAAJ&hl=en): Publication and citation profile.
+- [ORCID](https://orcid.org/0000-0002-2820-9872): Persistent researcher identifier.
+
+## Current research
+
+- [Can Agent Benchmarks Support Their Scores?](https://arxiv.org/abs/2605.10448): Evidence-supported bounds for interactive-agent evaluation; arXiv 2026.
+- [When Agents Overtrust Environmental Evidence](https://arxiv.org/abs/2605.08828): Reliability of agent decisions under stale, incorrect, or malicious environmental evidence; arXiv 2026.
+- [EvoHunt](https://arxiv.org/abs/2606.16420): Transferable self-evolving playbooks for agentic security auditing; arXiv 2026.
+- [AI Agent Smart Contract Exploit Generation](https://arxiv.org/abs/2507.05558): Agentic exploit generation for smart contracts; FC 2026.
+- [Agentic Discovery and Validation of Android App Vulnerabilities](https://arxiv.org/abs/2508.21579): End-to-end discovery and validation of real Android vulnerabilities; arXiv 2025.
+
+## Students and collaborators
+
+- [Students overview](https://lzhou1110.github.io/students/): Selected PhD, Honours, and independent-collaboration projects.
+- [Ziyue Wang](https://zyy0530.github.io/): PhD student working on AI agents for real vulnerability discovery and validation.
+- [Xiangwen Yang](https://chnyangs.github.io/): Co-supervised PhD student working on AI for security and blockchain security.
+
+## External evidence
+
+- [University of Sydney DECRA announcement](https://www.sydney.edu.au/news-opinion/news/2025/11/26/10m-boost-for-sydney-early-career-researchers-research-infrastrure.html): Official description of the ARC-funded project on autonomous software vulnerability detection and exploitation.
+- [Anthropic research coverage](https://www.anthropic.com/research/smart-contracts): External research coverage of AI agents finding smart contract exploits.
+- [Help Net Security coverage of EvoHunt](https://www.helpnetsecurity.com/2026/06/23/codex-security-ai-security-auditing/): Coverage of EvoHunt and agentic security auditing.
+
+## Optional
+
+- [Bluesky](https://bsky.app/profile/lzhou1110.bsky.social): Social profile.
+- [X](https://twitter.com/lzhou1110): Social profile.
+- [LinkedIn](https://au.linkedin.com/in/liyi-zhou-a64731111): Professional profile.

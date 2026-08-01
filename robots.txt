@@ -1,0 +1,5 @@
+# Public academic content is available to search engines and AI assistants.
+User-agent: *
+Allow: /
+
+Sitemap: https://lzhou1110.github.io/sitemap.xml
